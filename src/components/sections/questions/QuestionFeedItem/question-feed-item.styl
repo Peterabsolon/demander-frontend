@@ -1,0 +1,39 @@
+@import '~assets/css/variables'
+
+.wrapper
+  border-bottom 1px solid $color-border
+  border-right 1px solid $color-border
+  padding-bottom 32px
+  display block
+  position relative
+  text-decoration none
+  color #000
+  transition .15s ease border-right-color
+  &:focus,
+  &:active
+    color #000
+  &.isActive
+    border-right-color #fff
+    .title
+      > a
+        color $brand-primary
+
+.title
+  margin-bottom 0
+  > a
+    color #000
+    display block
+    padding 32px $vertical-rhytm-base $vertical-rhytm-base 0
+    &:hover
+      color $brand-primary
+
+.duration
+  display flex
+  span
+    padding 0 15px
+    border-right 1px solid $color-border
+    &:first-child
+      padding-left 0
+    &:last-child
+      padding-right 0
+      border-right 0

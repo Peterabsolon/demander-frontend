@@ -1,0 +1,28 @@
+image: registry.inloop.eu/inloop-internal/inloop-ci
+stages:
+  - build
+  - deploy
+
+build:
+  tags:
+    - docker
+  stage: build
+  when: manual
+  script:
+    - inloop-ci docker process-image
+
+deploy:
+  tags:
+    - docker
+  stage: deploy
+  when: manual
+  script:
+    - inloop-ci docker deploy --grid development
+
+deploy-production:
+  tags:
+    - docker
+  stage: deploy
+  when: manual
+  script:
+    - inloop-ci docker deploy --grid nas-nazor-production

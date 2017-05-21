@@ -1,0 +1,131 @@
+/*------------------------------------*\
+    VARIABLES
+\*------------------------------------*/
+
+/*
+ * FONT
+ */
+$font-regular = 'Nunito', sans-serif
+$font-custom = 'Merriweather', sans-serif
+
+$font-medium = 600
+$font-bold = 900
+
+$font-size-small = 12px
+$font-size-base = 14px
+
+/*
+ * COLORS
+ */
+$brand-primary ?= #1170D9
+$brand-secondary ?= #99caff
+$brand-text ?= #000
+$brand-success ?= #007338
+$brand-info ?= #5bc0de
+$brand-warning ?= #f0ad4e
+$brand-danger ?= #d8492a
+$body-bg = #fff
+
+
+$color-success = #79C562
+$color-info = #5583AD
+$color-error = #D42222
+
+$color-text = #4a4a4a
+$color-border = #d8d8d8
+$color-border-light = rgba(0, 0, 0, 0.2)
+
+$color-gray-alpha = #a6a6a6
+$color-gray-beta = #d9d9d9
+$color-gray-gamma = #f6f6f6
+
+$color-aqua-alpha ?= rgba(0,126,255,0.24)
+$color-aqua-beta ?= rgba(0,126,255,0.08)
+
+$color-input-text = #4a4a4a
+$color-input-border = #cccccc
+
+$color-accent-hover = #2b8ac3
+$color-accent-active = #1a618c
+
+$border-radius = 5px
+
+$transition-color = .15s ease color
+
+$vertical-rhytm-base = 26px
+$vertical-rhytm-half = 13px
+$vertical-rhytm-double = 52px
+
+/*
+ * Z-INDEXES
+ */
+$z-index-tel-input-list = 100
+
+/*
+ * MEDIA QUERIES
+ */
+$xs-up = 'screen and (min-width: 20em)' // 320px
+$xs-only = $xs-up + ' and (max-width: 47.938em)'
+$sm-up = 'screen and (min-width: 48em)' // 768px
+$sm-only = $sm-up + ' and (max-width: 63.938em)'
+$md-up = 'screen and (min-width: 64em)' // 1024px
+$md-only = $md-up + ' and (max-width: 78.063em)'
+$lg-up = 'screen and (min-width: 78.125em)' // 1250px
+$lg-only = 'screen and (min-width: 119.938em)'
+$xlg-up = 'screen and (min-width: 120em)' // 1920px
+
+$screen-xs =                  320px;
+$screen-xs-min =              $screen-xs;
+$screen-phone =               $screen-xs-min;
+
+$screen-sm =                  767px;
+$screen-sm-min =              $screen-sm;
+$screen-tablet =              $screen-sm-min;
+
+$screen-md =                  1024px;
+$screen-md-min =              $screen-md;
+$screen-desktop =             $screen-md-min;
+
+$screen-lg =                  1250px;
+$screen-lg-min =              $screen-lg;
+$screen-lg-desktop =          $screen-lg-min;
+
+$screen-xs-max =              ($screen-sm-min - 1);
+$screen-sm-max =              ($screen-md-min - 1);
+$screen-md-max =              ($screen-lg-min - 1);
+/*
+/*
+ * RADIUS
+ */
+$radius-default = 4px;
+
+/*
+ * GRID
+ */
+$grid-columns ?=              12
+$grid-gutter-width ?=         30px
+$grid-float-breakpoint ?=     $screen-sm-min
+$grid-float-breakpoint-max ?= ($grid-float-breakpoint - 1)
+
+/*
+ * CONTAINER
+ */
+$container-tablet ?=           (720px + $grid-gutter-width)
+$container-sm ?=               $container-tablet
+
+$container-desktop ?=          (940px + $grid-gutter-width)
+$container-md ?=               $container-desktop
+
+$container-large-desktop ?=    (980px + $grid-gutter-width)
+$container-lg ?=               $container-large-desktop
+
+/*
+ * FORMS
+ */
+// $form-spacing-unit ?= 8px
+$form-input-label-color ?= $color-gray-alpha
+$form-input-background-color ?= $color-gray-gamma
+$form-input-border-color ?= $color-gray-beta
+// $form-input-border-radius ?= 4px
+// $form-input-padding ?= 10px
+// $form-input-height ?= 40px

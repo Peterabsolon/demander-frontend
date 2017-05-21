@@ -1,0 +1,39 @@
+@import '~assets/css/variables'
+
+.editorWrapper
+  display flex
+
+  .label
+    margin-top 14px
+
+.hasError
+  .fieldWrapper
+    border-color $color-error
+    box-shadow inset 0px 0px 0px 1px $color-error
+
+.fieldWrapper
+  width 100%
+  // $form-input-label-color ?= $color-gray-alpha
+  // $form-input-background-color ?= $color-gray-gamma
+  // $form-input-border-color ?= $color-gray-beta
+  border 1px solid $form-input-border-color
+  background $form-input-background-color
+  min-height 150px
+  border-radius $border-radius
+
+.toolbar
+  border 0
+  margin 1px
+  width calc(100% - 2px)
+  background transparent
+  border-bottom 1px solid $form-input-border-color
+
+.editor
+  padding 0 20px
+  font-size 16px
+
+:global
+  .rdw-option-wrapper
+    border 1px solid $form-input-border-color
+    &:hover
+      box-shadow none

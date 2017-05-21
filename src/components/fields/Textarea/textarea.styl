@@ -1,0 +1,64 @@
+@import '~assets/css/variables'
+
+.wrapper
+  :global
+    .form-control
+      max-height none
+      line-height 1.5
+      min-height 87px
+
+.controls
+  position relative
+
+.loader
+  position absolute
+  top calc(50% - 16px)
+  right 0
+
+.disabled
+  opacity 0.5
+
+.clearable
+  :global
+    .form-control
+      padding-right 30px
+
+.btn-clear
+  position absolute
+  right 8px
+  top 13px
+  font-size 14px
+  cursor pointer
+
+.isFocused
+  color $brand-primary
+
+.inline
+  padding-bottom 0
+
+.inputWrapper
+  display flex
+
+  label
+    margin-top 14px
+
+.titleStyle
+  textarea
+    line-height normal
+    font-family Merriweather
+    font-size 24px
+    padding-top 20px
+    padding-bottom 20px
+  :global
+    .form-control
+      min-height 150px
+
+.descriptionStyle
+  textarea
+    font-size 16px
+  :global
+    .form-control
+      min-height 150px
+
+.required
+  color $brand-primary

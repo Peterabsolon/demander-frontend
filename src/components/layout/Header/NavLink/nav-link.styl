@@ -1,0 +1,27 @@
+@import '~assets/css/variables'
+
+.link
+  padding 24px 16px 19px
+  text-decoration none
+  text-transform uppercase
+  display inline-block
+  font-weight 800
+  font-size 11px
+  position relative
+  margin-right 10px
+  transition $transition-color
+  &:after
+    background $brand-primary
+    bottom 0
+    content ''
+    height 3px
+    left 50%
+    transform translateX(-50%)
+    position absolute
+    width 0
+    transition .15s ease color, .15s ease width
+
+.linkActive
+  color $brand-primary
+  &:after
+    width 100%

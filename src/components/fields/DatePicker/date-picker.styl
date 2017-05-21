@@ -1,0 +1,91 @@
+@import '~assets/css/variables'
+// @import '~assets/css/base/mixins/placeholder'
+
+:global
+  .SingleDatePicker
+    width 100%
+
+    .CalendarDay
+      &--selected
+        background $brand-primary
+        border 0
+        color #fff !important
+
+  .SingleDatePickerInput
+    width 100%
+    display flex
+    align-items center
+    border-radius $border-radius
+    border-color $color-border
+    background $form-input-background-color
+
+    .DateInput
+      padding 4px 7px
+      line-height 35px
+      margin 1px
+      width auto
+      background transparent
+
+      &__input
+        padding 0
+
+      &__display-text
+        font-size 14px
+        padding 0 11px
+        text-align center
+        border 1px solid transparent
+        color $color-gray-alpha !important
+        &--has-input
+          color #000 !important
+        &--focused
+          background $color-aqua-beta
+          border 1px solid $color-aqua-alpha
+          color $brand-primary !important
+
+  .SingleDatePicker__picker
+    z-index 100
+
+  .DateInput__display-text--focused ~ input
+    display none
+
+.hasError
+  :global
+    .SingleDatePickerInput
+      border-color $color-error
+      box-shadow inset 0px 0px 0px 1px $color-error
+
+.wrapper
+  width 100%
+
+.hasError
+  :global
+    .SingleDatePickerInput
+      border-color red
+
+.error
+  position absolute
+  top 52px
+  left 15px
+  color red
+  font-size 14px
+
+.labelError
+  color red
+
+.field
+  position relative
+
+.fieldWrapper
+  display flex
+  align-items center
+  position relative
+  label
+    padding-bottom 0
+
+.icon
+  position absolute
+  right 18px
+  top 17px
+  color $brand-primary
+  &:hover
+    cursor pointer

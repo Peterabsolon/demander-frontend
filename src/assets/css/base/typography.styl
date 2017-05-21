@@ -1,0 +1,84 @@
+@import '~assets/css/variables'
+
+h1, h2, h3, h4, h5, h6
+	color #000000
+
+h1, .alpha
+	set-font-size 26px
+	margin 10px 0 22px
+	font-weight 400
+
+	@media $md-up
+		set-font-size 32px
+
+h2, .beta
+	set-font-size 24px
+	margin 0 0 26px
+	font-weight bold
+	font-family $font-custom
+
+	// @media $md-up
+	// 	set-font-size 24px
+
+h3, .gamma
+	set-font-size 18px
+	margin 0 0 26px
+	line-height 1.67
+	font-weight bold
+	font-family $font-custom
+	//
+	// @media $md-up
+	// 	set-font-size 20px
+
+h4, .delta
+	set-font-size 16px
+	margin 0 0 26px
+	font-weight 400
+
+	@media $md-up
+		set-font-size 16px
+
+.omega
+	font-size 20px
+	font-weight bold
+	font-style normal
+	font-stretch normal
+	color #4e4e4e
+	margin 10px 0 15px
+
+.with-separator
+	padding-bottom 15px
+	border-bottom 1px solid #dddddd
+
+.text--center
+	text-align center
+
+.text--right
+	text-align right
+
+.text--danger
+	color $brand-danger
+
+.text--underline
+	text-decoration underline !important
+
+.link
+	color #000
+	text-decoration none
+	transition .1s ease color
+	&:hover
+		text-decoration none
+		color $brand-primary
+	&:focus
+		text-decoration none
+
+.link--primary
+	color $brand-primary
+	&:hover
+		color hsla(211, 100%, 60%, 1)
+
+hr
+	margin 0
+	margin-bottom 24px
+	border 0
+	border-bottom 1px solid $color-border

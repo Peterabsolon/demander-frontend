@@ -1,0 +1,80 @@
+:global
+  .ReactModal__Overlay--after-open,
+  .ReactModal__Overlay--before-close
+    transition background ease-out .1s
+
+  .ReactModal__Overlay
+    z-index 1
+    &:after
+      position absolute
+      transition background .3s
+      background transparent
+      top 0
+      right 0
+      bottom 0
+      left 0
+      content ''
+
+  .ReactModal__Overlay--after-open
+    &:after
+      background rgba(white, .75)
+
+  .ReactModal__Overlay--before-close
+    background transparent !important
+    &:after
+      background transparent
+
+  .ReactModal__Body--open
+    overflow hidden
+
+.modal-content
+  position absolute
+  top 0
+  right 0
+  // bottom 0
+  left 0
+  transform-origin 50% 50%
+  perspective 500px
+  background white
+  border 1px solid #ccc
+  width 620px
+  min-height 150px
+  margin auto
+  max-height 90vh
+  overflow-y auto
+  z-index 1000
+
+.modal-compact
+  width 400px
+
+.inner-content
+  padding 12px
+
+.btns
+  margin-top 16px
+  text-align right
+
+.overflow
+  overflow visible
+
+.btn
+  margin-left 8px
+
+.wider
+  width 760px
+
+.large
+  width 960px
+
+.cta
+  background-color #fff
+  background-color rgba(255, 255, 255, .95)
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+  transition all ease-out 1s
+
+.cta-content
+  padding 12px

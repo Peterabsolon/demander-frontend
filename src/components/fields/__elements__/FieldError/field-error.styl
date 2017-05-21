@@ -1,0 +1,16 @@
+@import '~assets/css/variables'
+
+.error
+  display block
+  color $color-error
+  font-size 14px
+  padding 0
+  opacity 0
+  height 0
+  transform translate3D(0, -15px, 0)
+  transition transform .15s, opacity .25s .05s, padding .15s
+
+  &.active
+    opacity 1
+    transform translate3D(0, 0, 0)
+    padding 4px 0 15px 0

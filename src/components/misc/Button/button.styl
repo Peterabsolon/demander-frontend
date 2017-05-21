@@ -1,0 +1,62 @@
+@import '~assets/css/variables'
+
+.button
+  padding 12px 64px
+  border-radius $border-radius
+  border 1px solid $form-input-border-color
+  outline none
+  position relative
+  background $brand-primary
+  color #fff
+  font-size 16px
+  font-weight 600
+  transition .15s ease border, .15s ease background
+  .spinner
+    background $brand-primary
+
+  &.wide
+    padding-left 98px
+    padding-right 98px
+
+.center
+  display block
+  margin 0 auto
+
+.block
+  width 100%
+  display block
+
+.spinner
+  position absolute
+  left 0
+  right 0
+  top 0
+  bottom 0
+  z-index 110
+  display flex
+  align-items center
+  justify-content center
+
+.danger
+  background none
+  border 2px solid transparent
+  color $brand-danger
+  &:hover
+    border 2px solid $brand-danger
+
+.success
+  background none
+  border 2px solid transparent
+  color $brand-success
+  &:hover
+    border 2px solid $brand-success
+
+.noBackground
+  color $brand-primary
+  background none
+  border 0
+  padding 0
+  font-weight 600
+  outline none
+  font-size 14px
+  margin-bottom 0

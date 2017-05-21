@@ -1,0 +1,81 @@
+@import '~assets/css/variables'
+
+:global
+  .form-group
+    margin-bottom 28px
+
+  .control-label
+    font-size 14px
+    display inline-block
+    padding-bottom 4px
+    color $form-input-label-color
+    transition $transition-color
+    font-weight 400
+
+  .form-control
+    width 100%
+    padding 12px 20px
+    box-shadow none
+    border 1px solid $form-input-border-color
+    transition .15s ease color, .15s ease border-color, .15s ease box-shadow, .15s ease background
+    border-radius $border-radius
+    background-color $form-input-background-color
+    max-height 49px
+    line-height 49px
+    -webkit-appearance none
+    outline none
+    color #000
+    &:focus
+      border-color $brand-primary
+      box-shadow inset 0px 0px 0px 1px $brand-primary
+      background none
+
+  .form-control-error
+    display inline-block
+    color $color-error
+    font-size 14px
+    padding 4px 0 0 4px
+
+  .has-error
+    .form-control,
+    .Select-control
+      border-color $color-error
+      box-shadow inset 0px 0px 0px 1px $color-error
+
+.controls
+  position relative
+
+.loader
+  position absolute
+  top calc(50% - 16px)
+  right 0
+
+.disabled
+  opacity 0.5
+
+.clearable
+  :global
+    .form-control
+      padding-right 30px
+
+.btn-clear
+  position absolute
+  right 8px
+  top 13px
+  font-size 14px
+  cursor pointer
+
+// .label
+//   color $form-input-label-color
+//   transition $transition-color
+//   font-weight 400
+
+.isFocused
+  color $brand-primary
+
+.inline
+  padding-bottom 0
+
+.inputWrapper
+  align-items center
+  display flex

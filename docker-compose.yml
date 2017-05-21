@@ -1,0 +1,21 @@
+stack: nas-nazor-frontend
+version: '2'
+services:
+  web:
+    image: registry.inloop.eu/nas-nazor/nas-nazor-frontend
+    links:
+      - redis
+      - core/internet_lb
+    environment:
+      - PORT=80
+      - REDIS_URL=redis://redis:6379
+    secrets:
+      - secret: HOST
+        name: INLOOP_LB_VIRTUAL_HOSTS
+        type: env
+    secrets:
+      - secret: API_URL
+        name: API_URL
+        type: env
+  redis:
+    image: redis

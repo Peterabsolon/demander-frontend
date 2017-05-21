@@ -1,0 +1,127 @@
+@import '~assets/css/variables'
+
+:global
+  .DateRangePicker
+    width 100%
+
+    &__picker
+      z-index 100
+
+    > div
+      width 100%
+
+    .DateInput
+      padding 4px 7px
+      line-height 35px
+      margin 1px
+      width auto
+      background transparent
+
+      &__input
+        font-size 14px
+        padding 0px
+
+      &__display-text
+        font-size 14px
+        padding 0 11px
+        text-align center
+        border 1px solid transparent
+        color $color-gray-alpha !important
+        &--has-input
+          color #000 !important
+        &--focused
+          background $color-aqua-beta
+          border 1px solid $color-aqua-alpha
+          color $brand-primary !important
+
+  .CalendarDay
+    &--selected-span
+      background $color-aqua-beta
+      color $brand-primary
+      border-color $color-aqua-alpha
+
+    &--hovered-span,
+    &--after-hovered-start
+      background $color-aqua-beta
+      color $brand-primary
+      border-color $color-aqua-alpha
+
+    &--blocked-calendar
+      color #cacccd
+      background #fff
+      border 1px solid #e4e7e7
+      cursor default
+
+    &--hovered,
+    &--selected-start,
+    &--selected-end
+      background $brand-primary !important
+      color #fff !important
+
+
+
+  .DateRangePickerInput
+    width 100%
+    display flex
+    align-items center
+    border-radius $border-radius
+    border-color $color-border
+    background $form-input-background-color
+
+    &__display-text
+      color $color-gray-alpha !important
+      &--has-input
+        color $color-aqua-beta !important
+
+    &__arrow
+      height 20px
+      width 20px
+      margin-bottom 6px
+
+      svg
+        height 20px
+        width 20px
+
+  .DayPickerKeyboardShortcuts__show--bottom-right
+    border-right-color $brand-primary
+    &:hover
+      border-right-color $color-aqua-beta
+
+.hasError
+  :global
+    .DateRangePickerInput
+      border-color $color-error
+      box-shadow inset 0px 0px 0px 1px $color-error
+
+.showSelected
+  :global
+    // .CalendarDay
+    //   &--selected-span
+    //     background $color-aqua-beta
+    //     color $brand-primary
+    //     border-color $color-aqua-alpha
+    //
+    //   &--hovered-span,
+    //   &--after-hovered-start
+    //     color #000
+
+    .CalendarDay--selected-span.CalendarDay--blocked-calendar
+      opacity 0.4
+
+.field
+  position relative
+
+.fieldWrapper
+  display flex
+  align-items center
+  position relative
+  label
+    padding-bottom 0
+
+.icon
+  position absolute
+  right 18px
+  top 17px
+  color $brand-primary
+  &:hover
+    cursor pointer

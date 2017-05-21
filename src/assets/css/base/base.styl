@@ -1,0 +1,59 @@
+a:hover,
+a:active
+  outline none
+
+body div:focus
+  outline none
+
+img
+  outline none
+
+a:focus
+  outline none
+
+a::-moz-focus-inner
+  border 0
+
+a:focus, a:active,
+button,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner
+  outline none !important
+
+// input:not([type=radio]),
+// textarea
+//     -webkit-appearance none
+//     border-radius 0
+
+html
+  box-sizing border-box
+
+*, *:before, *:after
+  box-sizing inherit
+
+html
+  font-size 100%
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
+  height 100%
+  width 100%
+
+body
+  // overflow-x hidden
+  overflow-y scroll
+  width 100%
+  height 100%
+  line-height 1.5
+  set-font-size($font-size-base)
+  color $brand-text
+  font-family $font-regular
+
+.content
+  padding-top 6px
+  padding-bottom 16px
+
+.ico:before
+  vertical-align initial

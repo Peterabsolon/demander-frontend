@@ -1,0 +1,212 @@
+@import '~assets/css/variables'
+
+.form-group
+  margin-bottom 20px
+
+.control-label
+  display inline-block
+
+.controls
+  position relative
+
+.form-control
+  background-color #fff
+
+.btn-clear
+  position absolute
+  padding 0
+  top 16px
+  right 28px
+  background none
+  border none
+  box-shadow none
+  font-size 10px
+
+  .small &
+    top 12px
+
+.ico
+  display inline-block
+
+.disabled
+  opacity 0.5
+
+.arrow
+  position absolute
+  top 16px
+  right 10px
+  font-size 10px
+
+  .small &
+    top 13px
+
+.loader
+  position absolute
+  top calc(50% - 15px)
+  right 30px
+
+.inline
+  padding-bottom 0
+
+.selectWrapper
+  align-items center
+  display flex
+  > div
+    flex-grow 1
+
+.isFocused
+  color $brand-primary
+
+:global
+  .is-focused:not(.is-open) > .Select-control,
+  .is-open > .Select-control
+    box-shadow inset 0px 0px 0px 1px $brand-primary !important
+    border-color $brand-primary
+    // border-bottom none
+    background #fff
+
+  .is-focused:not(.is-open) > .Select-control
+    border-bottom 1px solid $brand-primary
+
+  // .has-value.is-focused:not(.is-open)
+  //   background $form-input-background-color
+
+  .Select--multi
+    &.has-value
+      .Select-control
+        .Select-input
+          padding-left 0px !important
+
+    .Select-control
+      .Select-input
+        padding-left 10px !important
+
+      .Select-value,
+      .Select-value-label
+        height 40px
+        line-height 40px
+        color $brand-primary
+
+      .Select-multi-value-wrapper
+        display flex
+        flex-wrap wrap
+
+      .Select-value
+        padding 0 !important
+        display flex
+        border-radius 3px
+        border-color $color-aqua-alpha
+        background-color $color-aqua-beta
+
+      .Select-value-label
+        padding 0 10px !important
+      color $brand-primary
+
+      .Select-value-icon
+        padding 0 10px !important
+        display inline
+        color $brand-primary
+
+  .Select-control
+    box-shadow none
+    border 1px solid $color-border
+    border-radius $border-radius
+    background-color $form-input-background-color
+    height 51px
+    transition .15s ease color, .15s ease border-color, .15s ease box-shadow, .15s ease background
+
+    &:hover:not(.is-open)
+      box-shadow none
+      // cursor pointer
+
+    .Select-value-label,
+    .Select-value
+      color #000
+
+    .Select-placeholder
+      color #4a4a4a
+
+      .small &
+        font-size 14px
+
+    & .Select-placeholder,
+    & .Select-value,
+    & .Select-input
+      padding-left 20px !important
+      padding-right 20px !important
+
+      .small &
+        padding-right 40px !important
+
+    .Select-value,
+    .Select-placeholder,
+    .Select-value-label,
+    .Select-input,
+    .Select-input > input
+      max-height 49px
+      height 49px
+      line-height 49px
+
+      .small &
+        height 30px
+        line-height 37px
+
+    .Select-clear-zone
+      width 20px
+      padding-right 5px
+
+    .Select-loading-zone
+      display none
+
+    .Select-arrow-zone
+      padding-right 18px
+
+    .Select-arrow
+      border-width 7px 6px 2px
+      border-color $brand-primary transparent transparent
+      transition border-color .2s ease-in
+      position relative
+      top 1px
+
+    // &:hover,
+    // &:focus
+    //   .Select-arrow
+    //     border-color darken(#4a4a4a, 50%) transparent transparent
+
+  .Select-menu-outer
+    z-index 11
+    border-color $brand-primary
+    // box-shadow inset 0px 0px 0px 1px $brand-primary
+    border-top 0
+    border-bottom 2px solid $brand-primary
+    transition .15s ease
+    margin-top -2px
+    &:after
+      content ''
+      position absolute
+      left 0
+      right 0
+      top 0
+      height 1px
+      background $color-border
+
+    .Select-option,
+    .Select-noresults
+      padding-left 19px
+      padding-right 19px
+      border-left 1px solid $brand-primary
+      border-right 1px solid $brand-primary
+      transition .15s ease background, .15s ease color
+
+      // &:last-child
+      //   border-bottom 1px solid $brand-primary
+
+      &.is-focused
+        color $brand-primary
+        background hsla(211, 100%, 90%, 1)
+
+      .small &
+        font-size 14px
+
+  .Select.is-disabled > .Select-control
+    background-color #fff
