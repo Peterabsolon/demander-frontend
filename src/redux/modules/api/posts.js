@@ -1,13 +1,13 @@
 import routeParams from 'helpers/routeParams'
 import { PAGE_SIZE } from 'constants/misc'
 
-const GET_POSTS = 'api/posts/GET_POSTS'
-const GET_POSTS_SUCCESS = 'api/posts/GET_POSTS_SUCCESS'
-const GET_POSTS_FAIL = 'api/posts/GET_POSTS_FAIL'
+const GET_LIST = 'api/posts/GET_LIST'
+const GET_LIST_SUCCESS = 'api/posts/GET_LIST_SUCCESS'
+const GET_LIST_FAIL = 'api/posts/GET_LIST_FAIL'
 
-const GET_POST = 'api/posts/GET_POST'
-const GET_POST_SUCCESS = 'api/posts/GET_POST_SUCCESS'
-const GET_POST_FAIL = 'api/posts/GET_POST_FAIL'
+const GET_BY_ID = 'api/posts/GET_BY_ID'
+const GET_BY_ID_SUCCESS = 'api/posts/GET_BY_ID_SUCCESS'
+const GET_BY_ID_FAIL = 'api/posts/GET_BY_ID_FAIL'
 
 const SET_FILTER = 'api/posts/SET_FILTER'
 const SET_PARAMS = 'api/posts/SET_PARAMS'
@@ -16,9 +16,9 @@ const SUBMIT = 'api/posts/SUBMIT'
 const SUBMIT_SUCCESS = 'api/posts/SUBMIT_SUCCESS'
 const SUBMIT_FAIL = 'api/posts/SUBMIT_FAIL'
 
-const DELETE_POST = 'api/posts/DELETE_POST'
-const DELETE_POST_SUCCESS = 'api/posts/DELETE_POST_SUCCESS'
-const DELETE_POST_FAIL = 'api/posts/DELETE_POST_FAIL'
+const SUBMIT_DELETE = 'api/posts/SUBMIT_DELETE'
+const SUBMIT_DELETE_SUCCESS = 'api/posts/SUBMIT_DELETE_SUCCESS'
+const SUBMIT_DELETE_FAIL = 'api/posts/SUBMIT_DELETE_FAIL'
 
 const initialState = {
   list: [],
@@ -31,17 +31,18 @@ const initialState = {
   detailLoading: false,
   listLoading: false,
   loaded: false,
-  submitting: false
+  submitting: false,
+  deleting: false
 }
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_POSTS:
+    case GET_LIST:
       return {
         ...state,
         listLoading: !action.noLoading
       }
-    case GET_POSTS_SUCCESS: {
+    case GET_LIST_SUCCESS: {
       return {
         ...state,
         listLoading: false,
@@ -50,7 +51,7 @@ export default function reducer(state = initialState, action = {}) {
         count: action.result.count
       }
     }
-    case GET_POSTS_FAIL:
+    case GET_LIST_FAIL:
       return {
         ...state,
         listLoading: false,
@@ -60,19 +61,19 @@ export default function reducer(state = initialState, action = {}) {
 
     // ----------------------------------------------
 
-    case GET_POST:
+    case GET_BY_ID:
       return {
         ...state,
         detailLoading: true
       }
-    case GET_POST_SUCCESS:
+    case GET_BY_ID_SUCCESS:
       return {
         ...state,
         detailLoading: false,
         loaded: true,
         detail: action.result
       }
-    case GET_POST_FAIL:
+    case GET_BY_ID_FAIL:
       return {
         ...state,
         detailLoading: false,
@@ -128,26 +129,42 @@ export default function reducer(state = initialState, action = {}) {
 
     // ----------------------------------------------
 
+    case SUBMIT_DELETE:
+      return {
+        ...state,
+        deleting: true
+      }
+    case SUBMIT_DELETE_SUCCESS:
+      return {
+        ...state,
+        deleting: false
+      }
+    case SUBMIT_DELETE_FAIL:
+      return {
+        ...state,
+        deleting: false,
+        error: action.error
+      }
+
+    // ----------------------------------------------
+
     default:
       return state
   }
 }
 
-/**
- * Actions
- */
-export const getPosts = (posts, { noLoading } = {}) => {
-  const url = `api/posts${routeParams(posts, '&include[tag]')}`
+export const getList = (state, { noLoading } = {}) => {
+  const url = `api/posts${routeParams(state, '&include[tag]')}`
 
   return {
-    types: [GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL],
+    types: [GET_LIST, GET_LIST_SUCCESS, GET_LIST_FAIL],
     promise: client => client.get(url),
     noLoading
   }
 }
 
-export const getPost = id => ({
-  types: [GET_POST, GET_POST_SUCCESS, GET_POST_FAIL],
+export const getById = id => ({
+  types: [GET_BY_ID, GET_BY_ID_SUCCESS, GET_BY_ID_FAIL],
   promise: client => client.get(`api/posts/${id}?include[tag]&include[city]`)
 })
 
@@ -161,17 +178,17 @@ export const setParams = options => ({
   options
 })
 
-export const createPost = data => ({
+export const createEntity = data => ({
   types: [SUBMIT, SUBMIT_SUCCESS, SUBMIT_FAIL],
   promise: client => client.post('api/posts', { data })
 })
 
-export const updatePost = (id, data) => ({
+export const updateEntity = (id, data) => ({
   types: [SUBMIT, SUBMIT_SUCCESS, SUBMIT_FAIL],
   promise: client => client.put(`api/posts/${id}`, { data })
 })
 
-export const deletePost = id => ({
-  types: [DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAIL],
+export const deleteEntity = id => ({
+  types: [SUBMIT_DELETE, SUBMIT_DELETE_SUCCESS, SUBMIT_DELETE_FAIL],
   promise: client => client.del(`api/posts/${id}`)
 })
