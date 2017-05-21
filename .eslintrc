@@ -38,6 +38,7 @@
     "no-trailing-spaces": 1,
     "no-undefined": 0,
     "no-underscore-dangle": 0,
+    "no-warning-comments": 0,
     "no-tabs": 0,
     "operator-linebreak": 0,
     "line-comment-position": 0,

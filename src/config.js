@@ -4,10 +4,10 @@ const ip = require('ip')
 const environment = {
   development: {
     isProduction: false,
-    apiURL: process.env.API_URL || 'https://dofe-dev.inloop.eu/v1',
+    apiURL: process.env.API_URL || 'http://localhost:8000',
     apiURLfromServer: process.env.API_URL_FROM_SERVER ||
       process.env.API_URL ||
-      'https://dofe-dev.inloop.eu/v1',
+      'http://localhost:8000',
     openBrowserAfterBuild: false,
     host: ip.address(),
     autoLogin: false,
@@ -23,10 +23,10 @@ const environment = {
   },
   production: {
     isProduction: true,
-    apiURL: process.env.API_URL || 'https://dofe-dev.inloop.eu/v1',
+    apiURL: process.env.API_URL || 'http://localhost:8000',
     apiURLfromServer: process.env.API_URL_FROM_SERVER ||
       process.env.API_URL ||
-      'https://dofe-dev.inloop.eu/v1',
+      'http://localhost:8000',
     host: process.env.HOST || ip.address(),
     webAppAddress: 'https://dofe-web-development.herokuapp.com'
   }

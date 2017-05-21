@@ -159,8 +159,8 @@ const webpackConfig = module.exports = {
       }
     ),
     new webpack.DefinePlugin({
-      'process.env.API_URL': JSON.stringify(process.env.API_URL || 'https://dofe-dev.inloop.eu/v1'),
-      'process.env.API_URL_FROM_SERVER': JSON.stringify(process.env.API_URL_FROM_SERVER || process.env.API_URL || 'https://dofe-dev.inloop.eu/v1'),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:8000'),
+      'process.env.API_URL_FROM_SERVER': JSON.stringify(process.env.API_URL_FROM_SERVER || process.env.API_URL || 'http://localhost:8000'),
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,
@@ -210,4 +210,3 @@ const webpackConfig = module.exports = {
 if (process.env.WEBPACK_DLLS === '1' && validDLLs) {
   helpers.installVendorDLL(webpackConfig, 'vendor')
 }
-
