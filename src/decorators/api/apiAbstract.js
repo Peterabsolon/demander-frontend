@@ -90,8 +90,8 @@ const decorator = (config = {}) =>
 
         this.props.notification(config.messages.createSuccess, 'success')
 
-        if (config.onCreate) {
-          setTimeout(config.onCreate(newId), 0)
+        if (config.events.onCreate) {
+          return setTimeout(() => config.events.onCreate(newId), 0)
         }
       };
 
@@ -105,8 +105,8 @@ const decorator = (config = {}) =>
 
         this.props.notification(config.messages.editSuccess, 'success')
 
-        if (config.onEdit) {
-          setTimeout(config.onEdit(id), 0)
+        if (config.events.onEdit) {
+          return setTimeout(() => config.events.onEdit(id), 0)
         }
       };
 
@@ -122,8 +122,8 @@ const decorator = (config = {}) =>
 
           this.props.notification(config.messages.deleteSuccess, 'success')
 
-          if (config.onDelete) {
-            setTimeout(config.onDelete(id), 0)
+          if (config.events.onDelete) {
+            return setTimeout(() => config.events.onDelete(id), 0)
           }
         }
       };

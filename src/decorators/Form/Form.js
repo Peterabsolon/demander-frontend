@@ -70,6 +70,9 @@ function decorator(config = {}) {
         router.setRouteLeaveHook(route, nextLoc => {
           const { pristine, submitSucceeded } = this.props
 
+          console.log('submitSucceeded', submitSucceeded)
+          console.log('pristine', pristine)
+
           if (submitSucceeded || pristine) {
             return true
           }
