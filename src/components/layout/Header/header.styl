@@ -1,8 +1,9 @@
 @import '~assets/css/variables'
 
 .wrapper
-  border-bottom 1px solid $color-border
-  height 60px
+  height 80px
+  border-bottom 1px solid rgba(255,255,255,.15)
+  transition .15s ease background
 
 .content
   display flex
@@ -10,7 +11,13 @@
   margin 0
 
 .logo
-  margin-right 28px
+  margin-right 25px
 
 .btnLogout
   margin-left auto
+
+:global
+  .headroom--unpinned,
+  .headroom--pinned
+    > div
+      background hsla(291, 50%, 40%, .9)

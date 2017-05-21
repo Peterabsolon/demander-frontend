@@ -1,24 +1,36 @@
-.wrapper
+.hero
+  height 600px
+  margin-top -80px
   display flex
-  height 100vh
-
-col()
-  display flex
-  align-items center
   justify-content center
-  flex-direction column
-  flex 1
+  align-items center
+  &:after
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    z-index 10
+    background: rgba(101, 47, 142, 0.50);
+    background: linear-gradient(135deg, rgba(101, 47, 142, 0.67) 0%, rgba(125,46,185,0.45) 100%)
 
-.col-left
-  col()
-  background url('assets/img/login-background.png')
+.heroContent
+  position relative
+  z-index 100
+  width 500px
+
+.isHome
+  background url('assets/img/home-background.png')
   background-size cover
 
-.col-right
-  col()
-
 .content
-  min-width 360px
+  background white
+  margin-top -60px
+  border-radius 6px
+  height 1500px
+  position relative
+  box-shadow 1px 8px 13px rgba(0,0,0,0.2)
 
-.logo
-  margin-bottom 8px
+.page
+  background #e4e4e4

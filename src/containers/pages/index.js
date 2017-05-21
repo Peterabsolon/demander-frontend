@@ -1,3 +1,5 @@
+export Home from './Home/Home'
+
 /**
  * Auth
  */

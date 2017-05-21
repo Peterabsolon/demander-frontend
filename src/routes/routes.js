@@ -1,6 +1,6 @@
 import React from 'react'
 import { get } from 'lodash'
-import { IndexRedirect, Route } from 'react-router'
+import { IndexRoute, Route } from 'react-router'
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth'
 import {
   isLoaded as isConfigLoaded,
@@ -46,10 +46,13 @@ export default store => {
 
   return (
     <Route path="/" onEnter={preload} component={App}>
-      <IndexRedirect to="otazky" />
+
+      <Route isHome component={Layout.Unauthorized}>
+        <IndexRoute component={Page.Home} />
+      </Route>
 
       <Route component={Layout.Unauthorized}>
-        <Route path="login" component={Page.Login} />
+        <Route path="demands" component={Page.Demands} />
       </Route>
 
       <Route

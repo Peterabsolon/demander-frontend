@@ -12,6 +12,8 @@ export default class Button extends Component {
     className: PropTypes.string,
     center: PropTypes.bool,
     wide: PropTypes.bool,
+    secondary: PropTypes.bool,
+    terniary: PropTypes.bool,
     block: PropTypes.bool,
     noBackground: PropTypes.bool,
     type: PropTypes.string,
@@ -34,6 +36,8 @@ export default class Button extends Component {
       className,
       noBackground,
       center,
+      secondary,
+      terniary,
       wide,
       type,
       danger,
@@ -52,6 +56,8 @@ export default class Button extends Component {
           [style.block]: block,
           [style.noBackground]: noBackground,
           [style.wide]: wide,
+          [style.secondary]: secondary,
+          [style.terniary]: terniary,
           [style.danger]: danger,
           [style.success]: success,
           [style.center]: center,
@@ -65,7 +71,7 @@ export default class Button extends Component {
               <Spinner white />
             </div>}
 
-          <Ink background opacity={success || danger ? 0.75 : 0.25} />
+          <Ink background opacity={success || danger ? 0.75 : 0.15} />
 
           {children || label}
         </div>

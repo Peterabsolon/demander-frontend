@@ -128,6 +128,7 @@
     "react-dates": "^12.0.0",
     "react-dom": "15.4.2",
     "react-draft-wysiwyg": "^1.9.9",
+    "react-headroom": "^2.1.5",
     "react-helmet": "5.0.2",
     "react-ink": "^6.2.0",
     "react-intl": "2.2.3",

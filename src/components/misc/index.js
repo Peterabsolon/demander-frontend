@@ -5,4 +5,7 @@ export Logo from './Logo/Logo'
 export Notification from './Notification/Notification'
 export Spinner from './Spinner/Spinner'
 export TextBox from './TextBox/TextBox'
+
+// These should be in components/layout
 export Title from './Title/Title'
+export Paragraph from './Paragraph/Paragraph'
