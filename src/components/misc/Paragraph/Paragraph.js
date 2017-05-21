@@ -7,16 +7,20 @@ import style from './paragraph.styl'
 export default class Paragraph extends Component {
   static propTypes = {
     children: PropTypes.any,
-    primary: PropTypes.bool
+    primary: PropTypes.bool,
+    white: PropTypes.bool,
+    center: PropTypes.bool
   };
 
   render() {
-    const { primary } = this.props
+    const { center, primary, white } = this.props
 
     return (
       <p
         className={cx(style.wrapper, {
-          [style.primary]: primary
+          [style.primary]: primary,
+          [style.white]: white,
+          [style.center]: center
         })}
       >
         {this.props.children}

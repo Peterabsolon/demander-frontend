@@ -24,7 +24,7 @@ export default class Logo extends Component {
         <Link to="/">
           {large
             ? <img
-              src={require('assets/img/logo-primary.png')}
+              src={require('assets/img/logo-primary.svg')}
               alt="Demander"
             />
             : <img
