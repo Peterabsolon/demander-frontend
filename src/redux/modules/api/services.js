@@ -1,24 +1,24 @@
 import routeParams from 'helpers/routeParams'
 import { PAGE_SIZE } from 'constants/misc'
 
-const GET_LIST = 'api/companies/GET_LIST'
-const GET_LIST_SUCCESS = 'api/companies/GET_LIST_SUCCESS'
-const GET_LIST_FAIL = 'api/companies/GET_LIST_FAIL'
+const GET_LIST = 'api/services/GET_LIST'
+const GET_LIST_SUCCESS = 'api/services/GET_LIST_SUCCESS'
+const GET_LIST_FAIL = 'api/services/GET_LIST_FAIL'
 
-const GET_BY_ID = 'api/companies/GET_BY_ID'
-const GET_BY_ID_SUCCESS = 'api/companies/GET_BY_ID_SUCCESS'
-const GET_BY_ID_FAIL = 'api/companies/GET_BY_ID_FAIL'
+const GET_BY_ID = 'api/services/GET_BY_ID'
+const GET_BY_ID_SUCCESS = 'api/services/GET_BY_ID_SUCCESS'
+const GET_BY_ID_FAIL = 'api/services/GET_BY_ID_FAIL'
 
-const SET_FILTER = 'api/companies/SET_FILTER'
-const SET_PARAMS = 'api/companies/SET_PARAMS'
+const SET_FILTER = 'api/services/SET_FILTER'
+const SET_PARAMS = 'api/services/SET_PARAMS'
 
-const SUBMIT = 'api/companies/SUBMIT'
-const SUBMIT_SUCCESS = 'api/companies/SUBMIT_SUCCESS'
-const SUBMIT_FAIL = 'api/companies/SUBMIT_FAIL'
+const SUBMIT = 'api/services/SUBMIT'
+const SUBMIT_SUCCESS = 'api/services/SUBMIT_SUCCESS'
+const SUBMIT_FAIL = 'api/services/SUBMIT_FAIL'
 
-const SUBMIT_DELETE = 'api/companies/SUBMIT_DELETE'
-const SUBMIT_DELETE_SUCCESS = 'api/companies/SUBMIT_DELETE_SUCCESS'
-const SUBMIT_DELETE_FAIL = 'api/companies/SUBMIT_DELETE_FAIL'
+const SUBMIT_DELETE = 'api/services/SUBMIT_DELETE'
+const SUBMIT_DELETE_SUCCESS = 'api/services/SUBMIT_DELETE_SUCCESS'
+const SUBMIT_DELETE_FAIL = 'api/services/SUBMIT_DELETE_FAIL'
 
 const initialState = {
   list: [],
@@ -154,7 +154,7 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export const getList = (state, { noLoading } = {}) => {
-  const url = `api/companies${routeParams(state, '')}`
+  const url = `api/services${routeParams(state, '')}`
 
   return {
     types: [GET_LIST, GET_LIST_SUCCESS, GET_LIST_FAIL],
@@ -165,7 +165,7 @@ export const getList = (state, { noLoading } = {}) => {
 
 export const getById = id => ({
   types: [GET_BY_ID, GET_BY_ID_SUCCESS, GET_BY_ID_FAIL],
-  promise: client => client.get(`api/companies/${id}`)
+  promise: client => client.get(`api/services/${id}`)
 })
 
 export const setFilter = filter => ({
@@ -180,15 +180,15 @@ export const setParams = options => ({
 
 export const createEntity = data => ({
   types: [SUBMIT, SUBMIT_SUCCESS, SUBMIT_FAIL],
-  promise: client => client.post('api/companies', { data })
+  promise: client => client.post('api/services', { data })
 })
 
 export const updateEntity = (id, data) => ({
   types: [SUBMIT, SUBMIT_SUCCESS, SUBMIT_FAIL],
-  promise: client => client.put(`api/companies/${id}`, { data })
+  promise: client => client.put(`api/services/${id}`, { data })
 })
 
 export const deleteEntity = id => ({
   types: [SUBMIT_DELETE, SUBMIT_DELETE_SUCCESS, SUBMIT_DELETE_FAIL],
-  promise: client => client.del(`api/companies/${id}`)
+  promise: client => client.del(`api/services/${id}`)
 })
