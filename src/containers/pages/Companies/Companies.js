@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// import { Feed } from 'containers/misc'
-import { Button } from 'components/misc'
+import { Feed } from 'containers/misc'
+import { DataCard, Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
 import { apiCompanies } from 'decorators/api'
@@ -28,7 +28,15 @@ export default class Companies extends Component {
         >
           <Button label="Registrovat společnost" />
         </PageHeader>
-        {/* <Feed instance="companies" items={companies.list} /> */}
+        <Feed
+          instance="companies"
+          items={companies.state.list}
+          Item={DataCard}
+          handleFetchMore={companies.api.handleFetchMore}
+          loaded={companies.state.loaded}
+          loading={companies.state.listLoading}
+          setFilter={companies.api.setFilter}
+        />
       </div>
     )
   }

@@ -1,39 +1,27 @@
 @import '~assets/css/variables'
-
-.wrapper
-  display flex
-  width 100%
-  height calc(100vh - 61px)
-  overflow hidden
-
-.filters
-  max-width 350px
-  flex 1
-  border-right 1px solid $color-border
-  padding 32px 32px 0 0
-
-.list
-  max-width 480px
-  flex 1
-  margin-left 50px
-  position relative
-  &:before
-    content ''
-    position absolute
-    height calc(100vh - 61px)
-    width 1px
-    background $color-border
-    z-index 0
-    bottom 0
-    right 0
-
-  .scrollArea
-    max-height calc(100vh - 61px)
-    overflow auto
-
-.page
-  flex 1
-
+//
+// .wrapper
+//   position relative
+//
+// .filters
+//   padding 32px 32px 0 0
+//
+// .list
+//   position relative
+//   &:before
+//     content ''
+//     position absolute
+//     height calc(100vh - 61px)
+//     width 1px
+//     background $color-border
+//     z-index 0
+//     bottom 0
+//     right 0
+//
+//   .scrollArea
+//     max-height calc(100vh - 61px)
+//     overflow auto
+//
 .loader
   position absolute
   top 0
@@ -48,17 +36,9 @@
   z-index -1
   opacity 0
   transition .2s ease
-  border-right 1px solid $color-border
   &.loaderVisible
     opacity 1
     z-index 1000
-
-.noResults
-  margin-top 32px
-
-.page
-  position relative
-  flex 1
-  .content
-    max-height calc(100vh - 61px)
-    overflow auto
+//
+// .noResults
+//   margin-top 32px

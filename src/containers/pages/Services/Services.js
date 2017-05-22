@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// import { Feed } from 'containers/misc'
-import { Button } from 'components/misc'
+import { Feed } from 'containers/misc'
+import { DataCard, Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
 import { apiServices } from 'decorators/api'
@@ -28,7 +28,16 @@ export default class Services extends Component {
         >
           <Button label="Přidat službu" />
         </PageHeader>
-        {/* <Feed instance="services" items={services.list} /> */}
+        <Feed
+          instance="services"
+          items={services.state.list}
+          Item={DataCard}
+          handleFetchMore={services.api.handleFetchMore}
+          loaded={services.state.loaded}
+          loading={services.state.listLoading}
+          setFilter={services.api.setFilter}
+        />
+
       </div>
     )
   }

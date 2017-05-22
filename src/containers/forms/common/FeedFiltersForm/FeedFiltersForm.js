@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { SelectCity, SelectTags } from 'components/fields'
 import { Button } from 'components/misc'
+import { CategoryMultiSelect } from 'components/common'
 import { filter } from 'decorators'
 
 @filter({
@@ -12,8 +12,7 @@ export default class FeedFiltersForm extends Component {
   render() {
     return (
       <div>
-        <SelectCity label="Región" name="city" />
-        <SelectTags label="Tagy" name="tag" />
+        <CategoryMultiSelect name="category" />
         <Button type="submit" label="Filtrovať" />
       </div>
     )

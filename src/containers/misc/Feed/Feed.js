@@ -13,7 +13,6 @@ import style from './feed.styl'
 @withRouter
 export default class Feed extends Component {
   static propTypes = {
-    children: PropTypes.any,
     handleFetchMore: PropTypes.func,
     instance: PropTypes.string.isRequired,
     Item: PropTypes.func.isRequired, // Component
@@ -74,12 +73,6 @@ export default class Feed extends Component {
                   <h4 className={style.noResults}>
                     Nenašli sa žiadne výsledky.
                   </h4>}
-          </div>
-        </div>
-
-        <div className={style.page}>
-          <div className={style.content}>
-            {this.props.children}
           </div>
         </div>
       </div>

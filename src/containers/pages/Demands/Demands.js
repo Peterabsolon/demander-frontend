@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// import { Feed } from 'containers/misc'
-import { Button } from 'components/misc'
+import { Feed } from 'containers/misc'
+import { Button, DataCard } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
 import { apiDemands, apiCategories } from 'decorators/api'
@@ -33,7 +33,15 @@ export default class Demands extends Component {
         >
           <Button label="Vytvořit poptávku" />
         </PageHeader>
-        {/* <Feed instance="demands" items={demands.list} /> */}
+        <Feed
+          instance="demands"
+          items={demands.state.list}
+          Item={DataCard}
+          handleFetchMore={demands.api.handleFetchMore}
+          loaded={demands.state.loaded}
+          loading={demands.state.listLoading}
+          setFilter={demands.api.setFilter}
+        />
       </div>
     )
   }
