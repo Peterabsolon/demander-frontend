@@ -52,7 +52,35 @@ export default store => {
       </Route>
 
       <Route component={Layout.Unauthorized}>
-        <Route path="demands" component={Page.Demands} />
+        {/* COMPANIES */}
+        <Route path="dodavatele">
+          <IndexRoute component={Page.Companies} />
+          <Route path="vytvorit" component={Page.CompanyNew} />
+          <Route path=":id">
+            <IndexRoute component={Page.CompanyDetail} />
+            <Route path="upravit" component={Page.CompanyEdit} />
+          </Route>
+        </Route>
+
+        {/* SERVICES */}
+        <Route path="sluzby">
+          <IndexRoute component={Page.Services} />
+          <Route path="vytvorit" component={Page.ServiceNew} />
+          <Route path=":id">
+            <IndexRoute component={Page.ServiceDetail} />
+            <Route path="upravit" component={Page.ServiceEdit} />
+          </Route>
+        </Route>
+
+        {/* DEMANDS */}
+        <Route path="poptavky">
+          <IndexRoute component={Page.Demands} />
+          <Route path="vytvorit" component={Page.DemandNew} />
+          <Route path=":id">
+            <IndexRoute component={Page.DemandDetail} />
+            <Route path="upravit" component={Page.DemandEdit} />
+          </Route>
+        </Route>
       </Route>
 
       <Route

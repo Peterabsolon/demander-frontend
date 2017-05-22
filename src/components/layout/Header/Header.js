@@ -26,12 +26,10 @@ export default class Header extends Component {
               </div>
 
               <nav>
-                <NavLink to="/" label="Domů" />
-                <NavLink to="/otazky" label="Otázky" />
-                <NavLink to="/vytvorit-otazku" label="Vytvoriť otázku" />
-                <NavLink to="/clanky" label="Články" />
-                <NavLink to="/vytvorit-clanok" label="Vytvoriť článok" />
-                <NavLink to="/nastavenia" label="Nastavenia" />
+                <NavLink index to="/" label="Domů" />
+                <NavLink to="/poptavky" label="Poptávky" />
+                <NavLink to="/sluzby" label="Služby" />
+                <NavLink to="/dodavatele" label="Dodavatelé" />
               </nav>
 
               {/* <Button
