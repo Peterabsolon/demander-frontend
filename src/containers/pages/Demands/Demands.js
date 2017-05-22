@@ -5,20 +5,25 @@ import PropTypes from 'prop-types'
 import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
-import { apiDemands } from 'decorators/api'
+import { apiDemands, apiCategories } from 'decorators/api'
 
 @apiDemands({
   list: true
 })
+@apiCategories({
+  list: true
+})
 export default class Demands extends Component {
   static propTypes = {
-    demands: PropTypes.any.isRequired
+    demands: PropTypes.object.isRequired,
+    categories: PropTypes.object.isRequired
   };
 
   render() {
-    const { demands } = this.props
+    const { demands, categories } = this.props
 
-    console.log('demands', demands)
+    console.log(demands)
+    console.log(categories)
 
     return (
       <div>

@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import apiAbstract from 'decorators/api/apiAbstract'
-import { schema } from 'models/companies'
+import { schema } from 'models/categories'
 
-import * as companiesApi from 'redux/modules/api/companies'
+import * as categoriesApi from 'redux/modules/api/categories'
 
 // // TODO: Czech
 // const messages = {
@@ -22,10 +22,10 @@ const decorator = (config = {}) =>
     // messages: messages,
     @connect(
       ({ api }) => ({
-        state: api.companies
+        state: api.categories
       }),
       {
-        ...companiesApi
+        ...categoriesApi
       }
     )
     @apiAbstract({
@@ -66,7 +66,7 @@ const decorator = (config = {}) =>
         return (
           <ComposedComponent
             {...filteredProps}
-            companies={this.props.payload}
+            categories={this.props.payload}
           />
         )
       }

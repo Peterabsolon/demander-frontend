@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { omit } from 'lodash'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -31,31 +32,39 @@ const decorator = (config = {}) =>
       ...config,
       schema,
       events: {
-        onCreate: id => browserHistory.push(`/poptavky/${id}`),
+        onCreate: id => browserHistory.push(`/dodavatele/${id}`),
         onEdit: () => {},
-        onDelete: () => browserHistory.push('/poptavky')
+        onDelete: () => browserHistory.push('/dodavatele')
       }
     })
     class Posts extends Component {
       static propTypes = {
-        state: PropTypes.object.isRequired, // reducer state
-        handleCreateEntity: PropTypes.func.isRequired,
-        handleEditEntity: PropTypes.func.isRequired,
-        handleDeleteEntity: PropTypes.func.isRequired,
-        handleFetchMore: PropTypes.func.isRequired
+        // Validate abstract decorator payload
+        payload: PropTypes.shape({
+          // Reducer state for this decorator/model
+          state: PropTypes.object.isRequired,
+          // Raw api actions + api handlers
+          api: PropTypes.shape({
+            getList: PropTypes.func.isRequired,
+            getById: PropTypes.func.isRequired,
+            setFilter: PropTypes.func.isRequired,
+            setParams: PropTypes.func.isRequired,
+            createEntity: PropTypes.func.isRequired,
+            updateEntity: PropTypes.func.isRequired,
+            deleteEntity: PropTypes.func.isRequired,
+            handleCreateEntity: PropTypes.func.isRequired,
+            handleEditEntity: PropTypes.func.isRequired,
+            handleDeleteEntity: PropTypes.func.isRequired,
+            handleFetchMore: PropTypes.func.isRequired
+          })
+        }).isRequired
       };
 
       render() {
+        const filteredProps = omit(this.props, ['payload'])
+
         return (
-          <ComposedComponent
-            {...this.props}
-            demands={this.props.state}
-            // Expose CRUD methods from apiAbstract
-            handleCreatePost={this.props.handleCreateEntity}
-            handleEditPost={this.props.handleEditEntity}
-            handleDeletePost={this.props.handleDeleteEntity}
-            handleFetchMore={this.props.handleFetchMore}
-          />
+          <ComposedComponent {...filteredProps} demands={this.props.payload} />
         )
       }
     }

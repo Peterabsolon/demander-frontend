@@ -25,7 +25,7 @@ export default class FeatureItem extends Component {
         })}
       >
         <div className={style.icon}>
-          <i className={`ico ${icon}`} />
+          <i className="material-icons">{icon}</i>
         </div>
         <div className={style.title}>
           <Title h3>{title}</Title>

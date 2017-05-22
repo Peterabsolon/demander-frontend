@@ -46,12 +46,16 @@ export default class Html extends Component {
           <meta name="theme-color" content="#ffffff" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="shortcut icon" href="/favicon.ico" />
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css?family=Merriweather:900&amp;subset=latin-ext"
+            rel="stylesheet"
+          /> */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Nunito:400,600,800&amp;subset=latin-ext"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Nunito:400,600,800&amp;subset=latin-ext"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
           <link rel="stylesheet" type="text/css" href="/dist/iconfont.css" />

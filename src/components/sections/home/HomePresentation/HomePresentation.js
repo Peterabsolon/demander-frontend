@@ -23,20 +23,20 @@ export default class HomePresentation extends Component {
 
         <Section gutters maxWidth={1100} contentClassName={style.features}>
           <FeatureItem
-            icon="ico--business"
+            icon="business"
             title="Zaregistrujte profil firmy"
             content="Vstoupit na trh Demander můžete díky založení profilu vaší společnosti. Vyplňte základní identifikační údaje a můžete začít."
             button={<Button label="Registrovat" />}
           />
           <FeatureItem
-            icon="ico--description"
+            icon="description"
             title="Vložte popávku"
             content="Dalším krokem je vložení poptávky, kde definujete předmět Vaši poptávky. Přiblížit detaily můžete vložením technické dokumentace. Demander je i totiž systémem pro náročné."
             button={<Button label="Vložit poptávku" />}
           />
           <FeatureItem
             primary
-            icon="ico--touch-app"
+            icon="touch_app"
             title="Vyberte dodavatele"
             content="V katalogu firem získáte přehled o dodavatelích, jejich zaměření, předmětu činnosti, poskytovaných službách, lokalitě a další pro vás užitečné informace."
             button={<Button label="Seznam společností" />}
@@ -53,7 +53,11 @@ export default class HomePresentation extends Component {
                 Prezentujte svoji firmu pomocí rozšířeného profilu firmy
               </Title>
               <Paragraph>
-                Čím více dokážete vaší společnost přiblížit ostatním uživatelům poptávkového systému Demander, tím relevantnější nabídky obdržíte. Budujte svoji vizitku na trhu a&nbps;dejte si záležet na prezentaci vaší firmy díky rozšířenému firemnímu profilu. Stačí vyplnit položky logo, slogan, přehled služeb a produktů, doplnit digitální vizitku, další poptávky a&nbps;ihned se vaše společnost stane čitelnější. I detail dělá dojem.
+                Čím více dokážete vaší společnost přiblížit ostatním uživatelům poptávkového systému Demander, tím relevantnější nabídky obdržíte. Budujte svoji vizitku na trhu a
+                {'\u00a0'}
+                dejte si záležet na prezentaci vaší firmy díky rozšířenému firemnímu profilu. Stačí vyplnit položky logo, slogan, přehled služeb a produktů, doplnit digitální vizitku, další poptávky a
+                {'\u00a0'}
+                ihned se vaše společnost stane čitelnější. I detail dělá dojem.
               </Paragraph>
             </div>
             <div className={style.image}>

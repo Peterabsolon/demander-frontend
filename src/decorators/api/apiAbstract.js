@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { get } from 'lodash'
+import { get, omit } from 'lodash'
 import { connect } from 'react-redux'
 import { PAGE_SIZE } from 'constants/misc'
 import PropTypes from 'prop-types'
@@ -140,16 +140,39 @@ const decorator = (config = {}) =>
         hasMore && this.props.setParams({ limit: limit + PAGE_SIZE })
       };
 
+      /**
+       * Filter methods from the reducer, attach them to an object and send it down
+       */
       render() {
-        return (
-          <ComposedComponent
-            {...this.props}
-            handleCreateEntity={this.handleCreateEntity}
-            handleEditEntity={this.handleEditEntity}
-            handleDeleteEntity={this.handleDeleteEntity}
-            handleFetchMore={this.handleFetchMore}
-          />
-        )
+        // REDUCER STATE!
+        const { state } = this.props
+
+        const reducerMethods = [
+          'getList',
+          'getById',
+          'setFilter',
+          'setParams',
+          'createEntity',
+          'updateEntity',
+          'deleteEntity'
+        ]
+
+        const filteredProps = omit(this.props, ['state', ...reducerMethods])
+
+        const api = {
+          handleCreateEntity: this.handleCreateEntity,
+          handleEditEntity: this.handleEditEntity,
+          handleDeleteEntity: this.handleDeleteEntity,
+          handleFetchMore: this.handleFetchMore
+        }
+
+        reducerMethods.forEach(method => {
+          api[method] = this.props[method]
+        })
+
+        const payload = { state, api }
+
+        return <ComposedComponent {...filteredProps} payload={payload} />
       }
     }
 
