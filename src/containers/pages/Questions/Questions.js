@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-import { Feed } from 'containers/common'
+import { Feed } from 'containers/misc'
 import { QuestionFeedItem } from 'components/sections/questions'
 
 import { apiQuestions } from 'decorators/api'

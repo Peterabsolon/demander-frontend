@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { Title, Button, Paragraph } from 'components/misc'
+import { Section } from 'components/layout'
 import { FeatureItem } from './__elements__'
 
 import style from './home-presentation.styl'
@@ -14,13 +15,13 @@ export default class HomePresentation extends Component {
   render() {
     return (
       <div>
-        <div className={style.description}>
-          <Paragraph primary center>
+        <Section gutters>
+          <Paragraph primary center resetMargin>
             Demander.cz představuje moderní platformu zaměřenou na získávání nových zakázek, nabídku vlastních služeb a prezentaci firmy. Jedná se o B2B poptávkový systém, kde se setkávají zájmy a potřeby předních společností napříč všemi segmenty trhu.
           </Paragraph>
-        </div>
+        </Section>
 
-        <div className={style.features}>
+        <Section gutters maxWidth={1100} contentClassName={style.features}>
           <FeatureItem
             icon="ico--business"
             title="Zaregistrujte profil firmy"
@@ -40,9 +41,9 @@ export default class HomePresentation extends Component {
             content="V katalogu firem získáte přehled o dodavatelích, jejich zaměření, předmětu činnosti, poskytovaných službách, lokalitě a další pro vás užitečné informace."
             button={<Button label="Seznam společností" />}
           />
-        </div>
+        </Section>
 
-        <div className={style.sectionAlpha}>
+        <Section gutters contentClassName={style.sectionAlpha}>
           <div className={style.sectionContent}>
             <div className={style.text}>
               <Title h2 className="base-margin--half">
@@ -59,9 +60,9 @@ export default class HomePresentation extends Component {
               <img src={require('assets/img/presentation-a.jpg')} alt="" />
             </div>
           </div>
-        </div>
+        </Section>
 
-        <div className={style.sectionBeta}>
+        <Section className={style.sectionBeta}>
           <div className={style.sectionContent}>
             <div className={style.image}>
               <img src={require('assets/img/presentation-b.png')} alt="" />
@@ -78,7 +79,7 @@ export default class HomePresentation extends Component {
               </Paragraph>
             </div>
           </div>
-        </div>
+        </Section>
       </div>
     )
   }

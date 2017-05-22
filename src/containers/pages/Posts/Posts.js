@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Feed } from 'containers/common'
+import { Feed } from 'containers/misc'
 import { PostFeedItem } from 'components/sections/posts'
 
 import { apiPosts } from 'decorators/api'
