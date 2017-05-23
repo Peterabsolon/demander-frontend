@@ -46,11 +46,11 @@ export default class Select extends Component {
     hasFormGroup: true,
     ignoreAccents: true,
     labelless: false,
-    loadingPlaceholder: 'Vyhľadáva sa...',
-    noResultsText: 'Nenašli sa žiadne výsledky.',
-    placeholder: 'Vyhľadať...',
+    loadingPlaceholder: 'Vyhledáva se...',
+    noResultsText: 'Nebyly nalezeny žádné výsledky.',
+    placeholder: 'Vyhledat...',
     searchable: false,
-    searchPromptText: 'Zadaj hľadaný výraz',
+    searchPromptText: 'Zadejte hledaný výraz',
     small: false
   };
 

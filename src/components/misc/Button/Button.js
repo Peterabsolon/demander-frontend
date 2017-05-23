@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import cx from 'classnames'
 import Ink from 'react-ink'
+import { Link } from 'react-router'
 
 import { Spinner } from 'components/misc'
 
@@ -10,7 +11,10 @@ export default class Button extends Component {
   static propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
+    icon: PropTypes.string,
+    to: PropTypes.string,
     center: PropTypes.bool,
+    alignRight: PropTypes.bool,
     wide: PropTypes.bool,
     secondary: PropTypes.bool,
     terniary: PropTypes.bool,
@@ -29,53 +33,76 @@ export default class Button extends Component {
     type: 'button'
   };
 
+  renderContent = () => {
+    const {
+      children,
+      danger,
+      success,
+      isLoading,
+      label,
+      icon
+    } = this.props
+
+    return (
+      <div className={style.content}>
+        {isLoading &&
+          <div className={style.spinner}>
+            <Spinner white />
+          </div>}
+
+        <Ink background opacity={success || danger ? 0.75 : 0.15} />
+
+        <div className={style.labelContent}>
+          {icon && <i className="material-icons">{icon}</i>}
+          {children || label}
+        </div>
+
+      </div>
+    )
+  };
+
   render() {
     const {
       block,
-      children,
       className,
       noBackground,
       center,
       secondary,
       terniary,
+      alignRight,
       wide,
+      to,
       type,
       danger,
       success,
-      isLoading,
-      offsetLeft,
-      label
+      offsetLeft
     } = this.props
 
-    return (
-      <button
-        type={type}
-        onClick={this.props.onClick}
-        className={cx(style.button, 'base-margin-small--bottom', {
-          [className]: className,
-          [style.block]: block,
-          [style.noBackground]: noBackground,
-          [style.wide]: wide,
-          [style.secondary]: secondary,
-          [style.terniary]: terniary,
-          [style.danger]: danger,
-          [style.success]: success,
-          [style.center]: center,
-          [style.hasOffset]: offsetLeft
-        })}
-        style={{ marginLeft: offsetLeft, width: `calc(100% - ${offsetLeft})` }}
-      >
-        <div className={style.content}>
-          {isLoading &&
-            <div className={style.spinner}>
-              <Spinner white />
-            </div>}
+    const commonProps = {
+      className: cx(style.button, 'base-margin-small--bottom', {
+        [className]: className,
+        [style.block]: block,
+        [style.noBackground]: noBackground,
+        [style.wide]: wide,
+        [style.secondary]: secondary,
+        [style.terniary]: terniary,
+        [style.danger]: danger,
+        [style.alignRight]: alignRight,
+        [style.success]: success,
+        [style.center]: center,
+        [style.hasOffset]: offsetLeft
+      }),
+      style: { marginLeft: offsetLeft, width: `calc(100% - ${offsetLeft})` }
+    }
 
-          <Ink background opacity={success || danger ? 0.75 : 0.15} />
-
-          {children || label}
-        </div>
+    return to
+      ? <div {...commonProps}>
+        <Link to={to}>
+          {this.renderContent()}
+        </Link>
+      </div>
+      : <button type={type} onClick={this.props.onClick} {...commonProps}>
+        {this.renderContent()}
       </button>
-    )
   }
 }

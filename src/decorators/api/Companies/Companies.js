@@ -32,8 +32,8 @@ const decorator = (config = {}) =>
       ...config,
       schema,
       events: {
-        onCreate: id => browserHistory.push(`/dodavatele/${id}`),
-        onEdit: () => {},
+        onCreate: () => browserHistory.push('/dodavatele'),
+        onEdit: () => browserHistory.push('/dodavatele'),
         onDelete: () => browserHistory.push('/dodavatele')
       }
     })

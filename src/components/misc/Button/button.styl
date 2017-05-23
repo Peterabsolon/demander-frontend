@@ -3,6 +3,8 @@
 .button
   padding 12px 32px
   border-radius $border-radius
+  text-decoration none
+  display inline-block
   border 0
   outline none
   position relative
@@ -15,6 +17,9 @@
   letter-spacing .6px
   white-space nowrap
   box-shadow 1px 2px 3px rgba(0,0,0,0.2)
+  a
+    color #fff
+    text-decoration none
   .spinner
     background $brand-primary
 
@@ -74,3 +79,17 @@
   outline none
   font-size 14px
   margin-bottom 0
+
+.labelContent
+  display flex
+  align-items center
+  justify-content center
+  i
+    display block
+    margin-right 10px
+    font-size 22px
+    margin -2px 10px -2px 0
+
+.alignRight
+  margin-left auto
+  display block

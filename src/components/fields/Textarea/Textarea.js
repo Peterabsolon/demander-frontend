@@ -85,6 +85,7 @@ export default class Textarea extends Component {
       disabled,
       clearable,
       step,
+      label,
       min,
       max,
       inlineLabelWidth,
@@ -125,7 +126,7 @@ export default class Textarea extends Component {
             onBlur={e => this.handleOnBlur(e, field)}
             onFocus={e => this.handleOnFocus(e, field)}
             disabled={disabled}
-            placeholder={placeholder}
+            placeholder={placeholder || label}
           />
           {clearable &&
             input.value &&

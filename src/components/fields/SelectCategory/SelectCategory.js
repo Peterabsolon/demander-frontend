@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import { Select } from 'components/fields'
 
-import { apiCommon } from 'decorators/api'
+import { apiCategories } from 'decorators/api'
 
-@apiCommon({ tags: true })
-export default class SelectCity extends Component {
+@apiCategories({ list: true })
+export default class SelectCategory extends Component {
   static propTypes = {
     onlyCreatable: PropTypes.bool,
-    common: PropTypes.object.isRequired
+    categories: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -17,7 +17,7 @@ export default class SelectCity extends Component {
   };
 
   render = () => {
-    const { onlyCreatable, common: { tags } } = this.props
+    const { onlyCreatable, categories } = this.props
 
     let specificProps = {}
 
@@ -29,7 +29,7 @@ export default class SelectCity extends Component {
       }
     } else {
       specificProps = {
-        options: tags.list
+        options: categories.state.list
       }
     }
 
@@ -38,7 +38,7 @@ export default class SelectCity extends Component {
         searchable
         clearable
         // multi
-        labelKey="name"
+        labelKey="title"
         valueKey="id"
         promptTextCreator={label => `Vytvoriť tag "${label}"`}
         {...this.props}

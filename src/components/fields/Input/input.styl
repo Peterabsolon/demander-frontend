@@ -1,4 +1,5 @@
 @import '~assets/css/variables'
+@import '~assets/css/base/mixins/placeholder'
 
 :global
   .form-group
@@ -8,7 +9,7 @@
     font-size 14px
     display inline-block
     padding-bottom 4px
-    color $form-input-label-color
+    // color $form-input-label-color
     transition $transition-color
     font-weight 400
 
@@ -22,6 +23,7 @@
     background-color $form-input-background-color
     max-height 49px
     line-height 49px
+    font-size 14px
     -webkit-appearance none
     outline none
     color #000
@@ -29,6 +31,8 @@
       border-color $brand-primary
       box-shadow inset 0px 0px 0px 1px $brand-primary
       background none
+    +placeholder()
+      color $color-gray-alpha
 
   .form-control-error
     display inline-block

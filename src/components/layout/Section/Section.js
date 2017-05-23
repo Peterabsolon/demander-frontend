@@ -12,6 +12,7 @@ export default class Section extends Component {
     maxWidth: PropTypes.number,
     gutters: PropTypes.bool,
     guttersHalf: PropTypes.bool,
+    borderTop: PropTypes.bool,
     textCenter: PropTypes.bool,
     noBorder: PropTypes.bool
   };
@@ -28,6 +29,7 @@ export default class Section extends Component {
       noBorder,
       gutters,
       guttersHalf,
+      borderTop,
       maxWidth
     } = this.props
 
@@ -36,6 +38,7 @@ export default class Section extends Component {
         className={cx(style.wrapper, {
           [className]: className,
           [style.noBorder]: noBorder,
+          [style.borderTop]: borderTop,
           [style.textCenter]: textCenter,
           [style.gutters]: gutters,
           [style.guttersHalf]: guttersHalf

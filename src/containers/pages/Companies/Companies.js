@@ -26,7 +26,11 @@ export default class Companies extends Component {
           title="Seznam dodavatelů"
           subtitle="Společnosti registrované v systému Demander"
         >
-          <Button label="Registrovat společnost" />
+          <Button
+            to="/dodavatele/vytvorit"
+            label="Registrovat společnost"
+            icon="add"
+          />
         </PageHeader>
         <Feed
           instance="companies"

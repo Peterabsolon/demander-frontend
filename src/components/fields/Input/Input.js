@@ -77,6 +77,7 @@ export default class Input extends Component {
       step,
       min,
       max,
+      label,
       inlineLabelWidth,
       placeholder,
       inline
@@ -115,7 +116,7 @@ export default class Input extends Component {
             onBlur={e => this.handleOnBlur(e, field)}
             onFocus={e => this.handleOnFocus(e, field)}
             disabled={disabled}
-            placeholder={placeholder}
+            placeholder={placeholder || label}
           />
           {clearable &&
             input.value &&
@@ -152,7 +153,7 @@ export default class Input extends Component {
           [className]: className
         })}
       >
-        {!inline && <FieldLabel {...this.props} />}
+        {!inline && <FieldLabel {...this.props} {...this.state} />}
 
         <Field
           id={name}

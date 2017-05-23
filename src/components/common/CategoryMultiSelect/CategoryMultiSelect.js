@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import cx from 'classnames'
 import { get } from 'lodash'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
+import { sortAlphabetically } from 'utils/misc'
 
 import { apiCategories } from 'decorators/api'
 import { Section } from 'components/layout'
@@ -25,7 +27,9 @@ export default class CategoryMultiSelect extends Component {
     return (
       <div
         onClick={() => field.input.onChange(category.id)}
-        className={style.category}
+        className={cx(style.category, {
+          [style.categoryActive]: category.id === field.input.value
+        })}
         key={category.title}
       >
         <div className={style.icon}>
@@ -40,10 +44,20 @@ export default class CategoryMultiSelect extends Component {
 
   render() {
     const { name } = this.props
-    const categories = get(this.props, 'categories.state.list')
+    const categoriesData = get(this.props, 'categories.state.list')
+
+    const categoryAll = categoriesData.length > 0 &&
+      categoriesData.filter(x => x.id === 1)[0]
+
+    const categories = [
+      categoryAll,
+      ...categoriesData
+        .sort(sortAlphabetically('title'))
+        .filter(x => x.id !== 1)
+    ]
 
     return (
-      <Section gutters maxWidth={800} contentClassName={style.wrapper}>
+      <Section guttersHalf maxWidth={800} contentClassName={style.wrapper}>
         {categories.length > 0 &&
           categories.map(category => (
             <Field

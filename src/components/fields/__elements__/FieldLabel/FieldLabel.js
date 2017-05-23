@@ -31,6 +31,8 @@ export default class FieldLabel extends Component {
       isFocused
     } = this.props
 
+    console.log('isFocused', isFocused)
+
     const srOnlyClass = labelless ? 'sr-only' : ''
 
     return (

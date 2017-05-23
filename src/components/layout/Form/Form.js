@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 
+import { Section } from 'components/layout'
 import style from './form.styl'
 
 export default class Form extends Component {
@@ -25,7 +26,9 @@ export default class Form extends Component {
         })}
         onSubmit={this.props.onSubmit}
       >
-        {this.props.children}
+        <Section {...this.props}>
+          {this.props.children}
+        </Section>
       </form>
     )
   }
