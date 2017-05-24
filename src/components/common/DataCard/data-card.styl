@@ -7,17 +7,18 @@
   box-shadow 1px 1px 5px rgba(0,0,0,0.15)
   min-height 335px
   margin-bottom 30px
+  text-align center
 
 .header
   background $brand-primary
   color #fff
-  text-align center
   margin-top -40px
   margin-bottom $vertical-rhytm-base
   border-radius $border-radius
-  box-shadow 1px 1px 5px rgba(0,0,0,0.15)
-  padding 20px 0
+  box-shadow 1px 2px 5px rgba(0,0,0,0.25)
+  padding $vertical-rhytm-base 0
   font-size 16px
+  line-height 1
 
 .company
   margin-top 20px
@@ -33,11 +34,6 @@
     display block
     margin 0 auto
 
-.description
-  font-size 14px
-  text-align center
-  min-height 63px
-
 .buttons
   display flex
   justify-content center
@@ -50,3 +46,87 @@
 
 .btnPrimary
   min-width 200px
+
+.links
+  display flex
+  align-items center
+  justify-content center
+  height 20px
+  margin-top $vertical-rhytm-base
+  .icon
+    text-decoration none
+    color #fff
+    transition .2s ease transform
+    &:hover
+      transform translateY(-1px)
+  i
+    display block
+    line-height 20px
+    font-size 20px
+    height 24px
+    margin 0 10px
+
+.category
+  display flex
+  align-items center
+  justify-content center
+  i
+    margin-right 10px
+
+.descriptionWrapper
+  position relative
+  margin-bottom $vertical-rhytm-base
+  &.hasOverflow
+    &:after
+      content ''
+      background linear-gradient(rgba(255, 255, 255, 0) 20%, #fff)
+      opacity 1
+      transition .4s ease
+      position absolute
+      bottom 0
+      width 100%
+      left 0
+      top 0
+  &.isOpen
+    &:after
+      opacity 0
+    .description
+      max-height 300px
+
+  .description
+    min-height 70px
+    max-height 70px
+    margin 0 auto
+    transition .4s ease
+    overflow hidden
+    @media $sm-up
+      max-width 400px
+
+.btnCollapse
+  position absolute
+  bottom -11px
+  left 50%
+  transform translateX(-50%)
+  background #fff
+  border 1px solid $color-gray-alpha
+  padding 0
+  margin 0
+  height 27px
+  border-radius 50%
+  width 27px
+  display flex
+  z-index 100
+  align-items center
+  justify-content center
+  color $color-gray-alpha
+  transition .15s ease
+  outline none
+  &:hover
+    cursor pointer
+    color $brand-primary
+    border-color $brand-primary
+
+.btnIsOpen
+  i
+    transform rotate(180deg)
+    margin -1px 0 0 -2px

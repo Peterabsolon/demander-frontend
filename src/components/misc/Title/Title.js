@@ -11,12 +11,14 @@ export default class Title extends Component {
     className: PropTypes.string,
     style: PropTypes.object,
     white: PropTypes.bool,
+    gray: PropTypes.bool,
     h1: PropTypes.bool,
     h2: PropTypes.bool,
     h3: PropTypes.bool,
     h4: PropTypes.bool,
     h5: PropTypes.bool,
     h6: PropTypes.bool,
+    noUppercase: PropTypes.bool,
     intlKey: PropTypes.string
   };
 
@@ -35,11 +37,27 @@ export default class Title extends Component {
   };
 
   render() {
-    const { h1, h2, h3, h4, h5, h6, className, style, white } = this.props
+    const {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      className,
+      style,
+      white,
+      gray,
+      noUppercase
+    } = this.props
+
+    console.log('className', className)
 
     const classList = cx({
       [className]: className,
-      [styles.white]: white
+      [styles.white]: white,
+      [styles.gray]: gray,
+      [styles.noUppercase]: noUppercase
     })
 
     if (h1) {

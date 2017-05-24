@@ -1,5 +1,5 @@
 import routeParams from 'helpers/routeParams'
-import { PAGE_SIZE } from 'constants/misc'
+// import { PAGE_SIZE } from 'constants/misc'
 
 const GET_LIST = 'api/categories/GET_LIST'
 const GET_LIST_SUCCESS = 'api/categories/GET_LIST_SUCCESS'
@@ -25,7 +25,7 @@ const initialState = {
   detail: {},
   filter: '',
   offset: 0,
-  limit: PAGE_SIZE,
+  limit: 40,
   count: 0,
   sort: '',
   detailLoading: false,

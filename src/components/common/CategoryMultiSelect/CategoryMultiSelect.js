@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
@@ -44,18 +45,22 @@ export default class CategoryMultiSelect extends Component {
     const categoryAll = categoriesData.length > 0 &&
       categoriesData.filter(x => x.id === 1)[0]
 
-    const categories = [
-      categoryAll,
-      ...categoriesData
-        .sort(sortAlphabetically('title'))
-        .filter(x => x.id !== 1)
-    ]
+    let categories = categoriesData
+      .sort(sortAlphabetically('title'))
+      .filter(x => x.id !== 1)
+
+    if (categoryAll) {
+      categories = [categoryAll, ...categories]
+    }
+
+    console.log('categories', categories)
 
     return (
       <Section guttersHalf maxWidth={800} contentClassName={style.wrapper}>
         {categories.length > 0 &&
           categories.map(category => (
             <Field
+              key={uuid.v1()}
               name={name}
               component={field => this.renderField(field, category)}
             />

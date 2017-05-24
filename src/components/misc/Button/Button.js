@@ -12,6 +12,9 @@ export default class Button extends Component {
     children: PropTypes.any,
     className: PropTypes.string,
     icon: PropTypes.string,
+    iconClass: PropTypes.string,
+    iconRight: PropTypes.string,
+    iconRightClass: PropTypes.string,
     to: PropTypes.string,
     center: PropTypes.bool,
     alignRight: PropTypes.bool,
@@ -38,10 +41,14 @@ export default class Button extends Component {
     const {
       children,
       danger,
+      noBackground,
       success,
       isLoading,
       label,
-      icon
+      icon,
+      iconRight,
+      iconRightClass,
+      iconClass
     } = this.props
 
     return (
@@ -51,11 +58,29 @@ export default class Button extends Component {
             <Spinner white />
           </div>}
 
-        <Ink background opacity={success || danger ? 0.75 : 0.15} />
+        {!noBackground &&
+          <Ink background opacity={success || danger ? 0.75 : 0.15} />}
 
         <div className={style.labelContent}>
-          {icon && <i className="material-icons">{icon}</i>}
+          {icon &&
+            <i
+              className={cx('material-icons', style.iconLeft, {
+                [iconClass]: iconClass
+              })}
+            >
+              {icon}
+            </i>}
+
           {children || label}
+
+          {iconRight &&
+            <i
+              className={cx('material-icons', style.iconRight, {
+                [iconRightClass]: iconRightClass
+              })}
+            >
+              {iconRight}
+            </i>}
         </div>
 
       </div>
