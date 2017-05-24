@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Feed } from 'containers/misc'
-import { Button, DataCard } from 'components/misc'
+import { Feed, DataCard } from 'components/common'
+import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
 import { apiDemands, apiCategories } from 'decorators/api'

@@ -2,7 +2,7 @@ export default function(model) {
   const data = {}
 
   data.company_name = model.company_name
-  data.category_id = model.category_id
+  data.category_id = model.category_id.id
   data.web_url = model.web_url
   data.logo_url = model.logo_url
   data.slogan = model.slogan

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Feed } from 'containers/misc'
-import { DataCard, Button } from 'components/misc'
+import { Feed, DataCard } from 'components/common'
+import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
 import { apiCompanies } from 'decorators/api'
@@ -18,8 +18,6 @@ export default class Companies extends Component {
   render() {
     const { companies } = this.props
 
-    console.log('companies', companies)
-
     return (
       <div>
         <PageHeader
@@ -34,6 +32,7 @@ export default class Companies extends Component {
         </PageHeader>
         <Feed
           instance="companies"
+          type="company"
           items={companies.state.list}
           Item={DataCard}
           handleFetchMore={companies.api.handleFetchMore}

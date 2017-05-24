@@ -47,8 +47,8 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         listLoading: false,
         loaded: true,
-        list: action.result,
-        count: action.result.length
+        list: action.result.items,
+        count: action.result.count
       }
     }
     case GET_LIST_FAIL:

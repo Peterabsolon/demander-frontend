@@ -42,7 +42,10 @@ const decorator = (config = {}) =>
         // Validate abstract decorator payload
         payload: PropTypes.shape({
           // Reducer state for this decorator/model
-          state: PropTypes.object.isRequired,
+          state: PropTypes.shape({
+            detail: PropTypes.object.isRequired,
+            list: PropTypes.array.isRequired
+          }).isRequired,
           // Raw api actions + api handlers
           api: PropTypes.shape({
             getList: PropTypes.func.isRequired,
@@ -56,7 +59,7 @@ const decorator = (config = {}) =>
             handleEditEntity: PropTypes.func.isRequired,
             handleDeleteEntity: PropTypes.func.isRequired,
             handleFetchMore: PropTypes.func.isRequired
-          })
+          }).isRequired
         }).isRequired
       };
 

@@ -30,8 +30,6 @@ export default store => {
     }
   }
 
-  console.log('requireLogin', requireLogin)
-
   const preload = (nextState, replaceState, cb) => {
     if (!isConfigLoaded()) {
       store
@@ -83,21 +81,8 @@ export default store => {
         </Route>
       </Route>
 
-      <Route
-        // onEnter={requireLogin}
-        component={Layout.Authorized}
-      >
-        <Route path="vytvorit-otazku" component={Page.QuestionNew} />
-        <Route path="otazky" component={Page.Questions}>
-          <Route path=":id" component={Page.QuestionDetail} />
-        </Route>
-
-        <Route path="vytvorit-clanok" component={Page.PostNew} />
-        <Route path="clanky" component={Page.Posts}>
-          <Route path=":id" component={Page.PostDetail} />
-        </Route>
-
-        <Route path="nastavenia" component={Page.Settings} />
+      <Route onEnter={requireLogin} component={Layout.Authorized}>
+        <Route path="loggedIn" />
       </Route>
 
       <Route path="*" component={Page.NotFound} />

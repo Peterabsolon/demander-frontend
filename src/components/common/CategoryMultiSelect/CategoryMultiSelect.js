@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
-import { get } from 'lodash'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import { sortAlphabetically } from 'utils/misc'
@@ -17,10 +16,6 @@ export default class CategoryMultiSelect extends Component {
   static propTypes = {
     categories: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired
-  };
-
-  handleToggleCategory = (field, category) => {
-    field.input.onChange(category)
   };
 
   renderField = (field, category) => {
@@ -44,7 +39,7 @@ export default class CategoryMultiSelect extends Component {
 
   render() {
     const { name } = this.props
-    const categoriesData = get(this.props, 'categories.state.list')
+    const categoriesData = this.props.categories.state.list
 
     const categoryAll = categoriesData.length > 0 &&
       categoriesData.filter(x => x.id === 1)[0]

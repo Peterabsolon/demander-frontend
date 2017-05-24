@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
+import { get } from 'lodash'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { reduxForm } from 'redux-form'
 
 function decorator(config) {
   return ComposedComponent => {
-    @connect((state, props) => ({
-      form: `${config.form}.${props.instance || ''}`
-    }))
+    @connect(({ form }, props) => {
+      const formName = `${config.form}.${props.instance || ''}`
+
+      return {
+        form: formName,
+        formValues: get(form, `${formName}.values`)
+      }
+    })
     @reduxForm({
       destroyOnUnmount: !config.persist
     })
@@ -17,6 +23,12 @@ function decorator(config) {
         query: PropTypes.string,
         handleSubmit: PropTypes.func
       };
+
+      componentDidUpdate(prevProps) {
+        if (prevProps.formValues !== this.props.formValues) {
+          this.handleFilterCreate(this.props.formValues || {})
+        }
+      }
 
       componentWillUnmount() {
         !config.persist && this.props.setFilter('')
@@ -32,7 +44,7 @@ function decorator(config) {
             if (field.length > 0) {
               fields[key] = field
             }
-          } else if (field && typeof field === 'object') {
+          } else if (field) {
             fields[key] = field
           }
         })
@@ -52,8 +64,8 @@ function decorator(config) {
               value.map(item => {
                 filter += `&include[${key}][where][id]=${item.id}`
               })
-          } else if (value && typeof value === 'object') {
-            filter += `&include[${key}][where][id]=${value.id}`
+          } else if (value) {
+            filter += `&include[${key}][where][id]=${value.id || value}`
           }
         })
 

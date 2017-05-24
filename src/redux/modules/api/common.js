@@ -45,7 +45,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         cities: {
-          list: action.result,
+          list: action.result.items,
           loading: false,
           loaded: true
         }
@@ -73,7 +73,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         tags: {
-          list: action.result,
+          list: action.result.items,
           loading: false,
           loaded: true
         }
