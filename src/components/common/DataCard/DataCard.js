@@ -8,7 +8,10 @@ import style from './data-card.styl'
 
 export default class DataCard extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     type: PropTypes.string,
+    handleUpdateItem: PropTypes.func,
+    handleDeleteItem: PropTypes.func,
     company_name: PropTypes.string,
     company_description: PropTypes.string,
     category: PropTypes.string,
@@ -18,6 +21,7 @@ export default class DataCard extends Component {
   render() {
     console.log(this.props)
     const {
+      id,
       type,
       company_description,
       category,
@@ -53,7 +57,22 @@ export default class DataCard extends Component {
             <Paragraph>{company_description}</Paragraph>
           </div>}
 
-        <Button label="Více info" terniary center />
+        <Button label="Více info" center className={style.btnPrimary} />
+
+        <div className={style.buttons}>
+          <Button
+            label="Upravit"
+            onClick={() => this.props.handleUpdateItem(id)}
+            small
+            terniary
+          />
+          <Button
+            label="Smazat"
+            small
+            terniary
+            onClick={() => this.props.handleDeleteItem(id)}
+          />
+        </div>
       </div>
     )
   }

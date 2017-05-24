@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { Feed, DataCard } from 'components/common'
@@ -14,6 +15,8 @@ export default class Companies extends Component {
   static propTypes = {
     companies: PropTypes.any.isRequired
   };
+
+  handleUpdateItem = id => browserHistory.push(`/dodavatele/${id}/upravit`);
 
   render() {
     const { companies } = this.props
@@ -39,6 +42,8 @@ export default class Companies extends Component {
           loaded={companies.state.loaded}
           loading={companies.state.listLoading}
           setFilter={companies.api.setFilter}
+          handleUpdateItem={this.handleUpdateItem}
+          handleDeleteItem={companies.api.handleDeleteEntity}
         />
       </div>
     )

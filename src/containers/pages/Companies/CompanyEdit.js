@@ -1,12 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class CompanyEdit extends Component {
+import { Button } from 'components/misc'
+import { PageHeader } from 'components/layout'
+import { CompanyDetailForm } from 'containers/forms/companies'
+
+export default class CompanyNew extends Component {
   static propTypes = {
-    something: PropTypes.any
+    props: PropTypes.object
   };
 
   render() {
-    return <div>CompanyEdit</div>
+    const { params } = this.props
+
+    return (
+      <div>
+        <PageHeader
+          title="Upravit společnost"
+          // subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        >
+          <Button
+            to="/dodavatele"
+            label="Seznam dodavatelů"
+            icon="keyboard_backspace"
+          />
+        </PageHeader>
+        <CompanyDetailForm params={params} />
+      </div>
+    )
   }
 }

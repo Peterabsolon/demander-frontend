@@ -15,6 +15,8 @@ import style from './feed.styl'
 export default class Feed extends Component {
   static propTypes = {
     handleFetchMore: PropTypes.func,
+    handleUpdateItem: PropTypes.func,
+    handleDeleteItem: PropTypes.func,
     instance: PropTypes.string.isRequired,
     Item: PropTypes.func.isRequired, // Component
     items: PropTypes.array.isRequired,
@@ -30,7 +32,17 @@ export default class Feed extends Component {
   };
 
   render() {
-    const { items, Item, router, instance, loaded, loading, type } = this.props
+    const {
+      items,
+      Item,
+      router,
+      instance,
+      loaded,
+      loading,
+      type,
+      handleUpdateItem,
+      handleDeleteItem
+    } = this.props
 
     const currentId = get(router, 'params.id')
 
@@ -64,6 +76,8 @@ export default class Feed extends Component {
                             isActive={parseInt(currentId) === item.id}
                             key={item.id}
                             type={type}
+                            handleUpdateItem={handleUpdateItem}
+                            handleDeleteItem={handleDeleteItem}
                             {...item}
                           />
                         </div>

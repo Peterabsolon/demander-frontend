@@ -25,6 +25,7 @@ export default class Button extends Component {
     label: PropTypes.string,
     isLoading: PropTypes.bool,
     danger: PropTypes.bool,
+    small: PropTypes.bool,
     success: PropTypes.bool,
     onClick: PropTypes.func
   };
@@ -74,6 +75,7 @@ export default class Button extends Component {
       to,
       type,
       danger,
+      small,
       success,
       offsetLeft
     } = this.props
@@ -87,6 +89,7 @@ export default class Button extends Component {
         [style.secondary]: secondary,
         [style.terniary]: terniary,
         [style.danger]: danger,
+        [style.small]: small,
         [style.alignRight]: alignRight,
         [style.success]: success,
         [style.center]: center,
