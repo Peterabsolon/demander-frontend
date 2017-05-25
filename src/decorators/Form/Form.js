@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { get } from 'lodash'
+// import { get } from 'lodash'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
@@ -16,6 +16,7 @@ function decorator(config = {}) {
     @reduxForm({
       form: config.form,
       validate: config.validate,
+      enableReinitialize: config.enableReinitialize || true,
       destroyOnUnmount: config.destroyOnUnmount === undefined || true
     })
     @connect(
@@ -42,20 +43,20 @@ function decorator(config = {}) {
 
       componentDidMount() {
         !config.disableHook && this.handleLeaveHook()
-        this.handleFormInitialize(get(this.props, config.initialProps))
+        // this.handleFormInitialize(get(this.props, config.initialProps))
       }
 
-      componentWillReceiveProps = nextProps => {
-        if (
-          get(this.props, config.initialProps) !==
-          get(nextProps, config.initialProps)
-        ) {
-          this.handleFormInitialize(get(nextProps, config.initialProps))
-        }
-      };
+      // componentWillReceiveProps = nextProps => {
+      //   if (
+      //     get(this.props, config.initialProps) !==
+      //     get(nextProps, config.initialProps)
+      //   ) {
+      //     this.handleFormInitialize(get(nextProps, config.initialProps))
+      //   }
+      // };
 
-      handleFormInitialize = data =>
-        config.initialProps && this.props.initialize(data);
+      // handleFormInitialize = data =>
+      //   config.initialProps && this.props.initialize(data);
 
       handleLeaveHook = () => {
         const { router, route } = this.props

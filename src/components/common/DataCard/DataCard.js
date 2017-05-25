@@ -193,12 +193,6 @@ export default class DataCard extends Component {
           />
         </div>
 
-        {created_at &&
-          isService &&
-          <div className={cx(style.metaItem, style.metaFromNow)}>
-            {moment(created_at).fromNow()}
-          </div>}
-
         {isService &&
           <div className={style.metaInfo}>
             <div className={cx(style.metaItem, style.metaCompany)}>
@@ -207,10 +201,16 @@ export default class DataCard extends Component {
                   <img src={company_logo_url} alt={company_name} />
                 </div>}
 
-              {company_name &&
+              {created_at &&
+                isService &&
+                <div className={cx(style.metaItem, style.metaFromNow)}>
+                  {moment(created_at).fromNow()}
+                </div>}
+
+              {/* {company_name &&
                 <div className={style.metaCompanyName}>
                   {company_name}
-                </div>}
+                </div>} */}
             </div>
           </div>}
       </div>
