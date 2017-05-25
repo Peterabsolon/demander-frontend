@@ -44,7 +44,11 @@ export default class DemandNewForm extends Component {
     const { handleSubmit, demands } = this.props
 
     return (
-      <Form onSubmit={handleSubmit(demands.api.handleEditEntity)} gutters>
+      <Form
+        noBorder
+        onSubmit={handleSubmit(demands.api.handleEditEntity)}
+        gutters
+      >
         <FormHeader number={1} label="Základní údaje" />
         <Input label="Název" name="title" />
         <Textarea label="Cíl" name="goal" />

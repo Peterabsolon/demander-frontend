@@ -38,7 +38,7 @@ import validate from './company-detail-form.validation'
   detail: true
 })
 @connect((state, props) => ({
-  initialValues: props.companies.state.detail
+  initialValues: props.companies.state.detail.company
 }))
 @form({
   form: 'companies.new',
@@ -55,6 +55,7 @@ export default class CompanyDetailForm extends Component {
 
     return (
       <Form
+        noBorder
         onSubmit={handleSubmit(companies.api.handleEditEntity)}
         loading={companies.state.detailLoading}
         wide
