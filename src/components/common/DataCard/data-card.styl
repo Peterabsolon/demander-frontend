@@ -108,12 +108,8 @@
   left 50%
   transform translateX(-50%)
   background #fff
-  border 1px solid $color-gray-alpha
   padding 0
   margin 0
-  height 27px
-  border-radius 50%
-  width 27px
   display flex
   z-index 100
   align-items center
@@ -125,8 +121,12 @@
     cursor pointer
     color $brand-primary
     border-color $brand-primary
+  i
+    font-size 25px
+    line-height 20px
+    height 20px
+    transition .3s ease
 
 .btnIsOpen
   i
-    transform rotate(180deg)
-    margin -1px 0 0 -2px
+    transform rotate3d(1, 0, 0, 180deg)

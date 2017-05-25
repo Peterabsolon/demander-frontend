@@ -142,15 +142,14 @@ export default class DataCard extends Component {
             </div>
 
             {hasOverflowingText &&
-              <button
+              <a
                 onClick={this.handleToggleIsCollapsed}
-                className={cx(style.btnCollapse, {
+                className={cx(style.btnCollapse, 'link', {
                   [style.btnIsOpen]: !isCollapsed
                 })}
-                type="button"
               >
-                <i className="material-icons">keyboard_arrow_down</i>
-              </button>}
+                <i className="ico ico--angle-down" />
+              </a>}
           </div>}
 
         <Button

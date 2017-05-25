@@ -53,6 +53,7 @@ export default class CompanyDetailForm extends Component {
     return (
       <Form
         onSubmit={handleSubmit(companies.api.handleEditEntity)}
+        loading={companies.state.detailLoading}
         wide
         gutters
       >

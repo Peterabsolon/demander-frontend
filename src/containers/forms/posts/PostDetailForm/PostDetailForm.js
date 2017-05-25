@@ -27,7 +27,7 @@ export default class PostDetailForm extends Component {
   };
 
   render() {
-    const loading = get(this.props.posts, 'detailLoading')
+    const loading = get(this.props.posts, 'state.detailLoading')
 
     return (
       <Form
