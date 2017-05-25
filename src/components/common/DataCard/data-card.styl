@@ -1,5 +1,12 @@
 @import '~assets/css/variables'
 
+logo()
+  max-width 120px
+  max-height 45px
+  height auto
+  display block
+  margin 0 auto
+
 .wrapper
   border-radius $border-radius
   padding 20px
@@ -29,10 +36,7 @@
   align-items center
   margin $vertical-rhytm-base 0
   img
-    max-width 70px
-    height auto
-    display block
-    margin 0 auto
+    logo()
 
 .buttons
   display flex
@@ -130,3 +134,29 @@
 .btnIsOpen
   i
     transform rotate3d(1, 0, 0, 180deg)
+
+.metaInfo
+  text-align left
+
+.metaCompany
+  border-top 1px solid $color-gray-gamma
+  padding 5px 0 0
+  margin-bottom -13px
+  display flex
+  justify-content center
+  align-items center
+
+.metaCompanyName
+  font-size 14px
+
+.metaCompanyLogo
+  margin-right 10px
+  img
+    logo()
+    max-width 80px
+    max-height 30px
+
+.metaFromNow
+  color $color-gray-alpha
+  border 0
+  margin-bottom 11px

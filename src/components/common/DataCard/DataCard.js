@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -10,7 +11,7 @@ export default class DataCard extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     type: PropTypes.string,
-    handleUpdateItem: PropTypes.func,
+    handleGoToDetail: PropTypes.func,
     handleDeleteItem: PropTypes.func,
     company_name: PropTypes.string,
     company_description: PropTypes.string,
@@ -18,10 +19,14 @@ export default class DataCard extends Component {
     category_title: PropTypes.string,
     category_icon: PropTypes.string,
     logo_url: PropTypes.string,
+    company_logo_url: PropTypes.string,
+    created_at: PropTypes.string,
     web_url: PropTypes.string,
     fb_url: PropTypes.string,
     twitter_url: PropTypes.string,
-    linkedin_url: PropTypes.string
+    linkedin_url: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string
   };
 
   constructor() {
@@ -66,6 +71,7 @@ export default class DataCard extends Component {
     this.setState({ isCollapsed: !this.state.isCollapsed });
 
   render() {
+    console.log(this.props)
     const {
       id,
       type,
@@ -73,7 +79,11 @@ export default class DataCard extends Component {
       category_title,
       category_icon,
       company_name,
+      company_logo_url,
+      created_at,
       slogan,
+      title,
+      description,
       logo_url,
       web_url,
       fb_url,
@@ -82,15 +92,18 @@ export default class DataCard extends Component {
     } = this.props
     const { isCollapsed, hasOverflowingText } = this.state
 
-    const company = type === 'company'
+    const isCompany = type === 'company'
+    const isService = type === 'service'
+
+    const content = slogan || company_description || description
 
     return (
       <div
         className={cx(style.wrapper, {
-          [style.company]: company
+          [style.company]: isCompany
         })}
       >
-        {company &&
+        {isCompany &&
           <div className={style.header}>
 
             <Title h4 white noUppercase>
@@ -127,7 +140,12 @@ export default class DataCard extends Component {
             <i className="material-icons">{category_icon}</i> {category_title}
           </Title>}
 
-        {(slogan || company_description) &&
+        {title &&
+          <Title h4 className={style.title}>
+            {title}
+          </Title>}
+
+        {content &&
           <div
             className={cx(style.descriptionWrapper, {
               [style.hasOverflow]: hasOverflowingText,
@@ -138,7 +156,7 @@ export default class DataCard extends Component {
               ref={node => this.description = node}
               className={style.description}
             >
-              <Paragraph>{slogan || company_description}</Paragraph>
+              <Paragraph>{content}</Paragraph>
             </div>
 
             {hasOverflowingText &&
@@ -163,7 +181,7 @@ export default class DataCard extends Component {
         <div className={style.buttons}>
           <Button
             label="Upravit"
-            onClick={() => this.props.handleUpdateItem(id)}
+            onClick={() => this.props.handleGoToDetail(id)}
             small
             terniary
           />
@@ -174,6 +192,27 @@ export default class DataCard extends Component {
             onClick={() => this.props.handleDeleteItem(id)}
           />
         </div>
+
+        {created_at &&
+          isService &&
+          <div className={cx(style.metaItem, style.metaFromNow)}>
+            {moment(created_at).fromNow()}
+          </div>}
+
+        {isService &&
+          <div className={style.metaInfo}>
+            <div className={cx(style.metaItem, style.metaCompany)}>
+              {company_logo_url &&
+                <div className={style.metaCompanyLogo}>
+                  <img src={company_logo_url} alt={company_name} />
+                </div>}
+
+              {company_name &&
+                <div className={style.metaCompanyName}>
+                  {company_name}
+                </div>}
+            </div>
+          </div>}
       </div>
     )
   }

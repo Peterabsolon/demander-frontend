@@ -15,7 +15,7 @@ export default class CompanyNew extends Component {
       <div>
         <PageHeader
           title="Registrovat společnost"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          // subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         >
           <Button
             to="/dodavatele"

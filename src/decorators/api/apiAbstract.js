@@ -110,12 +110,12 @@ const decorator = (config = {}) =>
         }
       };
 
-      handleDeleteEntity = async () => {
+      handleDeleteEntity = async entityId => {
         const promptConfirmed = confirm(config.messages.deleteConfirm)
 
         if (promptConfirmed) {
           const { state } = this.props
-          const id = state.detail.id
+          const id = entityId || state.detail.id
 
           await this.props.deleteEntity(id)
           await this.props.getList(state)

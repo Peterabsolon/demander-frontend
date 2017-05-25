@@ -70,7 +70,7 @@ export function isEmail(value) {
 export function required(value) {
   if (isEmpty(value)) {
     return {
-      text: 'Povinné pole',
+      text: 'Povinní pole',
       intlKey: 'errors.required_field',
       values: {}
     }
@@ -91,7 +91,7 @@ export function minLength(min) {
   return value => {
     if (!isEmpty(value) && value.length < min) {
       return {
-        text: 'Min {min} znakov',
+        text: 'Minimálně {min} znaků',
         intlKey: 'errors.must_be_at_least',
         values: { min }
       }

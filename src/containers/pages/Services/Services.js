@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
 
 import { DataCard, Feed } from 'components/common'
@@ -15,6 +16,8 @@ export default class Services extends Component {
     services: PropTypes.any.isRequired
   };
 
+  handleGoToDetail = id => browserHistory.push(`/sluzby/${id}/upravit`);
+
   render() {
     const { services } = this.props
 
@@ -26,18 +29,20 @@ export default class Services extends Component {
           title="Přehled služeb"
           subtitle="Aktuální nabízené služby v systému Demander"
         >
-          <Button label="Přidat službu" />
+          <Button to="/sluzby/vytvorit" icon="add" label="Přidat službu" />
         </PageHeader>
         <Feed
           instance="services"
+          type="service"
           items={services.state.list}
           Item={DataCard}
           handleFetchMore={services.api.handleFetchMore}
           loaded={services.state.loaded}
           loading={services.state.listLoading}
           setFilter={services.api.setFilter}
+          handleGoToDetail={this.handleGoToDetail}
+          handleDeleteItem={services.api.handleDeleteEntity}
         />
-
       </div>
     )
   }

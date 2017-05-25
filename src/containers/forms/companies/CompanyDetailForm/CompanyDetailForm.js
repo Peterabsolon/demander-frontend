@@ -1,3 +1,26 @@
+/**
+ * Backend model
+ *
+ * company_about
+ * company_address
+ * company_description
+ * company_gps_location
+ * company_id
+ * company_name
+ * company_nice_name
+ * company_opening_hours
+ * company_vat_id
+ * contact_email
+ * contact_person
+ * contact_telephone
+ * fb_url
+ * linkedin_url
+ * logo_url
+ * slogan
+ * twitter_url
+ * web_url
+ */
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -11,25 +34,6 @@ import { apiCompanies } from 'decorators/api'
 
 import validate from './company-detail-form.validation'
 
-// company_name
-// company_nice_name
-// company_id
-// company_vat_id
-// company_about
-// company_description
-// company_opening_hours
-// company_gps_location
-// contact_telephone
-// contact_email
-// contact_address
-// contact_person
-// slogan
-// logo_url
-// web_url
-// fb_url
-// twitter_url
-// linkedin_url
-
 @apiCompanies({
   detail: true
 })
@@ -38,7 +42,6 @@ import validate from './company-detail-form.validation'
 }))
 @form({
   form: 'companies.new',
-  initialProps: 'companies.state.detail',
   validate
 })
 export default class CompanyDetailForm extends Component {
@@ -91,7 +94,7 @@ export default class CompanyDetailForm extends Component {
         <Section noBorder borderTop gutters>
           <Button
             type="submit"
-            label="Upravit"
+            label="Upravit společnost"
             center
             isLoading={companies.state.submitting}
           />

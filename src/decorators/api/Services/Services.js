@@ -32,9 +32,9 @@ const decorator = (config = {}) =>
       ...config,
       schema,
       events: {
-        onCreate: id => browserHistory.push(`/dodavatele/${id}`),
-        onEdit: () => {},
-        onDelete: () => browserHistory.push('/dodavatele')
+        onCreate: () => browserHistory.push('/sluzby'),
+        onEdit: () => browserHistory.push('/sluzby'),
+        onDelete: () => browserHistory.push('/sluzby')
       }
     })
     class Posts extends Component {

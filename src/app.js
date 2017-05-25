@@ -8,6 +8,8 @@ import {
 import { IntlProvider } from 'react-intl'
 import { messages, intlData } from './constants/locales'
 import { Notification } from 'components/misc'
+import moment from 'moment'
+import 'moment/locale/cs'
 
 @asyncConnect([
   {
@@ -29,10 +31,14 @@ import { Notification } from 'components/misc'
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
-  }
+  };
 
   static contextTypes = {
     store: PropTypes.object.isRequired
+  };
+
+  componentDidMount() {
+    moment.locale('cs')
   }
 
   render() {
