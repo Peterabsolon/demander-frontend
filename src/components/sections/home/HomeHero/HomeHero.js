@@ -23,11 +23,12 @@ export default class HomeHero extends Component {
           <div className={style.buttons}>
             <Button
               className="base-margin--right"
+              to="/poptavky/vytvorit"
               terniary
               icon="add"
               label="Přidat poptávku"
             />
-            <Button label="Najít službu" icon="search" />
+            <Button label="Najít službu" to="/sluzby" icon="search" />
           </div>
         </div>
       </div>

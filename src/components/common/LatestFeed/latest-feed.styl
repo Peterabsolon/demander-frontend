@@ -1,0 +1,31 @@
+@import '~assets/css/variables'
+
+.grid
+  @media $sm-up
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+
+    > div
+      width 49%
+
+  @media $md-up
+    > div
+      width 32%
+
+  &:after
+    content ""
+    width 100%
+    @media $sm-up
+      width 49%
+    @media $md-up
+      width 32%
+
+.dark
+  background radial-gradient(ellipse at center, #585858 0, #232323 100%)
+  background-size 550% 450%
+  background-position bottom right
+
+  h2
+    color #fff
+    font-weight 600

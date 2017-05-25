@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import cx from 'classnames'
+import cx from 'classnames'
 import { get } from 'lodash'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
@@ -21,6 +21,7 @@ export default class Feed extends Component {
     Item: PropTypes.func.isRequired, // Component
     items: PropTypes.array.isRequired,
     loading: PropTypes.bool,
+    dark: PropTypes.bool,
     type: PropTypes.string,
     router: PropTypes.object.isRequired,
     setFilter: PropTypes.func.isRequired
@@ -34,6 +35,7 @@ export default class Feed extends Component {
     const {
       items,
       Item,
+      dark,
       router,
       instance,
       loading,
@@ -53,7 +55,11 @@ export default class Feed extends Component {
           />
         </div>
 
-        <div className={style.list}>
+        <div
+          className={cx(style.list, {
+            [style.dark]: dark
+          })}
+        >
           <div className={style.scrollArea}>
             {/* TODO: FML */}
             {/* <div

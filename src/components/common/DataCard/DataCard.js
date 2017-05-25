@@ -144,7 +144,7 @@ export default class DataCard extends Component {
           </Title>}
 
         {title &&
-          <Title h4 className={style.title}>
+          <Title h4 noUppercase className={style.title}>
             {title}
           </Title>}
 

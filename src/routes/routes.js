@@ -63,7 +63,7 @@ export default store => {
         {/* SERVICES */}
         <Route path="sluzby">
           <IndexRoute component={Page.Services} />
-          <Route path="vytvorit" component={Page.ServiceNew} />
+          <Route path="pridat" component={Page.ServiceNew} />
           <Route path=":id">
             <IndexRoute component={Page.ServiceDetail} />
             <Route path="upravit" component={Page.ServiceEdit} />

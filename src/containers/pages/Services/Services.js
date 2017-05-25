@@ -29,9 +29,10 @@ export default class Services extends Component {
           title="Přehled služeb"
           subtitle="Aktuální nabízené služby v systému Demander"
         >
-          <Button to="/sluzby/vytvorit" icon="add" label="Přidat službu" />
+          <Button to="/sluzby/pridat" icon="add" label="Přidat službu" />
         </PageHeader>
         <Feed
+          dark
           instance="services"
           type="service"
           items={services.state.list}

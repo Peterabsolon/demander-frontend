@@ -1,12 +1,37 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
 
+import { LatestFeed, DataCard } from 'components/common'
+import { Button } from 'components/misc'
+
+import { apiServices } from 'decorators/api'
+
+@apiServices({
+  list: true
+})
 export default class LatestServices extends Component {
   static propTypes = {
-    something: PropTypes.any
+    services: PropTypes.object
   };
 
+  handleGoToDetail = id => browserHistory.push(`/sluzby/${id}/upravit`);
+
   render() {
-    return <div>LatestServices</div>
+    const { services } = this.props
+
+    return (
+      <LatestFeed
+        dark
+        type="demand"
+        handleGoToDetail={this.handleGoToDetail}
+        title="Nejnovější nabídky služeb"
+        items={services.state.list}
+        Item={DataCard}
+        button={
+          <Button to="/sluzby/pridat" label="Nabídnout službu" icon="add" />
+        }
+      />
+    )
   }
 }

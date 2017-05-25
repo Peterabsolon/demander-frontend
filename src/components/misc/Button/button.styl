@@ -19,6 +19,7 @@
   box-shadow 1px 2px 3px rgba(0,0,0,0.2)
   a
     color #fff
+    transition .15s ease border, .15s ease background, .15s ease box-shadow
     text-decoration none
   .spinner
     background $brand-primary
@@ -56,6 +57,11 @@
   font-weight bold
   &:hover
     background #fff
+
+  a
+    color $color-text
+    &:hover
+      background #fff
 
 .danger
   background none
