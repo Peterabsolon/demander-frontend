@@ -21,6 +21,7 @@ export default class DataCard extends Component {
     logo_url: PropTypes.string,
     company_logo_url: PropTypes.string,
     created_at: PropTypes.string,
+    goal: PropTypes.string,
     web_url: PropTypes.string,
     fb_url: PropTypes.string,
     twitter_url: PropTypes.string,
@@ -82,6 +83,7 @@ export default class DataCard extends Component {
       company_logo_url,
       created_at,
       slogan,
+      goal,
       title,
       description,
       logo_url,
@@ -94,8 +96,9 @@ export default class DataCard extends Component {
 
     const isCompany = type === 'company'
     const isService = type === 'service'
+    const isDemand = type === 'demand'
 
-    const content = slogan || company_description || description
+    const content = slogan || company_description || description || goal
 
     return (
       <div
@@ -193,7 +196,7 @@ export default class DataCard extends Component {
           />
         </div>
 
-        {isService &&
+        {(isService || isDemand) &&
           <div className={style.metaInfo}>
             <div className={cx(style.metaItem, style.metaCompany)}>
               {company_logo_url &&
@@ -202,7 +205,7 @@ export default class DataCard extends Component {
                 </div>}
 
               {created_at &&
-                isService &&
+                (isService || isDemand) &&
                 <div className={cx(style.metaItem, style.metaFromNow)}>
                   {moment(created_at).fromNow()}
                 </div>}

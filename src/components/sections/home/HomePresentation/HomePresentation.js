@@ -32,14 +32,14 @@ export default class HomePresentation extends Component {
             icon="description"
             title="Vložte popávku"
             content="Dalším krokem je vložení poptávky, kde definujete předmět Vaši poptávky. Přiblížit detaily můžete vložením technické dokumentace. Demander je i totiž systémem pro náročné."
-            button={<Button label="Vložit poptávku" />}
+            button={<Button to="/poptavky/vytvorit" label="Vložit poptávku" />}
           />
           <FeatureItem
             primary
             icon="touch_app"
             title="Vyberte dodavatele"
             content="V katalogu firem získáte přehled o dodavatelích, jejich zaměření, předmětu činnosti, poskytovaných službách, lokalitě a další pro vás užitečné informace."
-            button={<Button label="Seznam společností" />}
+            button={<Button to="/dodavatele" label="Seznam společností" />}
           />
         </Section>
 

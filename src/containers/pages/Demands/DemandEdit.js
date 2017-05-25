@@ -1,12 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class DemandEdit extends Component {
+import { Button } from 'components/misc'
+import { PageHeader } from 'components/layout'
+import { DemandDetailForm } from 'containers/forms/demands'
+
+export default class CompanyNew extends Component {
   static propTypes = {
-    something: PropTypes.any
+    props: PropTypes.object
   };
 
   render() {
-    return <div>DemandEdit</div>
+    const { params } = this.props
+
+    return (
+      <div>
+        <PageHeader
+          title="Upravit poptávku"
+          // subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        >
+          <Button
+            to="/poptavky"
+            label="Seznam poptávek"
+            icon="keyboard_backspace"
+          />
+        </PageHeader>
+        <DemandDetailForm params={params} />
+      </div>
+    )
   }
 }
