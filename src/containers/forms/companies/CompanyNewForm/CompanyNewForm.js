@@ -50,6 +50,7 @@ export default class CompanyNewForm extends Component {
     return (
       <Form
         onSubmit={handleSubmit(companies.api.handleCreateEntity)}
+        noBorder
         wide
         gutters
       >

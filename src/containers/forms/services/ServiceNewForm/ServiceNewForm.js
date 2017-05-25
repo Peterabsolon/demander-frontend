@@ -35,7 +35,11 @@ export default class ServiceNewForm extends Component {
     const { handleSubmit, services } = this.props
 
     return (
-      <Form onSubmit={handleSubmit(services.api.handleCreateEntity)} gutters>
+      <Form
+        noBorder
+        onSubmit={handleSubmit(services.api.handleCreateEntity)}
+        gutters
+      >
         <Input label="Název" name="title" />
         <Textarea label="Popis" name="description" />
         <Input label="Lokace" name="location" />

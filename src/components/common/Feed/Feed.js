@@ -79,23 +79,24 @@ export default class Feed extends Component {
               noBorder
             >
               {items.length > 0 &&
-                <div className={style.grid}>
-                  {items.map(
-                    item =>
-                      item &&
-                      <div className={style.gridItem}>
-                        <Item
-                          isActive={parseInt(currentId) === item.id}
-                          key={item.id}
-                          type={type}
-                          handleGoToEdit={handleGoToEdit}
-                          handleDeleteItem={handleDeleteItem}
-                          handleGoToDetail={handleGoToDetail}
-                          {...item}
-                        />
-                      </div>
-                  )}
-
+                <div>
+                  <div className={style.grid}>
+                    {items.map(
+                      item =>
+                        item &&
+                        <div className={style.gridItem}>
+                          <Item
+                            isActive={parseInt(currentId) === item.id}
+                            key={item.id}
+                            type={type}
+                            handleGoToEdit={handleGoToEdit}
+                            handleDeleteItem={handleDeleteItem}
+                            handleGoToDetail={handleGoToDetail}
+                            {...item}
+                          />
+                        </div>
+                    )}
+                  </div>
                   <Waypoint
                     bottomOffset="-250px"
                     onEnter={this.props.handleFetchMore}
