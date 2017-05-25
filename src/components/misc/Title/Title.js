@@ -19,6 +19,7 @@ export default class Title extends Component {
     h5: PropTypes.bool,
     h6: PropTypes.bool,
     noUppercase: PropTypes.bool,
+    noMargin: PropTypes.bool,
     intlKey: PropTypes.string
   };
 
@@ -48,6 +49,7 @@ export default class Title extends Component {
       style,
       white,
       gray,
+      noMargin,
       noUppercase
     } = this.props
 
@@ -57,7 +59,8 @@ export default class Title extends Component {
       [className]: className,
       [styles.white]: white,
       [styles.gray]: gray,
-      [styles.noUppercase]: noUppercase
+      [styles.noUppercase]: noUppercase,
+      [styles.noMargin]: noMargin
     })
 
     if (h1) {

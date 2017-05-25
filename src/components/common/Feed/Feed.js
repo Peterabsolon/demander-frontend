@@ -15,6 +15,7 @@ import style from './feed.styl'
 export default class Feed extends Component {
   static propTypes = {
     handleFetchMore: PropTypes.func,
+    handleGoToEdit: PropTypes.func,
     handleGoToDetail: PropTypes.func,
     handleDeleteItem: PropTypes.func,
     instance: PropTypes.string.isRequired,
@@ -40,6 +41,7 @@ export default class Feed extends Component {
       instance,
       loading,
       type,
+      handleGoToEdit,
       handleGoToDetail,
       handleDeleteItem
     } = this.props
@@ -86,8 +88,9 @@ export default class Feed extends Component {
                           isActive={parseInt(currentId) === item.id}
                           key={item.id}
                           type={type}
-                          handleGoToDetail={handleGoToDetail}
+                          handleGoToEdit={handleGoToEdit}
                           handleDeleteItem={handleDeleteItem}
+                          handleGoToDetail={handleGoToDetail}
                           {...item}
                         />
                       </div>

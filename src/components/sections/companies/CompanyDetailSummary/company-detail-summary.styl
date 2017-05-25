@@ -1,0 +1,81 @@
+@import '~assets/css/variables'
+
+.header
+  border-bottom 1px solid $color-gray-beta
+  padding $vertical-rhytm-double
+  display flex
+
+.badge
+  width 30%
+  &-logo
+    margin-bottom $vertical-rhytm-half
+    img
+      max-width 160px
+      max-height 50px
+      display block
+
+.badgeName
+  h2
+    margin-bottom $vertical-rhytm-half
+
+.about
+  flex-grow 1
+  margin-left $vertical-rhytm-double
+
+.info
+  display flex
+  justify-content space-between
+  // TODO: hack
+  margin-right -100px
+  > div
+    flex 1
+
+.aboutHeader
+  border-bottom 1px solid $color-gray-beta
+  margin-bottom $vertical-rhytm-base
+  display flex
+  align-items center
+  justify-content space-between
+  padding $vertical-rhytm-half 0
+
+.category
+  i
+    margin-right 10px
+  h5
+    display flex
+    align-items center
+    margin-bottom 0
+
+.infoBlockHeader
+  display flex
+  align-items center
+  h4
+    margin-bottom 0
+
+.infoBlockIcon
+  color $brand-primary
+  margin-right 10px
+  display block
+  height 28px
+  font-size 25px
+
+.infoBlockBody
+  padding-left 35px
+
+.socialLinks
+  display flex
+  align-items center
+  justify-content center
+  height 20px
+  .icon
+    text-decoration none
+    color $color-gray-alpha
+    transition .2s ease transform
+    &:hover
+      transform translateY(-1px)
+  i
+    display block
+    line-height 20px
+    font-size 20px
+    height 24px
+    margin 0 10px

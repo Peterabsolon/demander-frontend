@@ -16,7 +16,9 @@ export default class Companies extends Component {
     companies: PropTypes.any.isRequired
   };
 
-  handleGoToDetail = id => browserHistory.push(`/dodavatele/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/dodavatele/${id}/upravit`);
+
+  handleGoToDetail = id => browserHistory.push(`/dodavatele/${id}`);
 
   render() {
     const { companies } = this.props
@@ -42,6 +44,7 @@ export default class Companies extends Component {
           loaded={companies.state.loaded}
           loading={companies.state.listLoading}
           setFilter={companies.api.setFilter}
+          handleGoToEdit={this.handleGoToEdit}
           handleGoToDetail={this.handleGoToDetail}
           handleDeleteItem={companies.api.handleDeleteEntity}
         />

@@ -10,7 +10,7 @@ import style from './latest-feed.styl'
 export default class LatestFeed extends Component {
   static propTypes = {
     title: PropTypes.string,
-    handleGoToDetail: PropTypes.func,
+    handleGoToEdit: PropTypes.func,
     type: PropTypes.string,
     dark: PropTypes.bool,
     items: PropTypes.array,
@@ -30,7 +30,7 @@ export default class LatestFeed extends Component {
       items,
       Item,
       type,
-      handleGoToDetail
+      handleGoToEdit
     } = this.props
 
     return (
@@ -44,7 +44,7 @@ export default class LatestFeed extends Component {
                 <Item
                   key={item.id}
                   type={type}
-                  handleGoToDetail={handleGoToDetail}
+                  handleGoToEdit={handleGoToEdit}
                   {...item}
                 />
               </div>

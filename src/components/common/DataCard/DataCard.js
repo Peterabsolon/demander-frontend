@@ -11,6 +11,7 @@ export default class DataCard extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     type: PropTypes.string,
+    handleGoToEdit: PropTypes.func,
     handleGoToDetail: PropTypes.func,
     handleDeleteItem: PropTypes.func,
     company_name: PropTypes.string,
@@ -179,12 +180,13 @@ export default class DataCard extends Component {
           iconRightClass="flip"
           center
           className={style.btnPrimary}
+          onClick={() => this.props.handleGoToDetail(id)}
         />
 
         <div className={style.buttons}>
           <Button
             label="Upravit"
-            onClick={() => this.props.handleGoToDetail(id)}
+            onClick={() => this.props.handleGoToEdit(id)}
             small
             terniary
           />
@@ -204,16 +206,16 @@ export default class DataCard extends Component {
                   <img src={company_logo_url} alt={company_name} />
                 </div>}
 
+              {company_name &&
+                <div className={style.metaCompanyName}>
+                  {company_name}
+                </div>}
+
               {created_at &&
                 (isService || isDemand) &&
                 <div className={cx(style.metaItem, style.metaFromNow)}>
                   {moment(created_at).fromNow()}
                 </div>}
-
-              {/* {company_name &&
-                <div className={style.metaCompanyName}>
-                  {company_name}
-                </div>} */}
             </div>
           </div>}
       </div>

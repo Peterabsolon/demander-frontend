@@ -15,7 +15,7 @@ export default class LatestServices extends Component {
     services: PropTypes.object
   };
 
-  handleGoToDetail = id => browserHistory.push(`/sluzby/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/sluzby/${id}/upravit`);
 
   render() {
     const { services } = this.props
@@ -24,7 +24,7 @@ export default class LatestServices extends Component {
       <LatestFeed
         dark
         type="demand"
-        handleGoToDetail={this.handleGoToDetail}
+        handleGoToEdit={this.handleGoToEdit}
         title="Nejnovější nabídky služeb"
         items={services.state.list}
         Item={DataCard}

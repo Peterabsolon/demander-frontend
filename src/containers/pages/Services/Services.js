@@ -16,7 +16,9 @@ export default class Services extends Component {
     services: PropTypes.any.isRequired
   };
 
-  handleGoToDetail = id => browserHistory.push(`/sluzby/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/sluzby/${id}/upravit`);
+
+  handleGoToDetail = id => browserHistory.push(`/sluzby/${id}`);
 
   render() {
     const { services } = this.props
@@ -41,7 +43,8 @@ export default class Services extends Component {
           loaded={services.state.loaded}
           loading={services.state.listLoading}
           setFilter={services.api.setFilter}
-          handleGoToDetail={this.handleGoToDetail}
+          handleGoToEdit={this.handleGoToEdit}
+          // handleGoToDetail={this.handleGoToDetail}
           handleDeleteItem={services.api.handleDeleteEntity}
         />
       </div>

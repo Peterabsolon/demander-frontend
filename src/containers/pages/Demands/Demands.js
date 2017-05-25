@@ -20,7 +20,7 @@ export default class Demands extends Component {
     categories: PropTypes.object.isRequired
   };
 
-  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
 
   render() {
     const { demands, categories } = this.props
@@ -49,7 +49,7 @@ export default class Demands extends Component {
           loaded={demands.state.loaded}
           loading={demands.state.listLoading}
           setFilter={demands.api.setFilter}
-          handleGoToDetail={this.handleGoToDetail}
+          handleGoToEdit={this.handleGoToEdit}
           handleDeleteItem={demands.api.handleDeleteEntity}
         />
       </div>

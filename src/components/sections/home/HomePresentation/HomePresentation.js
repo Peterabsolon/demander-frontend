@@ -16,7 +16,7 @@ export default class HomePresentation extends Component {
     return (
       <div>
         <Section gutters>
-          <Paragraph primary center resetMargin>
+          <Paragraph primary center noMargin>
             Demander.cz představuje moderní platformu zaměřenou na získávání nových zakázek, nabídku vlastních služeb a prezentaci firmy. Jedná se o B2B poptávkový systém, kde se setkávají zájmy a potřeby předních společností napříč všemi segmenty trhu.
           </Paragraph>
         </Section>
