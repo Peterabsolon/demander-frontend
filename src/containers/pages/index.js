@@ -28,3 +28,4 @@ export DemandEdit from './Demands/DemandEdit'
  * Auth
  */
 export Login from './auth/Login/Login'
+export Signup from './auth/Signup/Signup'

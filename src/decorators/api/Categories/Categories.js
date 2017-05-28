@@ -37,7 +37,7 @@ const decorator = (config = {}) =>
         onDelete: () => browserHistory.push('/dodavatele')
       }
     })
-    class Posts extends Component {
+    class Categories extends Component {
       static propTypes = {
         // Validate abstract decorator payload
         payload: PropTypes.shape({
@@ -75,7 +75,7 @@ const decorator = (config = {}) =>
       }
     }
 
-    return Posts
+    return Categories
   }
 
 export default decorator

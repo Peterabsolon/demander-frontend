@@ -12,7 +12,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Form, Section } from 'components/layout'
+import { Form } from 'components/layout'
 import { SelectCategory, Input, Textarea } from 'components/fields'
 import { Button } from 'components/misc'
 
@@ -42,23 +42,22 @@ export default class ServiceDetailForm extends Component {
 
     return (
       <Form
-        noBorder
-        onSubmit={handleSubmit(services.api.handleEditEntity)}
         gutters
+        mediumWide
+        onSubmit={handleSubmit(services.api.handleEditEntity)}
       >
         <Input label="Název" name="title" />
         <Textarea label="Popis" name="description" />
         <Input label="Lokace" name="location" />
         <SelectCategory label="Kategorie" name="category_id" />
 
-        <Section noBorder gutters>
-          <Button
-            type="submit"
-            label="Upravit službu"
-            center
-            isLoading={services.state.submitting}
-          />
-        </Section>
+        <Button
+          type="submit"
+          label="Upravit službu"
+          center
+          className="base-margin--top"
+          isLoading={services.state.submitting}
+        />
       </Form>
     )
   }

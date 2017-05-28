@@ -140,9 +140,6 @@ const decorator = (config = {}) =>
         hasMore && this.props.setParams({ limit: limit + PAGE_SIZE })
       };
 
-      /**
-       * Filter methods from the reducer, attach them to an object and send it down
-       */
       render() {
         // REDUCER STATE!
         const { state } = this.props
@@ -157,8 +154,6 @@ const decorator = (config = {}) =>
           'deleteEntity'
         ]
 
-        const filteredProps = omit(this.props, ['state', ...reducerMethods])
-
         const api = {
           handleCreateEntity: this.handleCreateEntity,
           handleEditEntity: this.handleEditEntity,
@@ -166,6 +161,10 @@ const decorator = (config = {}) =>
           handleFetchMore: this.handleFetchMore
         }
 
+        // 1. Filter reducer methods to prevent conflicts
+        const filteredProps = omit(this.props, ['state', ...reducerMethods])
+
+        // 2. Reattach reducer methods to the payload
         reducerMethods.forEach(method => {
           api[method] = this.props[method]
         })

@@ -26,7 +26,7 @@ export default class HomePresentation extends Component {
             icon="business"
             title="Zaregistrujte profil firmy"
             content="Vstoupit na trh Demander můžete díky založení profilu vaší společnosti. Vyplňte základní identifikační údaje a můžete začít."
-            button={<Button label="Registrovat" />}
+            button={<Button to="/registrace" label="Registrovat" />}
           />
           <FeatureItem
             icon="description"

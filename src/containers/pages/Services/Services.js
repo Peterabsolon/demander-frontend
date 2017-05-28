@@ -23,8 +23,6 @@ export default class Services extends Component {
   render() {
     const { services } = this.props
 
-    console.log('services', services)
-
     return (
       <div>
         <PageHeader

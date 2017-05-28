@@ -1,5 +1,4 @@
 import { get } from 'lodash'
-import { browserHistory } from 'react-router'
 
 export default function clientMiddleware(client) {
   return ({ dispatch, getState }) => {
@@ -16,10 +15,11 @@ export default function clientMiddleware(client) {
         }
 
         const [REQUEST, SUCCESS, FAILURE] = types
-        const store = getState()
 
-        client.token = get(store, 'auth.user.token')
-        client.locale = get(store, 'app.locale.code')
+        const store = getState()
+        const token = get(store.auth, 'user.token', false)
+
+        client.token = token
 
         next({ ...rest, type: REQUEST })
 
@@ -27,25 +27,17 @@ export default function clientMiddleware(client) {
 
         actionPromise
           .then(
-            ({ body, headers }) =>
-              next({ ...rest, result: body || {}, headers, type: SUCCESS }),
-            props => {
-              const { body = {} } = props
-              const parsedBody = typeof body !== 'object'
-                ? JSON.parse(body)
-                : body
+            result => {
+              console.log('wtf')
 
-              if (parsedBody.errorCode === 401 && client.unauthorizedAction) {
-                browserHistory &&
-                  browserHistory.push({
-                    pathname: '/login',
-                    state: { notAuthorized: true }
-                  })
-                next({ ...rest, error: body, type: FAILURE })
-              } else {
-                next({ ...rest, error: body, type: FAILURE })
-              }
-            }
+              return next({
+                ...rest,
+                result: result.body || {},
+                headers: result.headers,
+                type: SUCCESS
+              })
+            },
+            error => next({ ...rest, error, type: FAILURE })
           )
           .catch(error => {
             console.error('MIDDLEWARE ERROR:', error)

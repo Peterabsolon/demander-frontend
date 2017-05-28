@@ -32,8 +32,6 @@ export default class CompanyDetailHeader extends Component {
 
     const { company, category } = data
 
-    console.log('company', company)
-
     return company && category
       ? <div className={style.wrapper}>
         <div className={style.header}>

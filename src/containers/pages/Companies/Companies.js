@@ -6,13 +6,15 @@ import { Feed, DataCard } from 'components/common'
 import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
-import { apiCompanies } from 'decorators/api'
+import { apiCompanies, apiAuth } from 'decorators/api'
 
+@apiAuth()
 @apiCompanies({
   list: true
 })
 export default class Companies extends Component {
   static propTypes = {
+    auth: PropTypes.any.isRequired,
     companies: PropTypes.any.isRequired
   };
 
@@ -21,7 +23,7 @@ export default class Companies extends Component {
   handleGoToDetail = id => browserHistory.push(`/dodavatele/${id}`);
 
   render() {
-    const { companies } = this.props
+    const { companies, auth } = this.props
 
     return (
       <div>
@@ -38,6 +40,7 @@ export default class Companies extends Component {
         <Feed
           instance="companies"
           type="company"
+          areButtonsHidden={!auth.state.isAdmin}
           items={companies.state.list}
           Item={DataCard}
           handleFetchMore={companies.api.handleFetchMore}

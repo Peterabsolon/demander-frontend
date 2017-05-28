@@ -1,4 +1,4 @@
-const config = require('../../config')
+import config from 'config'
 
 const LOAD = 'auth/LOAD'
 const LOAD_SUCCESS = 'auth/LOAD_SUCCESS'
@@ -16,10 +16,18 @@ const SAVE_USER = 'auth/SAVE_USER'
 const SAVE_USER_SUCCESS = 'auth/SAVE_USER_SUCCESS'
 const SAVE_USER_FAIL = 'auth/SAVE_USER_FAIL'
 
-const CLEAR_LOGIN_ERROR = 'auth/CLEAR_LOGIN_ERROR'
+const SIGNUP = 'auth/SIGNUP'
+const SIGNUP_SUCCESS = 'auth/SIGNUP_SUCCESS'
+const SIGNUP_FAIL = 'auth/SIGNUP_FAIL'
+
+const CLEAR_ERROR = 'auth/CLEAR_ERROR'
 
 const initialState = {
-  loaded: false
+  loaded: false,
+  isLoggingIn: false,
+  isSigningUp: false,
+  isLoggedIn: false,
+  isAdmin: false
 }
 
 export default function reducer(state = initialState, action = {}) {
@@ -31,15 +39,19 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: true
       }
-    case LOAD_SUCCESS:
+    case LOAD_SUCCESS: {
       tempUser = config.autoLogin ? state.user : null
+
+      const isLoggedIn = Object.keys(action.result).length > 0
 
       return {
         ...state,
         loading: false,
         loaded: true,
+        isLoggedIn,
         user: action.result ? action.result : tempUser
       }
+    }
     case LOAD_FAIL:
       return {
         ...state,
@@ -59,27 +71,63 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         isLoggingIn: false,
+        isLoggedIn: true,
+        isAdmin: action.result.role === 'ADMIN',
         user: action.result
       }
     case LOGIN_FAIL: {
       let error = null
 
-      switch (action.error.statusCode) {
-        case 401:
-          error = 'Nesprávne heslo.'
+      switch (action.error.status) {
+        case 422:
+          error = 'Nesprávné přihlašovací údaje.'
           break
         case 404:
-          error = 'Pre tento email neexistuje účet.'
+          error = 'Pro tento email neexistuje účet.'
           break
         default:
-          error = 'Pri prihlasovaní došlo k neznámej chybe.'
+          error = 'Při přihlášení došlo k neznámé chybě.'
       }
 
       return {
         ...state,
         isLoggingIn: false,
         user: null,
-        loginError: error
+        error
+      }
+    }
+
+    // ----------------------------------------------------------------
+
+    case SIGNUP:
+      return {
+        ...state,
+        isSigningUp: true
+      }
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        isSigningUp: false,
+        user: action.result
+      }
+    case SIGNUP_FAIL: {
+      let error = null
+
+      console.log('action.error', action.error)
+
+      switch (action.error.status) {
+        case 403:
+          error = 'Pre tento email už existuje účet.'
+          break
+        default:
+          error = 'Při registraci došlo k neznámé chybě.'
+      }
+
+      return {
+        ...state,
+        isSigningUp: false,
+        user: null,
+        error
       }
     }
 
@@ -94,13 +142,13 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingOut: false,
+        isLoggedIn: false,
         user: null
       }
     case LOGOUT_FAIL:
       return {
         ...state,
-        loggingOut: false,
-        logoutError: action.error
+        loggingOut: false
       }
 
     // ----------------------------------------------------------------
@@ -121,10 +169,10 @@ export default function reducer(state = initialState, action = {}) {
 
     // ----------------------------------------------------------------
 
-    case CLEAR_LOGIN_ERROR:
+    case CLEAR_ERROR:
       return {
         ...state,
-        loginError: null
+        error: null
       }
 
     default:
@@ -150,6 +198,13 @@ export function login(data) {
   }
 }
 
+export function signup(data) {
+  return {
+    types: [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAIL],
+    promise: client => client.post('api/signup', { data })
+  }
+}
+
 export function saveUser(response) {
   return {
     types: [SAVE_USER, SAVE_USER_SUCCESS, SAVE_USER_FAIL],
@@ -169,8 +224,8 @@ export function logout() {
   }
 }
 
-export function clearLoginError() {
+export function clearError() {
   return {
-    type: CLEAR_LOGIN_ERROR
+    type: CLEAR_ERROR
   }
 }

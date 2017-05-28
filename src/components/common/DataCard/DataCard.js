@@ -11,6 +11,7 @@ export default class DataCard extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     type: PropTypes.string,
+    areButtonsHidden: PropTypes.bool,
     handleGoToEdit: PropTypes.func,
     handleGoToDetail: PropTypes.func,
     handleDeleteItem: PropTypes.func,
@@ -73,7 +74,6 @@ export default class DataCard extends Component {
     this.setState({ isCollapsed: !this.state.isCollapsed });
 
   render() {
-    console.log(this.props)
     const {
       id,
       type,
@@ -91,7 +91,8 @@ export default class DataCard extends Component {
       web_url,
       fb_url,
       twitter_url,
-      linkedin_url
+      linkedin_url,
+      areButtonsHidden
     } = this.props
     const { isCollapsed, hasOverflowingText } = this.state
 
@@ -183,20 +184,21 @@ export default class DataCard extends Component {
           onClick={() => this.props.handleGoToDetail(id)}
         />
 
-        <div className={style.buttons}>
-          <Button
-            label="Upravit"
-            onClick={() => this.props.handleGoToEdit(id)}
-            small
-            terniary
-          />
-          <Button
-            label="Smazat"
-            small
-            terniary
-            onClick={() => this.props.handleDeleteItem(id)}
-          />
-        </div>
+        {!areButtonsHidden &&
+          <div className={style.buttons}>
+            <Button
+              label="Upravit"
+              onClick={() => this.props.handleGoToEdit(id)}
+              small
+              terniary
+            />
+            <Button
+              label="Smazat"
+              small
+              terniary
+              onClick={() => this.props.handleDeleteItem(id)}
+            />
+          </div>}
 
         {(isService || isDemand) &&
           <div className={style.metaInfo}>

@@ -16,17 +16,13 @@ import { apiDemands, apiCategories } from 'decorators/api'
 })
 export default class Demands extends Component {
   static propTypes = {
-    demands: PropTypes.object.isRequired,
-    categories: PropTypes.object.isRequired
+    demands: PropTypes.object.isRequired
   };
 
   handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
 
   render() {
-    const { demands, categories } = this.props
-
-    console.log(demands)
-    console.log(categories)
+    const { demands } = this.props
 
     return (
       <div>

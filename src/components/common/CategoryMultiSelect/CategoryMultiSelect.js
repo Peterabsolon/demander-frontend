@@ -53,8 +53,6 @@ export default class CategoryMultiSelect extends Component {
       categories = [categoryAll, ...categories]
     }
 
-    console.log('categories', categories)
-
     return (
       <Section guttersHalf maxWidth={800} contentClassName={style.wrapper}>
         {categories.length > 0 &&

@@ -1,7 +1,10 @@
 import React from 'react'
 import { get } from 'lodash'
 import { IndexRoute, Route } from 'react-router'
-import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth'
+import {
+  isLoaded as isAuthLoaded,
+  load as loadAuth
+} from 'redux/modules/api/auth'
 import {
   isLoaded as isConfigLoaded,
   load as loadConfig
@@ -50,6 +53,9 @@ export default store => {
       </Route>
 
       <Route component={Layout.Unauthorized}>
+        <Route path="prihlaseni" component={Page.Login} />
+        <Route path="registrace" component={Page.Signup} />
+
         {/* COMPANIES */}
         <Route path="dodavatele">
           <IndexRoute component={Page.Companies} />

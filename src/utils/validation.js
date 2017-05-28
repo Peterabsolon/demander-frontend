@@ -70,7 +70,7 @@ export function isEmail(value) {
 export function required(value) {
   if (isEmpty(value)) {
     return {
-      text: 'Povinní pole',
+      text: 'Povinné pole',
       intlKey: 'errors.required_field',
       values: {}
     }
@@ -133,12 +133,12 @@ export function oneOf(enumeration) {
   }
 }
 
-export function match(field) {
+export function match(field, message) {
   return (value, data) => {
     if (data) {
       if (value !== data[field]) {
         return {
-          text: 'Do not match',
+          text: message || 'Do not match',
           intlKey: 'errors.do_not_match'
         }
       }

@@ -9,28 +9,30 @@ import style from './button.styl'
 
 export default class Button extends Component {
   static propTypes = {
+    alignRight: PropTypes.bool,
+    block: PropTypes.bool,
+    center: PropTypes.bool,
+    centeredWithIcon: PropTypes.bool,
     children: PropTypes.any,
     className: PropTypes.string,
+    danger: PropTypes.bool,
     icon: PropTypes.string,
     iconClass: PropTypes.string,
     iconRight: PropTypes.string,
     iconRightClass: PropTypes.string,
-    to: PropTypes.string,
-    center: PropTypes.bool,
-    alignRight: PropTypes.bool,
-    wide: PropTypes.bool,
-    secondary: PropTypes.bool,
-    terniary: PropTypes.bool,
-    block: PropTypes.bool,
-    noBackground: PropTypes.bool,
-    type: PropTypes.string,
-    offsetLeft: PropTypes.string,
-    label: PropTypes.string,
     isLoading: PropTypes.bool,
-    danger: PropTypes.bool,
+    label: PropTypes.string,
+    noBackground: PropTypes.bool,
+    offsetLeft: PropTypes.string,
+    onClick: PropTypes.func,
+    secondary: PropTypes.bool,
     small: PropTypes.bool,
     success: PropTypes.bool,
-    onClick: PropTypes.func
+    terniary: PropTypes.bool,
+    to: PropTypes.string,
+    type: PropTypes.string,
+    white: PropTypes.bool,
+    wide: PropTypes.bool
   };
 
   static defaultProps = {
@@ -48,8 +50,12 @@ export default class Button extends Component {
       icon,
       iconRight,
       iconRightClass,
-      iconClass
+      iconClass,
+      centeredWithIcon
     } = this.props
+
+    const centerLeft = centeredWithIcon && iconRight && !icon
+    const centerRight = centeredWithIcon && icon && !iconRight
 
     return (
       <div className={style.content}>
@@ -61,7 +67,12 @@ export default class Button extends Component {
         {!noBackground &&
           <Ink background opacity={success || danger ? 0.75 : 0.15} />}
 
-        <div className={style.labelContent}>
+        <div
+          className={cx(style.labelContent, {
+            [style.centerLeft]: centerLeft,
+            [style.centerRight]: centerRight
+          })}
+        >
           {icon &&
             <i
               className={cx('material-icons', style.iconLeft, {
@@ -101,6 +112,7 @@ export default class Button extends Component {
       type,
       danger,
       small,
+      white,
       success,
       offsetLeft
     } = this.props
@@ -118,7 +130,8 @@ export default class Button extends Component {
         [style.alignRight]: alignRight,
         [style.success]: success,
         [style.center]: center,
-        [style.hasOffset]: offsetLeft
+        [style.hasOffset]: offsetLeft,
+        [style.white]: white
       }),
       style: { marginLeft: offsetLeft, width: `calc(100% - ${offsetLeft})` }
     }

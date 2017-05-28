@@ -3,16 +3,23 @@ import Headroom from 'react-headroom'
 import PropTypes from 'prop-types'
 
 import NavLink from './NavLink/NavLink'
-import { Logo } from 'components/misc'
+import { Button, Logo } from 'components/misc'
+
+import { apiAuth } from 'decorators/api'
 
 import style from './header.styl'
 
+@apiAuth()
 export default class Header extends Component {
   static propTypes = {
-    handleLogout: PropTypes.func.isRequired
+    auth: PropTypes.object.isRequired
   };
 
   render() {
+    const { auth } = this.props
+
+    const isLoggedIn = auth.state.isLoggedIn
+
     return (
       <Headroom>
         <div className={style.wrapper}>
@@ -29,13 +36,15 @@ export default class Header extends Component {
                 <NavLink to="/dodavatele" label="Dodavatelé" />
               </nav>
 
-              {/* <Button
-                label="Přihlášení"
+              <Button
+                label={isLoggedIn ? 'Odhlásit' : 'Přihlášení'}
                 icon="perm_identity"
                 noBackground
+                white
                 className={style.btnLogout}
-                onClick={this.props.handleLogout}
-              /> */}
+                to={!isLoggedIn ? '/prihlaseni' : ''}
+                onClick={isLoggedIn ? auth.api.handleLogout : () => {}}
+              />
 
               {/* <div className={style.socialLinks}>
                 <i className="ico ico--facebook" />

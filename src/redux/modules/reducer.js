@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { reducer as reduxAsyncConnect } from 'redux-connect'
 
-import auth from './auth'
 import app, { APP_RESET_STATE } from './app'
 import api from './api'
 import { reducer as form } from 'redux-form'
@@ -11,7 +10,6 @@ const appReducer = combineReducers({
   routing: routerReducer,
   reduxAsyncConnect,
   app,
-  auth,
   form,
   api
 })

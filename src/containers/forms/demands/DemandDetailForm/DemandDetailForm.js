@@ -15,7 +15,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Form, FormHeader, Section } from 'components/layout'
+import { Form, FormHeader } from 'components/layout'
 import { SelectCategory, Input, Textarea } from 'components/fields'
 import { Button } from 'components/misc'
 
@@ -45,9 +45,9 @@ export default class DemandNewForm extends Component {
 
     return (
       <Form
-        noBorder
-        onSubmit={handleSubmit(demands.api.handleEditEntity)}
         gutters
+        mediumWide
+        onSubmit={handleSubmit(demands.api.handleEditEntity)}
       >
         <FormHeader number={1} label="Základní údaje" />
         <Input label="Název" name="title" />
@@ -63,14 +63,13 @@ export default class DemandNewForm extends Component {
         <Input label="Rozpočet" name="budget" />
         <Textarea label="Detaily" name="description" />
 
-        <Section noBorder gutters>
-          <Button
-            type="submit"
-            label="Upravit poptávku"
-            center
-            isLoading={demands.state.submitting}
-          />
-        </Section>
+        <Button
+          type="submit"
+          label="Upravit poptávku"
+          center
+          className="base-margin--top"
+          isLoading={demands.state.submitting}
+        />
       </Form>
     )
   }

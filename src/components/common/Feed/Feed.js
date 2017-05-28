@@ -23,6 +23,7 @@ export default class Feed extends Component {
     items: PropTypes.array.isRequired,
     loading: PropTypes.bool,
     dark: PropTypes.bool,
+    areButtonsHidden: PropTypes.bool,
     type: PropTypes.string,
     router: PropTypes.object.isRequired,
     setFilter: PropTypes.func.isRequired
@@ -43,7 +44,8 @@ export default class Feed extends Component {
       type,
       handleGoToEdit,
       handleGoToDetail,
-      handleDeleteItem
+      handleDeleteItem,
+      areButtonsHidden
     } = this.props
 
     const currentId = get(router, 'params.id')
@@ -92,6 +94,7 @@ export default class Feed extends Component {
                             handleGoToEdit={handleGoToEdit}
                             handleDeleteItem={handleDeleteItem}
                             handleGoToDetail={handleGoToDetail}
+                            areButtonsHidden={areButtonsHidden}
                             {...item}
                           />
                         </div>

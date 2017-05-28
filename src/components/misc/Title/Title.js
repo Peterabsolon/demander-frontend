@@ -53,8 +53,6 @@ export default class Title extends Component {
       noUppercase
     } = this.props
 
-    console.log('className', className)
-
     const classList = cx({
       [className]: className,
       [styles.white]: white,

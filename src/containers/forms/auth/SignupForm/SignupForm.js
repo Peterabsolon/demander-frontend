@@ -8,24 +8,17 @@ import { Button, Title } from 'components/misc'
 
 import { apiAuth } from 'decorators/api'
 
-import validate from './login-form.validation'
+import validate from './signup-form.validation'
 
 @apiAuth()
 @reduxForm({
-  form: 'login',
+  form: 'signup',
   validate
 })
-export default class LoginForm extends Component {
+export default class SignupForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    auth: PropTypes.shape({
-      state: PropTypes.shape({
-        loginError: PropTypes.string
-      }),
-      api: PropTypes.shape({
-        clearError: PropTypes.func.isRequired
-      })
-    }).isRequired
+    auth: PropTypes.object.isRequired
   };
 
   render() {
@@ -35,11 +28,18 @@ export default class LoginForm extends Component {
       <Form
         gutters
         noBorder
-        onSubmit={this.props.handleSubmit(auth.api.handleLogin)}
+        onSubmit={this.props.handleSubmit(auth.api.handleSignup)}
       >
-        <Title h2>Přihlášení</Title>
+        <Title h2>Registrace</Title>
 
         <div className="base-margin--double">
+          <Input
+            name="name"
+            label="Jméno"
+            placeholder="Jméno"
+            onInputChange={auth.api.clearError}
+          />
+
           <Input
             name="email"
             label="Email"
@@ -55,6 +55,14 @@ export default class LoginForm extends Component {
             onInputChange={auth.api.clearError}
           />
 
+          <Input
+            name="passwordConfirm"
+            type="password"
+            label="Potvrzení hesla"
+            placeholder="Potvrzení hesla"
+            onInputChange={auth.api.clearError}
+          />
+
           <FieldError toShow={auth.state.error} message={auth.state.error} />
         </div>
 
@@ -62,21 +70,20 @@ export default class LoginForm extends Component {
           center
           wide
           type="submit"
-          label="Přihlásit"
+          label="Zaregistrovat"
           className="base-margin--top"
-          isLoading={auth.api.isLoggingIn}
+          isLoading={auth.state.isSigningUp}
         />
 
         <Button
           center
           wide
-          noBackground
-          iconRight="keyboard_arrow_right"
           centeredWithIcon
-          type="submit"
-          label="Registrace"
           className="base-margin--top"
-          to="/registrace"
+          icon="keyboard_arrow_left"
+          label="Přihlášení"
+          noBackground
+          to="/prihlaseni"
         />
       </Form>
     )

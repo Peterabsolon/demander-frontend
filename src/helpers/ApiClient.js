@@ -71,7 +71,7 @@ class _ApiClient {
   constructor(req) {
     methods.forEach(
       method =>
-        (this[method] = (
+        this[method] = (
           path,
           {
             params,
@@ -140,13 +140,10 @@ class _ApiClient {
               }
 
               err
-                ? reject({
-                  body: responseObject || err,
-                  headers: res.headers
-                })
+                ? reject(err)
                 : resolve({ body: responseObject || {}, headers: res.headers })
             })
-          }))
+          })
     )
   }
 }

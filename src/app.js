@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { asyncConnect } from 'redux-connect'
-import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth'
+import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/api/auth'
 import {
   isLoaded as isConfigLoaded,
   load as loadConfig

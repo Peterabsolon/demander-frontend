@@ -24,7 +24,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Form, FormHeader, InputGroup, Section } from 'components/layout'
+import { Form, FormHeader, InputGroup } from 'components/layout'
 import { SelectCategory, Input, Textarea } from 'components/fields'
 import { Button } from 'components/misc'
 
@@ -50,7 +50,6 @@ export default class CompanyNewForm extends Component {
     return (
       <Form
         onSubmit={handleSubmit(companies.api.handleCreateEntity)}
-        noBorder
         wide
         gutters
       >
@@ -85,14 +84,13 @@ export default class CompanyNewForm extends Component {
           <Input label="Twitter" name="twitter_url" />
         </InputGroup>
 
-        <Section noBorder borderTop gutters>
-          <Button
-            type="submit"
-            label="Zaregistrovat"
-            center
-            isLoading={companies.state.submitting}
-          />
-        </Section>
+        <Button
+          type="submit"
+          label="Zaregistrovat"
+          center
+          className="base-margin--top"
+          isLoading={companies.state.submitting}
+        />
       </Form>
     )
   }

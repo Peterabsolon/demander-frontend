@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 
 import { Header } from 'components/layout'
 
-import { logout } from 'redux/modules/auth'
+import { logout } from 'redux/modules/api/auth'
 
 @connect(null, { logout })
 export default class Authorized extends Component {
