@@ -11,6 +11,7 @@ export default class LatestFeed extends Component {
   static propTypes = {
     title: PropTypes.string,
     handleGoToEdit: PropTypes.func,
+    handleGoToDetail: PropTypes.func,
     type: PropTypes.string,
     dark: PropTypes.bool,
     items: PropTypes.array,
@@ -30,7 +31,8 @@ export default class LatestFeed extends Component {
       items,
       Item,
       type,
-      handleGoToEdit
+      handleGoToEdit,
+      handleGoToDetail
     } = this.props
 
     return (
@@ -45,6 +47,7 @@ export default class LatestFeed extends Component {
                   key={item.id}
                   type={type}
                   handleGoToEdit={handleGoToEdit}
+                  handleGoToDetail={handleGoToDetail}
                   {...item}
                 />
               </div>
