@@ -1,4 +1,5 @@
 import config from 'config'
+import { get } from 'lodash'
 
 const LOAD = 'auth/LOAD'
 const LOAD_SUCCESS = 'auth/LOAD_SUCCESS'
@@ -49,6 +50,7 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         loaded: true,
         isLoggedIn,
+        isAdmin: get(action, 'result.role') === 'ADMIN',
         user: action.result ? action.result : tempUser
       }
     }
@@ -112,8 +114,6 @@ export default function reducer(state = initialState, action = {}) {
       }
     case SIGNUP_FAIL: {
       let error = null
-
-      console.log('action.error', action.error)
 
       switch (action.error.status) {
         case 403:

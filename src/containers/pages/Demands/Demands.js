@@ -21,6 +21,8 @@ export default class Demands extends Component {
 
   handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
 
+  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`);
+
   render() {
     const { demands } = this.props
 
@@ -46,6 +48,7 @@ export default class Demands extends Component {
           loading={demands.state.listLoading}
           setFilter={demands.api.setFilter}
           handleGoToEdit={this.handleGoToEdit}
+          handleGoToDetail={this.handleGoToDetail}
           handleDeleteItem={demands.api.handleDeleteEntity}
         />
       </div>

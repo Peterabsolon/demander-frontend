@@ -7,9 +7,7 @@ import {
   TimeElapsedBadge
 } from 'components/common'
 
-import style from './service-detail-sidebar.styl'
-
-export default class ServiceDetailSidebar extends Component {
+export default class DemandDetailSidebar extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired
   };
@@ -22,9 +20,8 @@ export default class ServiceDetailSidebar extends Component {
     return data
       ? <div>
         <CompanyInfo company={company} />
-        <div className={style.meta}>
+        <div>
           <CategoryBadge category={category} />
-
           <TimeElapsedBadge date={created_at} />
         </div>
       </div>

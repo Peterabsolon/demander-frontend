@@ -17,10 +17,10 @@ import * as Layout from 'containers/layouts'
 export default store => {
   const requireLogin = (nextState, replace, cb) => {
     function checkAuth() {
-      const { auth: { user } } = store.getState()
+      const user = get(store.getState(), 'api.auth.user')
 
       if (!get(user, 'token')) {
-        replace('/login')
+        replace('/prihlaseni')
       }
 
       cb()
@@ -56,7 +56,6 @@ export default store => {
         <Route path="prihlaseni" component={Page.Login} />
         <Route path="registrace" component={Page.Signup} />
 
-        {/* COMPANIES */}
         <Route path="dodavatele">
           <IndexRoute component={Page.Companies} />
           <Route path="vytvorit" component={Page.CompanyNew} />
@@ -66,9 +65,17 @@ export default store => {
           </Route>
         </Route>
 
-        {/* SERVICES */}
         <Route path="sluzby">
           <IndexRoute component={Page.Services} />
+        </Route>
+
+        <Route path="poptavky">
+          <IndexRoute component={Page.Demands} />
+        </Route>
+      </Route>
+
+      <Route onEnter={requireLogin} component={Layout.Unauthorized}>
+        <Route path="sluzby">
           <Route path="pridat" component={Page.ServiceNew} />
           <Route path=":id">
             <IndexRoute component={Page.ServiceDetail} />
@@ -76,19 +83,13 @@ export default store => {
           </Route>
         </Route>
 
-        {/* DEMANDS */}
         <Route path="poptavky">
-          <IndexRoute component={Page.Demands} />
           <Route path="vytvorit" component={Page.DemandNew} />
           <Route path=":id">
             <IndexRoute component={Page.DemandDetail} />
             <Route path="upravit" component={Page.DemandEdit} />
           </Route>
         </Route>
-      </Route>
-
-      <Route onEnter={requireLogin} component={Layout.Authorized}>
-        <Route path="loggedIn" />
       </Route>
 
       <Route path="*" component={Page.NotFound} />

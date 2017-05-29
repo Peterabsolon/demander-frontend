@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { ButtonGroup } from 'components/layout'
 import { Title, Paragraph, Button } from 'components/misc'
 
 export default class ServiceDetailContent extends Component {
@@ -15,16 +16,19 @@ export default class ServiceDetailContent extends Component {
       <div>
         <Title h2>{data.title}</Title>
 
-        <Title noMargin h4>Popis</Title>
-        <Paragraph>{data.description}</Paragraph>
+        <Title smallMargin h4>Popis</Title>
+        <Paragraph secondary>{data.description}</Paragraph>
 
         {data.location &&
           <div>
-            <Title noMargin h4>Lokace</Title>
-            <Paragraph>{data.location}</Paragraph>
+            <Title smallMargin h4>Lokace</Title>
+            <Paragraph secondary>{data.location}</Paragraph>
           </div>}
 
-        <Button icon="forum" label="Reagovat" />
+        <ButtonGroup>
+          <Button terniary to="/sluzby" icon="reply" label="Seznam" />
+          <Button icon="forum" label="Reagovat" />
+        </ButtonGroup>
       </div>
     )
   }
