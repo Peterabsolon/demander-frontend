@@ -17,6 +17,8 @@ export default class LatestDemands extends Component {
 
   handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
 
+  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`);
+
   render() {
     const { demands } = this.props
 
@@ -24,6 +26,7 @@ export default class LatestDemands extends Component {
       <LatestFeed
         type="demand"
         handleGoToEdit={this.handleGoToEdit}
+        handleGoToDetail={this.handleGoToDetail}
         title="Nejnovejší poptávky"
         items={demands.state.list}
         Item={DataCard}
