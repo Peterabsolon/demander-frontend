@@ -28,8 +28,6 @@ export default function clientMiddleware(client) {
         actionPromise
           .then(
             result => {
-              console.log('wtf')
-
               return next({
                 ...rest,
                 result: result.body || {},

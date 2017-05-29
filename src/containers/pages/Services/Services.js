@@ -42,7 +42,7 @@ export default class Services extends Component {
           loading={services.state.listLoading}
           setFilter={services.api.setFilter}
           handleGoToEdit={this.handleGoToEdit}
-          // handleGoToDetail={this.handleGoToDetail}
+          handleGoToDetail={this.handleGoToDetail}
           handleDeleteItem={services.api.handleDeleteEntity}
         />
       </div>

@@ -1,4 +1,7 @@
 export CategoryMultiSelect from './CategoryMultiSelect/CategoryMultiSelect'
+export CategoryBadge from './CategoryBadge/CategoryBadge'
+export CompanyInfo from './CompanyInfo/CompanyInfo'
 export DataCard from './DataCard/DataCard'
 export Feed from './Feed/Feed'
 export LatestFeed from './LatestFeed/LatestFeed'
+export TimeElapsedBadge from './TimeElapsedBadge/TimeElapsedBadge'
