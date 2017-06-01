@@ -41,17 +41,19 @@ export default class LatestFeed extends Component {
 
         <div className={style.grid}>
           {items.length > 0 &&
-            items.map(item => (
-              <div className={style.gridItem}>
-                <Item
-                  key={item.id}
-                  type={type}
-                  handleGoToEdit={handleGoToEdit}
-                  handleGoToDetail={handleGoToDetail}
-                  {...item}
-                />
-              </div>
-            ))}
+            items.map(
+              (item, index) =>
+                index < 3 &&
+                <div className={style.gridItem}>
+                  <Item
+                    key={item.id}
+                    type={type}
+                    handleGoToEdit={handleGoToEdit}
+                    handleGoToDetail={handleGoToDetail}
+                    {...item}
+                  />
+                </div>
+            )}
         </div>
 
         {button}

@@ -13,14 +13,20 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { Form } from 'components/layout'
-import { SelectCategory, Input, Textarea } from 'components/fields'
+import {
+  SelectCompany,
+  SelectCategory,
+  Input,
+  Textarea
+} from 'components/fields'
 import { Button } from 'components/misc'
 
 import { form } from 'decorators'
-import { apiServices } from 'decorators/api'
+import { apiAuth, apiServices } from 'decorators/api'
 
 import validate from './service-detail-form.validation'
 
+@apiAuth()
 @apiServices({
   detail: true
 })
@@ -34,11 +40,14 @@ import validate from './service-detail-form.validation'
 export default class ServiceDetailForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    auth: PropTypes.object,
     services: PropTypes.object
   };
 
   render() {
-    const { handleSubmit, services } = this.props
+    const { auth, handleSubmit, services } = this.props
+
+    const isAdmin = auth.state.isAdmin
 
     return (
       <Form
@@ -46,6 +55,7 @@ export default class ServiceDetailForm extends Component {
         mediumWide
         onSubmit={handleSubmit(services.api.handleEditEntity)}
       >
+        {isAdmin && <SelectCompany label="Dodavatel" name="company_id" />}
         <Input label="Název" name="title" />
         <Textarea label="Popis" name="description" />
         <Input label="Lokace" name="location" />

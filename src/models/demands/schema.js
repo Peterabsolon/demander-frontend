@@ -3,8 +3,7 @@ export default function(model) {
 
   data.title = model.title
   data.category_id = model.category_id.id || model.category_id
-  // TODO
-  data.company_id = 1
+  data.company_id = model.company_id.id || model.company_id
   data.goal = model.goal
   data.input = model.input
   data.output = model.output

@@ -35,6 +35,7 @@ const decorator = (config = {}) =>
       };
 
       componentWillMount() {
+        console.log(this.props)
         const { state, params } = this.props
 
         config.list && !state.loaded && this.props.getList(state)
@@ -52,6 +53,12 @@ const decorator = (config = {}) =>
       handleFetchList = nextProps => {
         const { state } = this.props
         const { filter, offset, limit, sort } = nextProps.state
+
+        if (this.props.companyId !== nextProps.companyId) {
+          this.props.setFilter(
+            `&include[company][where][id]=${nextProps.companyId}`
+          )
+        }
 
         if (state.limit !== limit) {
           config.list &&
