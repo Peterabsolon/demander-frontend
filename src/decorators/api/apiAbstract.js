@@ -97,6 +97,7 @@ const decorator = (config = {}) =>
 
       handleEditEntity = async model => {
         const { state } = this.props
+
         const id = state.detail.id
         const data = config.schema(model)
 

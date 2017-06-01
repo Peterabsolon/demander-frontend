@@ -30,7 +30,8 @@ export default class CompanyDetailHeader extends Component {
   render() {
     const { data } = this.props
 
-    const { company, category } = data
+    const company = data
+    const category = data.category
 
     return company && category
       ? <div className={style.wrapper}>
