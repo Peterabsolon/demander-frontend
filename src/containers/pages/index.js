@@ -29,3 +29,13 @@ export DemandEdit from './Demands/DemandEdit'
  */
 export Login from './auth/Login/Login'
 export Signup from './auth/Signup/Signup'
+
+/**
+ * Contact
+ */
+export Contact from './Contact/Contact'
+
+/**
+ * About
+ */
+export About from './About/About'

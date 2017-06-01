@@ -7,8 +7,8 @@ import style from './company-info.styl'
 
 export default class CompanyInfo extends Component {
   static propTypes = {
-    company: PropTypes.object
-  };
+    company: PropTypes.object,
+  }
 
   render() {
     const { company } = this.props
@@ -35,7 +35,7 @@ export default class CompanyInfo extends Component {
           terniary
           className="base-margin--bottom"
           to={`/dodavatele/${company.id}`}
-          label="Profil dodavatele"
+          label="Profil společnosti"
         />
       </div>
     )

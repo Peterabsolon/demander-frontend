@@ -3,11 +3,11 @@ import { get } from 'lodash'
 import { IndexRoute, Route } from 'react-router'
 import {
   isLoaded as isAuthLoaded,
-  load as loadAuth
+  load as loadAuth,
 } from 'redux/modules/api/auth'
 import {
   isLoaded as isConfigLoaded,
-  load as loadConfig
+  load as loadConfig,
 } from 'redux/modules/config'
 import App from '../app'
 
@@ -71,6 +71,14 @@ export default store => {
 
         <Route path="poptavky">
           <IndexRoute component={Page.Demands} />
+        </Route>
+
+        <Route path="o-projektu">
+          <IndexRoute component={Page.About} />
+        </Route>
+
+        <Route path="kontakt">
+          <IndexRoute component={Page.Contact} />
         </Route>
       </Route>
 
