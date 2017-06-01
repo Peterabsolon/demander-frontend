@@ -10,8 +10,8 @@ import style from './unauthorized.styl'
 export default class Unauthorized extends Component {
   static propTypes = {
     children: PropTypes.any.isRequired,
-    route: PropTypes.object.isRequired
-  };
+    route: PropTypes.object.isRequired,
+  }
 
   constructor() {
     super()
@@ -34,7 +34,7 @@ export default class Unauthorized extends Component {
   }
 
   handleScroll = event =>
-    this.setState({ scrollPos: event.srcElement.body.scrollTop });
+    this.setState({ scrollPos: event.srcElement.body.scrollTop })
 
   render() {
     const { route: { isHome } } = this.props
@@ -47,10 +47,10 @@ export default class Unauthorized extends Component {
         <Header />
         <div
           style={{
-            transform: 'translate3d(0px,' + itemTranslate + 'px, 0px)'
+            transform: 'translate3d(0px,' + itemTranslate + 'px, 0px)',
           }}
           className={cx(style.hero, {
-            [style.isHome]: isHome
+            [style.isHome]: isHome,
           })}
         >
           <div className={style.heroContent}>

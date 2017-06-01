@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { Title, Paragraph } from 'components/misc'
+import { Timeline } from 'components/common'
 import { Section } from 'components/layout'
 
 import style from './company-detail-summary.styl'
 
 export default class CompanyDetailHeader extends Component {
   static propTypes = {
-    data: PropTypes.object.isRequired
-  };
+    data: PropTypes.object.isRequired,
+  }
 
   renderInfoBlock = (icon, title, data) => (
     <div className={style.infoBlock}>
@@ -25,7 +26,7 @@ export default class CompanyDetailHeader extends Component {
         {data}
       </div>
     </div>
-  );
+  )
 
   render() {
     const { data } = this.props
@@ -34,9 +35,29 @@ export default class CompanyDetailHeader extends Component {
 
     return company && category
       ? <div className={style.wrapper}>
+
+        <Section textCenter>
+          <div className="avatar">
+            <img
+              src={company.logo_url}
+              alt={company.company_name}
+              className={style.topLogo}
+            />
+          </div>
+          <div className="name">
+            <Title h1>
+              {company.company_nice_name || company.company_name}
+            </Title>
+            <Title h4>
+              {company.slogan}
+            </Title>
+          </div>
+        </Section>
+
         <div className={style.header}>
+
           <div className={style.badge}>
-            {company.logo_url &&
+            {/* {company.logo_url &&
             <div className={style.badgeLogo}>
               <img src={company.logo_url} alt={company.company_name} />
             </div>}
@@ -49,7 +70,10 @@ export default class CompanyDetailHeader extends Component {
 
             <div className={style.badgeSlogan}>
               <Paragraph noMargin>{company.slogan}</Paragraph>
-            </div>
+            </div> */}
+            <Paragraph>
+              {company.company_description}
+            </Paragraph>
           </div>
 
           <div className={style.about}>
@@ -91,7 +115,7 @@ export default class CompanyDetailHeader extends Component {
                   <div>{company.company_address}</div>}
                   {company.company_opening_hours &&
                   <div>{company.company_opening_hours}</div>}
-                </div>
+                </div>,
                 )}
 
               {this.renderInfoBlock(
@@ -105,7 +129,7 @@ export default class CompanyDetailHeader extends Component {
                   {company.company_id && <div>{company.company_id}</div>}
                   {company.company_vat_id &&
                   <div>{company.company_vat_id}</div>}
-                </div>
+                </div>,
                 )}
 
               {this.renderInfoBlock(
@@ -118,16 +142,18 @@ export default class CompanyDetailHeader extends Component {
                   <div>{company.contact_telephone}</div>}
                   {company.contact_email &&
                   <div>{company.contact_email}</div>}
-                </div>
+                </div>,
                 )}
             </div>
           </div>
         </div>
-        <Section textCenter maxWidth={600} guttersHalf>
+
+        <Timeline />
+        {/* <Section textCenter maxWidth={600} guttersHalf>
           <Paragraph noMargin>
             {company.company_description}
           </Paragraph>
-        </Section>
+        </Section> */}
       </div>
       : <div />
   }

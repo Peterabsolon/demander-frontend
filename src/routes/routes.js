@@ -3,11 +3,11 @@ import { get } from 'lodash'
 import { IndexRoute, Route } from 'react-router'
 import {
   isLoaded as isAuthLoaded,
-  load as loadAuth
+  load as loadAuth,
 } from 'redux/modules/api/auth'
 import {
   isLoaded as isConfigLoaded,
-  load as loadConfig
+  load as loadConfig,
 } from 'redux/modules/config'
 import App from '../app'
 
@@ -60,7 +60,7 @@ export default store => {
           <IndexRoute component={Page.Companies} />
           <Route path="vytvorit" component={Page.CompanyNew} />
           <Route path=":id">
-            <IndexRoute component={Page.CompanyDetail} />
+            <IndexRoute isCompany component={Page.CompanyDetail} />
             <Route path="upravit" component={Page.CompanyEdit} />
           </Route>
         </Route>
