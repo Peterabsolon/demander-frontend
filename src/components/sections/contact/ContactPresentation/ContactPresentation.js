@@ -44,15 +44,15 @@ export default class ContactPresentation extends Component {
                   </div>
                   <div className="description">
                     <h4 className={cx('info-title', [style.violet])}>
-                      Adresa{' '}
+                      Adresa
                     </h4>
-                    <h5>
-                      Demander s.r.o.
-                      IČO 98798776
-                      DIČ CZ98798776
-                      Pařížská 89
-                      100 00, Praha 1
-                    </h5>
+                    <br /><br />
+                    <h4>Demander s.r.o.</h4>
+                    <h4>IČO 98798776</h4>
+                    <h4>DIČ CZ98798776</h4>
+                    <h4>Pařížská 89</h4>
+                    <h4>100 00, Praha 1</h4>
+
                   </div>
                 </div>
 
@@ -85,9 +85,11 @@ export default class ContactPresentation extends Component {
                     <h4 className={cx('info-title', [style.violet])}>
                       Kontakty
                     </h4>
-                    <p>
-                      Sháníte dodavatele spojovacího materiálu? Nebo sháníte autobusovou dopravu, která převeze vaše zaměstnance na plánovaný teambuilding? Ať už sháníte cokoliv, na Demander.cz to můžete jednoduše poptat.
-                    </p>
+                    <br /><br />
+                    <h4>Tel. č.: 876 876 543</h4>
+                    <h4>Email: demander@demander.cz</h4>
+                    <h4>Fb: fb.com/#demandercz</h4>
+
                   </div>
                 </div>
 
