@@ -5,8 +5,7 @@ export default function(model) {
   data.description = model.description
   data.location = model.location
   data.category_id = model.category_id.id || model.category_id
-  // TODO
-  data.company_id = 1
+  data.company_id = model.company_id.id || model.company_id
 
   return data
 }

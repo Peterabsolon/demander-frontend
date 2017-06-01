@@ -20,8 +20,8 @@ export default class CompanyDetail extends Component {
     return (
       <div>
         <CompanyDetailSummary data={companies.state.detail} />
-        <LatestDemands />
-        <LatestServices />
+        <LatestDemands companyId={companies.state.detail.id} />
+        <LatestServices companyId={companies.state.detail.id} />
       </div>
     )
   }

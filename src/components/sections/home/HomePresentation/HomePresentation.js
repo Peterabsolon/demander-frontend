@@ -9,8 +9,8 @@ import style from './home-presentation.styl'
 
 export default class HomePresentation extends Component {
   static propTypes = {
-    something: PropTypes.any
-  };
+    something: PropTypes.any,
+  }
 
   render() {
     return (
@@ -30,7 +30,7 @@ export default class HomePresentation extends Component {
           />
           <FeatureItem
             icon="description"
-            title="Vložte popávku"
+            title="Vložte poptávku"
             content="Dalším krokem je vložení poptávky, kde definujete předmět Vaši poptávky. Přiblížit detaily můžete vložením technické dokumentace. Demander je i totiž systémem pro náročné."
             button={<Button to="/poptavky/vytvorit" label="Vložit poptávku" />}
           />

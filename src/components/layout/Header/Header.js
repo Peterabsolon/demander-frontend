@@ -12,8 +12,8 @@ import style from './header.styl'
 @apiAuth()
 export default class Header extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
-  };
+    auth: PropTypes.object.isRequired,
+  }
 
   render() {
     const { auth } = this.props
@@ -34,6 +34,8 @@ export default class Header extends Component {
                 <NavLink to="/poptavky" label="Poptávky" />
                 <NavLink to="/sluzby" label="Služby" />
                 <NavLink to="/dodavatele" label="Dodavatelé" />
+                <NavLink to="/o-projektu" label="O projektu" />
+                <NavLink to="/kontakt" label="Kontakt" />
               </nav>
 
               <Button

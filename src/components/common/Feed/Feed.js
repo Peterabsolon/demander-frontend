@@ -9,8 +9,11 @@ import Waypoint from 'react-waypoint'
 import { Section } from 'components/layout'
 import { FeedFiltersForm } from 'containers/forms/common'
 
+import { apiAuth } from 'decorators/api'
+
 import style from './feed.styl'
 
+@apiAuth()
 @withRouter
 export default class Feed extends Component {
   static propTypes = {
@@ -23,9 +26,9 @@ export default class Feed extends Component {
     items: PropTypes.array.isRequired,
     loading: PropTypes.bool,
     dark: PropTypes.bool,
-    areButtonsHidden: PropTypes.bool,
     type: PropTypes.string,
     router: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
     setFilter: PropTypes.func.isRequired
   };
 
@@ -35,6 +38,7 @@ export default class Feed extends Component {
 
   render() {
     const {
+      auth,
       items,
       Item,
       dark,
@@ -44,10 +48,10 @@ export default class Feed extends Component {
       type,
       handleGoToEdit,
       handleGoToDetail,
-      handleDeleteItem,
-      areButtonsHidden
+      handleDeleteItem
     } = this.props
 
+    const areButtonsHidden = !get(auth, 'state.isAdmin')
     const currentId = get(router, 'params.id')
 
     return (

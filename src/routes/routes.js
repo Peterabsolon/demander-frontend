@@ -72,6 +72,14 @@ export default store => {
         <Route path="poptavky">
           <IndexRoute component={Page.Demands} />
         </Route>
+
+        <Route path="o-projektu">
+          <IndexRoute component={Page.About} />
+        </Route>
+
+        <Route path="kontakt">
+          <IndexRoute component={Page.Contact} />
+        </Route>
       </Route>
 
       <Route onEnter={requireLogin} component={Layout.Unauthorized}>
