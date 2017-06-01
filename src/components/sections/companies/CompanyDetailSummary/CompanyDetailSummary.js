@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { Title, Paragraph } from 'components/misc'
-import { Timeline } from 'components/common'
 import { Section } from 'components/layout'
 
 import style from './company-detail-summary.styl'
@@ -38,14 +37,14 @@ export default class CompanyDetailHeader extends Component {
       ? <div className={style.wrapper}>
 
         <Section textCenter>
-          <div className="avatar">
+          <div>
             <img
               src={company.logo_url}
               alt={company.company_name}
               className={style.topLogo}
             />
           </div>
-          <div className="name">
+          <div>
             <Title h1>
               {company.company_nice_name || company.company_name}
             </Title>
@@ -149,7 +148,6 @@ export default class CompanyDetailHeader extends Component {
           </div>
         </div>
 
-        <Timeline />
         {/* <Section textCenter maxWidth={600} guttersHalf>
           <Paragraph noMargin>
             {company.company_description}

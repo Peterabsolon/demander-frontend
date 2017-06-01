@@ -60,7 +60,7 @@ export default store => {
           <IndexRoute component={Page.Companies} />
           <Route path="vytvorit" component={Page.CompanyNew} />
           <Route path=":id">
-            <IndexRoute isCompany component={Page.CompanyDetail} />
+            <IndexRoute component={Page.CompanyDetail} />
             <Route path="upravit" component={Page.CompanyEdit} />
           </Route>
         </Route>

@@ -3,13 +3,9 @@ import PropTypes from 'prop-types'
 
 import { Paragraph } from 'components/misc'
 import { Section } from 'components/layout'
-// import { FeatureItem } from './__elements__'
 
 import style from './contact-presentation.styl'
 import cx from 'classnames'
-
-// react tabs import
-// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 export default class ContactPresentation extends Component {
   static propTypes = {

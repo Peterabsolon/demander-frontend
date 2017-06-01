@@ -1,0 +1,201 @@
+@import '~assets/css/variables'
+
+.cdContainer
+  width 90%
+  max-width 1170px
+  margin 0 auto
+    &:after
+      content ''
+      display table
+      clear both
+
+#cdTimeline
+  position relative
+  padding 2em 0
+  margin-top 2em
+  margin-bottom 2em
+  &:before
+    content ''
+    position absolute
+    top 0
+    left 18px
+    height 100%
+    width 4px
+    background #d7e4ed
+
+@media screen and (min-width: 1170px)
+  #cdTimeline
+    margin-top 3em
+    margin-bottom 3em
+    &:before
+      left 50%
+      margin-left -2px
+
+.cdTimelineBlock
+  position relative
+  margin 2em 0
+  &:after
+    content ""
+    display table
+    clear both
+  &:first-child
+    margin-top 0
+  &:last-child
+    margin-bottom 0
+
+@media screen and (min-width: 1170px)
+  .cdTimelineBlock
+    margin 4em 0
+    &:first-child
+      margin-top 0
+    &:last-child
+      margin-bottom 0
+
+.cdTimelineImg
+  position absolute
+  top 0
+  left 0
+  width 40px
+  height 40px
+  border-radius 50%
+  box-shadow 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05)
+  img
+    display block
+    width 24px
+    height 24px
+    position relative
+    left 50%
+    top 50%
+    margin-left
+    12px
+    margin-top -12px
+
+.cdPicture
+  background #75ce66
+.cdMovie
+  background #c03b44
+.cdLocation
+  background #f0ca45
+
+.cdTimelineContent
+  position relative
+  margin-left 60px
+  background white
+  border-radius 0.25em
+  padding 1em
+  box-shadow 0 3px 0 #d7e4ed
+  &:after
+    content ""
+    display table
+    clear both
+  h2
+    color #303e49
+  p
+    margin 1em 0
+    line-height 1.6
+  .cdReadMore
+    float right
+    padding .8em 1em
+    background #acb7c0
+    color white
+    border-radius 0.25em
+  .cdDate
+    float left
+    padding .8em 0
+    opacity .7
+  &:before
+    content ''
+    position absolute
+    top 16px
+    right 100%
+    height 0
+    width 0
+    border 7px solid transparent
+    border-right 7px solid white
+
+.cdTimelineContent p, .cdTimelineContent .cdReadMore, .cdTimelineContent .cdDate
+  font-size 13px
+  font-size 0.8125rem
+
+.cdTimelineContent .cdReadMore, .cdTimelineContent .cdDate
+  display inline-block
+
+.noTouch
+  .cdTimelineContent
+    .cdReadMore
+      &:hover
+        background-color #bac4cb
+
+@media $sm-up
+  .cdTimelineContent
+    h2
+      font-size 20px
+      font-size 1.25rem
+    p
+      font-size 16px
+      font-size 1rem
+
+@media $sm-up
+  .cdTimelineContent .cdReadMore, .cdTimelineContent .cdDate
+    font-size 14px
+    font-size 0.875rem
+
+@media screen and (min-width: 1170px)
+  .cdTimelineImg
+    width 60px
+    height 60px
+    left 50%
+    margin-left -30px
+    -webkit-transform translateZ(0)
+    -webkit-backface-visibility hidden
+  .cssanimations
+    .cdTimelineImg
+      .isHidden
+        visibility hidden
+      .bounceIn
+        visibility visible
+        -webkit-animation cd-bounce-1 0.6s
+        -moz-animation cd-bounce-1 0.6s
+        animation cd-bounce-1 0.6s
+    .cdTimelineContent
+      .isHidden
+        visibility hidden
+      .bounceIn
+        visibility visible
+        -webkit-animation cd-bounce-2 0.6s
+        -moz-animation cd-bounce-2 0.6s
+        animation cd-bounce-2 0.6s
+  .cdTimelineContent
+    margin-left 0
+    padding 1.6em
+    width 45%
+    &:before
+      top 24px
+      left 100%
+      border-color transparent
+      border-left-color white
+    .cdReadMore
+      float left
+    .cdDate
+      position absolute
+      width 100%
+      left 122%
+      top 6px
+      font-size 16px
+      font-size 1rem
+  .cdTimelineBlock
+    &:nth-child(even)
+      .cdTimelineContent
+        float right
+        &:before
+          top 24px
+          left auto
+          right 100%
+          border-color transparent
+          border-right-color white
+        .cdReadMore
+          float right
+        .cdDate
+          left auto
+          right 122%
+          text-align right
