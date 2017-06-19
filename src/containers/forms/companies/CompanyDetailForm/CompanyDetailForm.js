@@ -74,7 +74,7 @@ export default class CompanyDetailForm extends Component {
 
         <FormHeader number={2} label="Kontakty" />
         <InputGroup>
-          <Input label="Telefon" name="company_telephone" />
+          <Input label="Telefon" name="contact_telephone" />
           <Input label="Email" name="contact_email" />
         </InputGroup>
         <InputGroup>

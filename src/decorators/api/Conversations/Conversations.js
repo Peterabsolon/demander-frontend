@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import * as conversationsApi from 'redux/modules/api/conversations'
 
 const decorator = () => ComposedComponent => {
-  // messages: messages,
   @connect(
     ({ api }) => ({
       state: api.conversations
@@ -18,6 +17,10 @@ const decorator = () => ComposedComponent => {
     static propTypes = {
       // Reducer state
       state: PropTypes.object.isRequired
+    }
+
+    componentWillMount() {
+      console.log('yo')
     }
 
     render() {

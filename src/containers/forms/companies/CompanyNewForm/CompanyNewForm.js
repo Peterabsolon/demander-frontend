@@ -26,6 +26,7 @@ import PropTypes from 'prop-types'
 
 import { Form, FormHeader, InputGroup } from 'components/layout'
 import { SelectCategory, Input, Textarea } from 'components/fields'
+import { FieldError } from 'components/fields/__elements__'
 import { Button } from 'components/misc'
 
 import { form } from 'decorators'
@@ -42,10 +43,12 @@ export default class CompanyNewForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     companies: PropTypes.object
-  };
+  }
 
   render() {
     const { handleSubmit, companies } = this.props
+
+    const submitError = companies.state.error
 
     return (
       <Form
@@ -67,7 +70,7 @@ export default class CompanyNewForm extends Component {
 
         <FormHeader number={2} label="Kontakty" />
         <InputGroup>
-          <Input label="Telefon" name="company_telephone" />
+          <Input label="Telefon" name="contact_telephone" />
           <Input label="Email" name="contact_email" />
         </InputGroup>
         <InputGroup>
@@ -83,6 +86,9 @@ export default class CompanyNewForm extends Component {
         <InputGroup>
           <Input label="Twitter" name="twitter_url" />
         </InputGroup>
+
+        {submitError &&
+          <FieldError toShow={submitError} message={submitError} />}
 
         <Button
           type="submit"

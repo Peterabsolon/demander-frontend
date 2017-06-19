@@ -5,6 +5,7 @@ export Logo from './Logo/Logo'
 export Notification from './Notification/Notification'
 export Spinner from './Spinner/Spinner'
 export TextBox from './TextBox/TextBox'
+export PopoverMenu from './PopoverMenu/PopoverMenu'
 
 export TabsList from './Tabs/TabsList/TabsList'
 export TabsItem from './Tabs/TabsItem/TabsItem'

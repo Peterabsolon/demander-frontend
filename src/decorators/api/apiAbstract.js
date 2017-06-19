@@ -21,16 +21,18 @@ const decorator = (config = {}) => ComposedComponent => {
   })
   class apiAbstract extends Component {
     static propTypes = {
+      companyId: PropTypes.string,
+      createEntity: PropTypes.func.isRequired,
+      deleteEntity: PropTypes.func.isRequired,
+      getById: PropTypes.func.isRequired,
+      getList: PropTypes.func.isRequired,
+      notification: PropTypes.func.isRequired,
+      params: PropTypes.object,
+      setFilter: PropTypes.func.isRequired,
+      setParams: PropTypes.func.isRequired,
       // REDUCER STATE
       state: PropTypes.object.isRequired,
-      createEntity: PropTypes.func.isRequired,
-      params: PropTypes.object,
-      setParams: PropTypes.func.isRequired,
-      notification: PropTypes.func.isRequired,
-      updateEntity: PropTypes.func.isRequired,
-      deleteEntity: PropTypes.func.isRequired,
-      getList: PropTypes.func.isRequired,
-      getById: PropTypes.func.isRequired
+      updateEntity: PropTypes.func.isRequired
     }
 
     componentWillMount() {

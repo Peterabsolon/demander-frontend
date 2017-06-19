@@ -3,7 +3,7 @@ import Headroom from 'react-headroom'
 import PropTypes from 'prop-types'
 
 import NavLink from './NavLink/NavLink'
-import { Button, Logo } from 'components/misc'
+import { Logo, PopoverMenu } from 'components/misc'
 
 import { apiAuth } from 'decorators/api'
 
@@ -12,13 +12,17 @@ import style from './header.styl'
 @apiAuth()
 export default class Header extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
   }
 
   render() {
     const { auth } = this.props
 
     const isLoggedIn = auth.state.isLoggedIn
+    // const user = get(auth, 'state.user')
+    //
+
+    console.log('isLoggedIn', isLoggedIn)
 
     return (
       <Headroom>
@@ -38,14 +42,20 @@ export default class Header extends Component {
                 <NavLink to="/kontakt" label="Kontakt" />
               </nav>
 
-              <Button
-                label={isLoggedIn ? 'Odhlásit' : 'Přihlášení'}
+              <PopoverMenu
+                label={isLoggedIn ? 'Můj účet' : 'Přihlášení'}
                 icon="perm_identity"
-                noBackground
-                white
-                className={style.btnLogout}
+                className={style.popover}
                 to={!isLoggedIn ? '/prihlaseni' : ''}
-                onClick={isLoggedIn ? auth.api.handleLogout : () => {}}
+                items={[
+                  { to: '/dashboard/profil', label: 'Profil' },
+                  { to: '/dashboard/sluzby', label: 'Služby' },
+                  { to: '/dashboard/poptavky', label: 'Poptávky' },
+                  { to: '/dashboard/konverzace', label: 'Konverzace' }
+                ]}
+                extraItems={[
+                  { onClick: auth.api.handleLogout, label: 'Odhlásit' }
+                ]}
               />
 
               {/* <div className={style.socialLinks}>
