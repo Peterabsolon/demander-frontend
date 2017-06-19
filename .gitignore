@@ -11,3 +11,4 @@ npm-debug.log
 tsrc/
 dump.rdb
 webpack/dlls/vendor.json
+package-lock.json
