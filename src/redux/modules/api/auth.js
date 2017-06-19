@@ -116,7 +116,7 @@ export default function reducer(state = initialState, action = {}) {
       let error = null
 
       switch (action.error.status) {
-        case 403:
+        case 409:
           error = 'Pre tento email už existuje účet.'
           break
         default:

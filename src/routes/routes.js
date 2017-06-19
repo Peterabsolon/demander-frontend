@@ -1,13 +1,13 @@
 import React from 'react'
 import { get } from 'lodash'
-import { IndexRoute, Route } from 'react-router'
+import { IndexRedirect, IndexRoute, Route } from 'react-router'
 import {
   isLoaded as isAuthLoaded,
-  load as loadAuth,
+  load as loadAuth
 } from 'redux/modules/api/auth'
 import {
   isLoaded as isConfigLoaded,
-  load as loadConfig,
+  load as loadConfig
 } from 'redux/modules/config'
 import App from '../app'
 
@@ -97,6 +97,14 @@ export default store => {
             <IndexRoute component={Page.DemandDetail} />
             <Route path="upravit" component={Page.DemandEdit} />
           </Route>
+        </Route>
+
+        <Route path="dashboard" component={Page.DashboardContainer}>
+          <IndexRedirect to="profil" />
+          <Route path="profil" component={Page.DashboardProfile} />
+          <Route path="poptavky" component={Page.DashboardDemands} />
+          <Route path="sluzby" component={Page.DashboardServices} />
+          <Route path="konverzace" component={Page.DashboardConversations} />
         </Route>
       </Route>
 

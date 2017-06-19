@@ -12,22 +12,23 @@ import { apiDemands } from 'decorators/api'
 })
 export default class LatestDemands extends Component {
   static propTypes = {
-    demands: PropTypes.object
-  };
+    demands: PropTypes.object,
+    noTitle: PropTypes.bool
+  }
 
-  handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`)
 
-  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`);
+  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`)
 
   render() {
-    const { demands } = this.props
+    const { noTitle, demands } = this.props
 
     return (
       <LatestFeed
         type="demand"
         handleGoToEdit={this.handleGoToEdit}
         handleGoToDetail={this.handleGoToDetail}
-        title="Nejnovejší poptávky"
+        title={!noTitle && 'Nejnovejší poptávky'}
         items={demands.state.list}
         Item={DataCard}
         button={
