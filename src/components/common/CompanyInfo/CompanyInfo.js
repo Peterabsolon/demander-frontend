@@ -35,7 +35,7 @@ export default class CompanyInfo extends Component {
           terniary
           className="base-margin--bottom"
           to={`/dodavatele/${company.id}`}
-          label="Profil společnosti"
+          label="Profil firmy"
         />
       </div>
     )

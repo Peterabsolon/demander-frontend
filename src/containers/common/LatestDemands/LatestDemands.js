@@ -8,36 +8,39 @@ import { Button } from 'components/misc'
 import { apiDemands } from 'decorators/api'
 
 @apiDemands({
-  list: true
+  list: true,
 })
 export default class LatestDemands extends Component {
   static propTypes = {
-    demands: PropTypes.object
-  };
+    demands: PropTypes.object,
+    id: PropTypes.string,
+  }
 
-  handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/poptavky/${id}/upravit`)
 
-  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`);
+  handleGoToDetail = id => browserHistory.push(`/poptavky/${id}`)
 
   render() {
-    const { demands } = this.props
+    const { demands, id } = this.props
 
     return (
-      <LatestFeed
-        type="demand"
-        handleGoToEdit={this.handleGoToEdit}
-        handleGoToDetail={this.handleGoToDetail}
-        title="Nejnovejší poptávky"
-        items={demands.state.list}
-        Item={DataCard}
-        button={
-          <Button
-            to="/poptavky/vytvorit"
-            label="Vytvořit poptávku"
-            icon="add"
-          />
-        }
-      />
+      <div id={id}>
+        <LatestFeed
+          type="demand"
+          handleGoToEdit={this.handleGoToEdit}
+          handleGoToDetail={this.handleGoToDetail}
+          title="Nejnovejší poptávky"
+          items={demands.state.list}
+          Item={DataCard}
+          button={
+            <Button
+              to="/poptavky/vytvorit"
+              label="Vytvořit poptávku"
+              icon="add"
+            />
+          }
+        />
+      </div>
     )
   }
 }

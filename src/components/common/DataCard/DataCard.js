@@ -29,8 +29,8 @@ export default class DataCard extends Component {
     twitter_url: PropTypes.string,
     linkedin_url: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string
-  };
+    description: PropTypes.string,
+  }
 
   constructor() {
     super()
@@ -39,7 +39,7 @@ export default class DataCard extends Component {
 
     this.state = {
       hasOverflowingText: false,
-      isCollapsed: true
+      isCollapsed: true,
     }
   }
 
@@ -61,17 +61,16 @@ export default class DataCard extends Component {
     const node = this.description
 
     // Account for bottom margin
-    const hasOverflowingText = node &&
-      node.offsetHeight &&
-      node.offsetHeight + 26 < node.scrollHeight
+    const hasOverflowingText =
+      node && node.offsetHeight && node.offsetHeight + 26 < node.scrollHeight
 
     if (hasOverflowingText && !this.state.hasOverflowingText) {
       this.setState({ hasOverflowingText: true })
     }
-  };
+  }
 
   handleToggleIsCollapsed = () =>
-    this.setState({ isCollapsed: !this.state.isCollapsed });
+    this.setState({ isCollapsed: !this.state.isCollapsed })
 
   render() {
     const {
@@ -88,11 +87,11 @@ export default class DataCard extends Component {
       title,
       description,
       logo_url,
-      web_url,
-      fb_url,
-      twitter_url,
-      linkedin_url,
-      areButtonsHidden
+      // web_url,
+      // fb_url,
+      // twitter_url,
+      // linkedin_url,
+      areButtonsHidden,
     } = this.props
     const { isCollapsed, hasOverflowingText } = this.state
 
@@ -105,17 +104,17 @@ export default class DataCard extends Component {
     return (
       <div
         className={cx(style.wrapper, {
-          [style.company]: isCompany
+          [style.company]: isCompany,
         })}
       >
         {isCompany &&
           <div className={style.header}>
 
-            <Title h4 white noUppercase>
+            <Title h4 white noUppercase noMargin>
               {company_name}
             </Title>
 
-            <div className={style.links}>
+            {/* <div className={style.links}>
               {web_url &&
                 <a href={web_url} className={style.icon}>
                   <i className="material-icons">language</i>
@@ -132,7 +131,7 @@ export default class DataCard extends Component {
                 <a href={linkedin_url} className={style.icon}>
                   <i className="ico ico--linkedin" />
                 </a>}
-            </div>
+            </div> */}
           </div>}
 
         {logo_url &&
@@ -154,7 +153,7 @@ export default class DataCard extends Component {
           <div
             className={cx(style.descriptionWrapper, {
               [style.hasOverflow]: hasOverflowingText,
-              [style.isOpen]: !isCollapsed
+              [style.isOpen]: !isCollapsed,
             })}
           >
             <div
@@ -168,21 +167,42 @@ export default class DataCard extends Component {
               <a
                 onClick={this.handleToggleIsCollapsed}
                 className={cx(style.btnCollapse, 'link', {
-                  [style.btnIsOpen]: !isCollapsed
+                  [style.btnIsOpen]: !isCollapsed,
                 })}
               >
                 <i className="ico ico--angle-down" />
               </a>}
           </div>}
 
-        <Button
-          label="Více info"
-          iconRight="keyboard_backspace"
-          iconRightClass="flip"
-          center
-          className={style.btnPrimary}
-          onClick={() => this.props.handleGoToDetail(id)}
-        />
+        {isCompany &&
+          <Button
+            label="Profil firmy"
+            iconRight="keyboard_backspace"
+            iconRightClass="flip"
+            center
+            className={style.btnPrimary}
+            onClick={() => this.props.handleGoToDetail(id)}
+          />}
+
+        {isService &&
+          <Button
+            label="Více o službě"
+            iconRight="keyboard_backspace"
+            iconRightClass="flip"
+            center
+            className={style.btnPrimary}
+            onClick={() => this.props.handleGoToDetail(id)}
+          />}
+
+        {isDemand &&
+          <Button
+            label="Více o poptávce"
+            iconRight="keyboard_backspace"
+            iconRightClass="flip"
+            center
+            className={style.btnPrimary}
+            onClick={() => this.props.handleGoToDetail(id)}
+          />}
 
         {!areButtonsHidden &&
           <div className={style.buttons}>
@@ -197,6 +217,18 @@ export default class DataCard extends Component {
               small
               terniary
               onClick={() => this.props.handleDeleteItem(id)}
+            />
+          </div>}
+
+        {isService &&
+          areButtonsHidden &&
+          <div>
+            <Button
+              label="Poptat službu"
+              // onClick={() => this.props.handleGoToEdit(id)}
+              center
+              small
+              terniary
             />
           </div>}
 

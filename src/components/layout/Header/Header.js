@@ -34,7 +34,7 @@ export default class Header extends Component {
                 <NavLink to="/poptavky" label="Poptávky" />
                 <NavLink to="/sluzby" label="Služby" />
                 <NavLink to="/dodavatele" label="Dodavatelé" />
-                <NavLink to="/o-projektu" label="O projektu" />
+                <NavLink to="/o-projektu" label="Jak to funguje" />
                 <NavLink to="/kontakt" label="Kontakt" />
               </nav>
 

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Title, Paragraph } from 'components/misc'
 import { Section } from 'components/layout'
 
+import Scrollchor from 'react-scrollchor'
+import cx from 'classnames'
 import style from './company-detail-summary.styl'
 
 export default class CompanyDetailHeader extends Component {
@@ -32,19 +34,25 @@ export default class CompanyDetailHeader extends Component {
 
     const company = data
     const category = data.category
+    const noLogo = !company.logo_url
+
+    // console.log('nologo var: ', noLogo)
+    // TODO: class only for nologo
 
     return company && category
       ? <div className={style.wrapper}>
 
         <Section textCenter>
+          {company.logo_url &&
           <div>
             <img
               src={company.logo_url}
               alt={company.company_name}
               className={style.topLogo}
             />
-          </div>
-          <div>
+          </div>}
+
+          <div className={cx(([style.spacingWithoutLogo]: noLogo))}>
             <Title h1>
               {company.company_nice_name || company.company_name}
             </Title>
@@ -120,7 +128,7 @@ export default class CompanyDetailHeader extends Component {
 
               {this.renderInfoBlock(
                   'business_center',
-                  'Údaje o firmě',
+                  'Firemní údaje',
                 <div>
                   {(company.company_nice_name || company.company_name) &&
                   <div>
@@ -145,6 +153,52 @@ export default class CompanyDetailHeader extends Component {
                 </div>,
                 )}
             </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-xs-6 col-md-3">
+            <Scrollchor
+              to="#poptavky"
+              animate={{ offset: -110, duration: 600 }}
+              className="btn btn-lg btn-primary fullwidth"
+            >
+                Poptávky
+                <div className="ripple-container" />
+            </Scrollchor>
+          </div>
+
+          <div className="col-xs-6 col-md-3">
+            <Scrollchor
+              to="#sluzby"
+              animate={{ offset: -110, duration: 600 }}
+              className="btn btn-lg btn-primary fullwidth"
+            >
+                Nabídka služeb
+                <div className="ripple-container" />
+            </Scrollchor>
+          </div>
+
+          <div className="col-xs-6 col-md-3">
+            <Scrollchor
+              to="#historie"
+              animate={{ offset: -110, duration: 600 }}
+              className="btn btn-lg btn-primary fullwidth"
+            >
+                Historie
+                <div className="ripple-container" />
+            </Scrollchor>
+          </div>
+
+          <div className="col-xs-6 col-md-3">
+            <Scrollchor
+              to="#kontakt"
+              animate={{ offset: -110, duration: 600 }}
+              className="btn btn-lg btn-primary fullwidth"
+            >
+                Kontakt
+                <div className="ripple-container" />
+            </Scrollchor>
           </div>
         </div>
 

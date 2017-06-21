@@ -32,17 +32,18 @@ import { form } from 'decorators'
 import { apiCompanies } from 'decorators/api'
 
 import validate from './company-new-form.validation'
+// import ReactTooltip from 'react-tooltip'
 
 @apiCompanies()
 @form({
   form: 'companies.new',
-  validate
+  validate,
 })
 export default class CompanyNewForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    companies: PropTypes.object
-  };
+    companies: PropTypes.object,
+  }
 
   render() {
     const { handleSubmit, companies } = this.props
@@ -53,40 +54,88 @@ export default class CompanyNewForm extends Component {
         wide
         gutters
       >
-        <FormHeader number={1} label="Profil společnosti" />
+        <FormHeader number={1} label="Profil a identifikace firmy" />
         <InputGroup>
-          <Input label="Název" name="company_name" />
-          <SelectCategory label="Kategorie" name="category_id" />
+          <Input
+            label="Název firmy"
+            placeholder="Vyplňte název společnosti či OSVČ"
+            name="company_name"
+          />
+          <SelectCategory
+            label="Kategorie"
+            placeholder="Odvětví, ve kterém firma působí"
+            name="category_id"
+          />
         </InputGroup>
-        <InputGroup>
-          <Input label="Webstránka" name="web_url" />
-          <Input label="Logo URL" name="logo_url" />
-        </InputGroup>
-        <Input label="Slogan" name="slogan" />
-        <Textarea label="Popis společnosti" name="company_description" />
 
-        <FormHeader number={2} label="Kontakty" />
+        <Input
+          label="Motto"
+          placeholder="Jaké je poslání firmy a čím se zabývá? Maximálně 140 znaků."
+          name="slogan"
+        />
+        <Textarea
+          label="O firmě"
+          placeholder="Popište hlavní poslání společnosti, čemu se věnujete, jaké služby nabízíte a kdo jsou Vaši klienti."
+          name="company_description"
+        />
+
+        <FormHeader number={2} label="Kontaktní informace firmy" />
         <InputGroup>
-          <Input label="Telefon" name="company_telephone" />
-          <Input label="Email" name="contact_email" />
+          <Input
+            label="Firemní web"
+            placeholder="Např. www.demander.cz"
+            name="web_url"
+          />
+          <Input
+            label="Kontaktní e-mail"
+            placeholder="Např. info@demander.cz"
+            name="contact_email"
+          />
         </InputGroup>
         <InputGroup>
           <Input label="Adresa" name="company_address" />
           <Input label="Kontaktní osoba" name="contact_person" />
         </InputGroup>
 
-        <FormHeader number={3} label="Sociálni média" />
         <InputGroup>
-          <Input label="Facebook" name="fb_url" />
-          <Input label="Linkedin" name="linkedin_url" />
+          <Input label="Telefon" name="company_telephone" />
+
+        </InputGroup>
+
+        <InputGroup>
+          <Input
+            label="Facebook"
+            placeholder="Vložte odkaz na Váš profil na Facebook"
+            name="fb_url"
+          />
+          <Input
+            label="Linkedin"
+            placeholder="Vložte odkaz na Váš profil na Linkedin"
+            name="linkedin_url"
+          />
         </InputGroup>
         <InputGroup>
-          <Input label="Twitter" name="twitter_url" />
+          <Input
+            label="Twitter"
+            placeholder="Vložte odkaz na Váš profil na Twitter"
+            name="twitter_url"
+          />
+        </InputGroup>
+
+        <FormHeader number={3} label="Identita firmy" />
+        <InputGroup>
+
+          <Input
+            label="Logo firmy"
+            placeholder="Ve čtvercovém formátu (minimálně 300x300px), logo se zobrazuje na bílém pozadí.
+"
+            name="logo_url"
+          />
         </InputGroup>
 
         <Button
           type="submit"
-          label="Zaregistrovat"
+          label="Zaregistrovat Firmu"
           center
           className="base-margin--top"
           isLoading={companies.state.submitting}
