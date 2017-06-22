@@ -26,6 +26,7 @@ import PropTypes from 'prop-types'
 
 import { Form, FormHeader, InputGroup } from 'components/layout'
 import { SelectCategory, Input, Textarea } from 'components/fields'
+import { FieldError } from 'components/fields/__elements__'
 import { Button } from 'components/misc'
 
 import { form } from 'decorators'
@@ -47,6 +48,8 @@ export default class CompanyNewForm extends Component {
 
   render() {
     const { handleSubmit, companies } = this.props
+
+    const submitError = companies.state.error
 
     return (
       <Form
@@ -132,6 +135,9 @@ export default class CompanyNewForm extends Component {
             name="logo_url"
           />
         </InputGroup>
+
+        {submitError &&
+          <FieldError toShow={submitError} message={submitError} />}
 
         <Button
           type="submit"

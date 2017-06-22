@@ -7,7 +7,7 @@ export default function(model) {
   data.logo_url = model.logo_url
   data.slogan = model.slogan
   data.company_description = model.company_description
-  data.company_telephone = model.company_telephone
+  data.contact_telephone = model.contact_telephone
   data.contact_email = model.contact_email
   data.company_address = model.company_address
   data.contact_person = model.contact_person

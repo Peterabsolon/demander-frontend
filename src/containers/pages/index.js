@@ -1,6 +1,15 @@
 export Home from './Home/Home'
 
 /**
+ * Dashboard
+ */
+export DashboardContainer from './dashboard/DashboardContainer/DashboardContainer'
+export DashboardConversations from './dashboard/DashboardConversations/DashboardConversations'
+export DashboardDemands from './dashboard/DashboardDemands/DashboardDemands'
+export DashboardProfile from './dashboard/DashboardProfile/DashboardProfile'
+export DashboardServices from './dashboard/DashboardServices/DashboardServices'
+
+/**
  * Companies
  */
 export Companies from './Companies/Companies'

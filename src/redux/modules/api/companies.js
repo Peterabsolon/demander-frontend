@@ -120,12 +120,19 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         submitting: false
       }
-    case SUBMIT_FAIL:
+    case SUBMIT_FAIL: {
+      let error = 'An unknown error has occured'
+
+      if (action.error.status === 409) {
+        error = 'User can only have 1 company at this time'
+      }
+
       return {
         ...state,
         submitting: false,
-        error: action.error
+        error
       }
+    }
 
     // ----------------------------------------------
 

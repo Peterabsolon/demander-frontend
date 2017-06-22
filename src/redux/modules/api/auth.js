@@ -23,6 +23,8 @@ const SIGNUP_FAIL = 'auth/SIGNUP_FAIL'
 
 const CLEAR_ERROR = 'auth/CLEAR_ERROR'
 
+const LOAD_USER_COMPANY = 'auth/LOAD_USER_COMPANY'
+
 const initialState = {
   loaded: false,
   isLoggingIn: false,
@@ -116,7 +118,7 @@ export default function reducer(state = initialState, action = {}) {
       let error = null
 
       switch (action.error.status) {
-        case 403:
+        case 409:
           error = 'Pre tento email už existuje účet.'
           break
         default:
@@ -175,6 +177,17 @@ export default function reducer(state = initialState, action = {}) {
         error: null
       }
 
+    // ----------------------------------------------------------------
+
+    case LOAD_USER_COMPANY:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          company: action.company
+        }
+      }
+
     default:
       return state
   }
@@ -227,5 +240,12 @@ export function logout() {
 export function clearError() {
   return {
     type: CLEAR_ERROR
+  }
+}
+
+export function loadUserCompany(company) {
+  return {
+    type: LOAD_USER_COMPANY,
+    company
   }
 }

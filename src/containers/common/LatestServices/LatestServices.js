@@ -14,6 +14,7 @@ export default class LatestServices extends Component {
   static propTypes = {
     services: PropTypes.object,
     id: PropTypes.string,
+    noTitle: PropTypes.bool,
   }
 
   handleGoToEdit = id => browserHistory.push(`/sluzby/${id}/upravit`)
@@ -21,7 +22,7 @@ export default class LatestServices extends Component {
   handleGoToDetail = id => browserHistory.push(`/sluzby/${id}`)
 
   render() {
-    const { services, id } = this.props
+    const { services, id, noTitle } = this.props
 
     return (
       <div id={id}>
@@ -30,7 +31,7 @@ export default class LatestServices extends Component {
           type="demand"
           handleGoToEdit={this.handleGoToEdit}
           handleGoToDetail={this.handleGoToDetail}
-          title="Nejnovější nabídky služeb"
+          title={!noTitle && 'Nejnovější nabídky služeb'}
           items={services.state.list}
           Item={DataCard}
           button={
