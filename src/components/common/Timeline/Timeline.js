@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import style from './timeline.styl'
 
 export default class Timeline extends Component {
+  static propTypes = {
+    id: PropTypes.string,
+  }
   render() {
     return (
-      <div style={{ backgroundColor: '#f5f5f5' }}>
+      <div id={this.props.id} style={{ backgroundColor: '#f5f5f5' }}>
         <section
           id={style.cdTimeline}
           className={cx('textCenter', style.cdContainer)}
@@ -22,6 +26,7 @@ export default class Timeline extends Component {
               </p>
               <a
                 href="http://www.dsl.cz/clanky/rychlosti-mobilniho-internetu-na-dsl-cz-v-roce-2016"
+                target="_blank"
                 className={style.cdReadMore}
               >
                 Číst více
@@ -43,6 +48,7 @@ export default class Timeline extends Component {
               <a
                 href="https://vysledky.webtop100.cz/2015/"
                 className={style.cdReadMore}
+                target="_blank"
               >
                 WebTop100
               </a>

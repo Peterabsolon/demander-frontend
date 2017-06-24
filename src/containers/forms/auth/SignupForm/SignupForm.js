@@ -13,13 +13,13 @@ import validate from './signup-form.validation'
 @apiAuth()
 @reduxForm({
   form: 'signup',
-  validate
+  validate,
 })
 export default class SignupForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
-  };
+    auth: PropTypes.object.isRequired,
+  }
 
   render() {
     const { auth } = this.props
@@ -30,20 +30,20 @@ export default class SignupForm extends Component {
         noBorder
         onSubmit={this.props.handleSubmit(auth.api.handleSignup)}
       >
-        <Title h2>Registrace</Title>
+        <Title h2>Registrace uživatele</Title>
 
         <div className="base-margin--double">
           <Input
             name="name"
-            label="Jméno"
-            placeholder="Jméno"
+            label="Jméno a příjmení"
+            placeholder="Jméno a příjmení"
             onInputChange={auth.api.clearError}
           />
 
           <Input
             name="email"
-            label="Email"
-            placeholder="Email"
+            label="Email - přihlašovací jméno"
+            placeholder="Napr. info@demander.cz"
             onInputChange={auth.api.clearError}
           />
 
@@ -51,7 +51,7 @@ export default class SignupForm extends Component {
             name="password"
             type="password"
             label="Heslo"
-            placeholder="Heslo"
+            placeholder="Minimálně 6 znaků"
             onInputChange={auth.api.clearError}
           />
 

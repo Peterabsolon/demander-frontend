@@ -16,12 +16,12 @@ export default class LatestFeed extends Component {
     dark: PropTypes.bool,
     items: PropTypes.array,
     Item: PropTypes.func, // component
-    button: PropTypes.element
-  };
+    button: PropTypes.element,
+  }
 
   static defaultProps = {
-    items: []
-  };
+    items: [],
+  }
 
   render() {
     const {
@@ -32,7 +32,7 @@ export default class LatestFeed extends Component {
       Item,
       type,
       handleGoToEdit,
-      handleGoToDetail
+      handleGoToDetail,
     } = this.props
 
     return (
@@ -52,7 +52,7 @@ export default class LatestFeed extends Component {
                     handleGoToDetail={handleGoToDetail}
                     {...item}
                   />
-                </div>
+                </div>,
             )}
         </div>
 

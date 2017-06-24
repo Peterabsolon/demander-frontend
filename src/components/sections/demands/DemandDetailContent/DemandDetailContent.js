@@ -6,8 +6,8 @@ import { Title, Paragraph, Button } from 'components/misc'
 
 export default class DemandDetailContent extends Component {
   static propTypes = {
-    data: PropTypes.object.isRequired
-  };
+    data: PropTypes.object.isRequired,
+  }
 
   render() {
     const { data } = this.props
@@ -18,7 +18,7 @@ export default class DemandDetailContent extends Component {
 
         {data.goal &&
           <div>
-            <Title smallMargin h4>Cíl</Title>
+            <Title smallMargin h4>Stručný popis poptávky</Title>
             <Paragraph secondary>{data.goal}</Paragraph>
           </div>}
 
@@ -40,14 +40,14 @@ export default class DemandDetailContent extends Component {
 
         {data.timeplan &&
           <div>
-            <Title smallMargin h4>Časové rozmezí</Title>
+            <Title smallMargin h4>Termín a způsob dodání</Title>
             <Paragraph secondary>{data.timeplan}</Paragraph>
           </div>}
 
         {data.budget &&
           <div>
-            <Title smallMargin h4>Rozpočet</Title>
-            <Paragraph secondary>{data.budget}</Paragraph>
+            <Title smallMargin h4>Přibližný rozpočet</Title>
+            <Paragraph secondary>{data.budget} Kš s DPH</Paragraph>
           </div>}
 
         {data.description &&

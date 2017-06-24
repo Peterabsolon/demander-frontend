@@ -10,17 +10,17 @@ import { apiCompanies, apiAuth } from 'decorators/api'
 
 @apiAuth()
 @apiCompanies({
-  list: true
+  list: true,
 })
 export default class Companies extends Component {
   static propTypes = {
     auth: PropTypes.any.isRequired,
-    companies: PropTypes.any.isRequired
-  };
+    companies: PropTypes.any.isRequired,
+  }
 
-  handleGoToEdit = id => browserHistory.push(`/dodavatele/${id}/upravit`);
+  handleGoToEdit = id => browserHistory.push(`/dodavatele/${id}/upravit`)
 
-  handleGoToDetail = id => browserHistory.push(`/dodavatele/${id}`);
+  handleGoToDetail = id => browserHistory.push(`/dodavatele/${id}`)
 
   render() {
     const { companies, auth } = this.props
@@ -29,11 +29,11 @@ export default class Companies extends Component {
       <div>
         <PageHeader
           title="Seznam dodavatelů"
-          subtitle="Společnosti registrované v systému Demander"
+          subtitle="Firmy registrované v systému Demander"
         >
           <Button
             to="/dodavatele/vytvorit"
-            label="Registrovat společnost"
+            label="Registrovat firmu"
             icon="add"
           />
         </PageHeader>
