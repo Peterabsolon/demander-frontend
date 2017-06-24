@@ -141,6 +141,7 @@
     "react-router-redux": "4.0.8",
     "react-router-scroll": "0.4.1",
     "react-router-transition": "0.0.6",
+    "react-scrollchor": "^3.0.0",
     "react-select": "^1.0.0-rc.4",
     "react-tabs": "^1.0.0",
     "react-tap-event-plugin": "^2.0.1",
