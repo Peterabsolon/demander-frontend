@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { apiConversations } from 'decorators/api'
+import {
+  ConversationsContainer,
+  ConversationsList
+} from 'components/sections/dashboard/dashboard-conversations'
 
+import { apiAuth, apiConversations } from 'decorators/api'
+
+@apiAuth()
 @apiConversations({
   list: true
 })
-export default class DashboardDemands extends Component {
+export default class DashboardConversations extends Component {
   static propTypes = {
     children: PropTypes.any
   }
@@ -14,9 +20,10 @@ export default class DashboardDemands extends Component {
   render() {
     console.log(this.props)
     return (
-      <div>
+      <ConversationsContainer>
+        <ConversationsList {...this.props} />
         {this.props.children}
-      </div>
+      </ConversationsContainer>
     )
   }
 }

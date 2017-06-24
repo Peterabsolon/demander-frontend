@@ -5,6 +5,7 @@ export Home from './Home/Home'
  */
 export DashboardContainer from './dashboard/DashboardContainer/DashboardContainer'
 export DashboardConversations from './dashboard/DashboardConversations/DashboardConversations'
+export DashboardConversation from './dashboard/DashboardConversation/DashboardConversation'
 export DashboardDemands from './dashboard/DashboardDemands/DashboardDemands'
 export DashboardProfile from './dashboard/DashboardProfile/DashboardProfile'
 export DashboardServices from './dashboard/DashboardServices/DashboardServices'

@@ -36,7 +36,7 @@ const decorator = (config = {}) => ComposedComponent => {
     render() {
       const { state } = this.props
 
-      return <ComposedComponent conversations={state} />
+      return <ComposedComponent {...this.props} conversations={state} />
     }
   }
 

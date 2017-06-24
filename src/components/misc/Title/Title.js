@@ -20,9 +20,10 @@ export default class Title extends Component {
     h6: PropTypes.bool,
     noUppercase: PropTypes.bool,
     noMargin: PropTypes.bool,
+    noCenter: PropTypes.bool,
     smallMargin: PropTypes.bool,
     intlKey: PropTypes.string
-  };
+  }
 
   renderContent = () => {
     const { intlKey, children } = this.props
@@ -36,7 +37,7 @@ export default class Title extends Component {
       )
     }
     return children
-  };
+  }
 
   render() {
     const {
@@ -51,6 +52,7 @@ export default class Title extends Component {
       white,
       gray,
       noMargin,
+      noCenter,
       smallMargin,
       noUppercase
     } = this.props
@@ -61,38 +63,27 @@ export default class Title extends Component {
       [styles.gray]: gray,
       [styles.noUppercase]: noUppercase,
       [styles.noMargin]: noMargin,
+      [styles.noCenter]: noCenter,
       'base-margin-small--bottom': smallMargin
     })
 
     if (h1) {
-      return (
-        <h1 className={classList} style={style}>{this.renderContent()}</h1>
-      )
+      return <h1 className={classList} style={style}>{this.renderContent()}</h1>
     }
     if (h2) {
-      return (
-        <h2 className={classList} style={style}>{this.renderContent()}</h2>
-      )
+      return <h2 className={classList} style={style}>{this.renderContent()}</h2>
     }
     if (h3) {
-      return (
-        <h3 className={classList} style={style}>{this.renderContent()}</h3>
-      )
+      return <h3 className={classList} style={style}>{this.renderContent()}</h3>
     }
     if (h4) {
-      return (
-        <h4 className={classList} style={style}>{this.renderContent()}</h4>
-      )
+      return <h4 className={classList} style={style}>{this.renderContent()}</h4>
     }
     if (h5) {
-      return (
-        <h5 className={classList} style={style}>{this.renderContent()}</h5>
-      )
+      return <h5 className={classList} style={style}>{this.renderContent()}</h5>
     }
     if (h6) {
-      return (
-        <h6 className={classList} style={style}>{this.renderContent()}</h6>
-      )
+      return <h6 className={classList} style={style}>{this.renderContent()}</h6>
     }
 
     return null

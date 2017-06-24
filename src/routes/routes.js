@@ -104,7 +104,9 @@ export default store => {
           <Route path="profil" component={Page.DashboardProfile} />
           <Route path="poptavky" component={Page.DashboardDemands} />
           <Route path="sluzby" component={Page.DashboardServices} />
-          <Route path="konverzace" component={Page.DashboardConversations} />
+          <Route path="konverzace" component={Page.DashboardConversations}>
+            <Route path=":id" component={Page.DashboardConversation} />
+          </Route>
         </Route>
       </Route>
 

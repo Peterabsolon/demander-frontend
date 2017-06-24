@@ -21,7 +21,7 @@ const decorator = (config = {}) => ComposedComponent => {
   })
   class apiAbstract extends Component {
     static propTypes = {
-      companyId: PropTypes.string,
+      companyId: PropTypes.number,
       createEntity: PropTypes.func.isRequired,
       deleteEntity: PropTypes.func.isRequired,
       getById: PropTypes.func.isRequired,
