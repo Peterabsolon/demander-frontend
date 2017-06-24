@@ -1,3 +1,5 @@
+import routeParams from 'helpers/routeParams'
+
 const CREATE = 'api/conversations/CREATE'
 const CREATE_SUCCESS = 'api/conversations/CREATE_SUCCESS'
 const CREATE_FAIL = 'api/conversations/CREATE_FAIL'
@@ -19,6 +21,7 @@ const initialState = {
     items: [],
     offset: 0,
     limit: 20,
+    count: null,
     loading: false,
     loaded: false,
     submitting: false,
@@ -119,7 +122,9 @@ export default function reducer(state = initialState, action = {}) {
         list: {
           ...state.list,
           loaded: true,
-          loading: false
+          loading: false,
+          items: action.result.items,
+          count: action.result.count
         }
       }
     case GET_LIST_FAIL:
@@ -180,9 +185,10 @@ export const getConversation = id => ({
   promise: client => client.get(`api/conversations/${id}`)
 })
 
-export const getConversations = companyId => ({
+export const getConversations = (state, companyId) => ({
   types: [GET_LIST, GET_LIST_SUCCESS, GET_LIST_FAIL],
-  promise: client => client.get(`api/conversations/company/${companyId}`)
+  promise: client =>
+    client.get(`api/conversations/company/${companyId}${routeParams(state)}`)
 })
 
 export const sendMessage = (conversationId, data) => ({

@@ -1,5 +1,6 @@
 export apiAuth from './Auth/Auth'
 export apiCompanies from './Companies/Companies'
 export apiCategories from './Categories/Categories'
+export apiConversations from './Conversations/Conversations'
 export apiDemands from './Demands/Demands'
 export apiServices from './Services/Services'

@@ -1,4 +1,4 @@
-export default function({ filter, limit, offset, sort }, defaultFilter) {
+export default function({ filter, limit, offset, sort }, defaultFilter = '') {
   // cba dealing with ? and &
   let query = '?foo=bar'
 
