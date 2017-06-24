@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid'
 import { browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
 import MUIPopover from 'material-ui/Popover'
@@ -10,8 +11,8 @@ import { Button } from 'components/misc'
 
 const itemsShape = PropTypes.arrayOf(
   PropTypes.shape({
-    to: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    to: PropTypes.string,
+    label: PropTypes.string
   })
 )
 
@@ -31,15 +32,14 @@ export default class PopoverMenu extends Component {
 
   state = { isOpen: false }
 
-  handleOpen = event => {
-    console.log('event.currentTarget', event.currentTarget)
+  handleOpen = event =>
     this.setState({ isOpen: true, anchorEl: event.currentTarget })
-  }
 
   handleClose = () => this.setState({ isOpen: false })
 
   handleRedirectTo = to => {
     browserHistory.push(to)
+
     this.handleClose()
   }
 
@@ -54,7 +54,7 @@ export default class PopoverMenu extends Component {
           icon={icon}
           noBackground
           white
-          onClick={!to && this.handleOpen}
+          onClick={!to ? this.handleOpen : () => {}}
           to={to}
         />
 
@@ -68,6 +68,7 @@ export default class PopoverMenu extends Component {
           <Menu>
             {items.map(item =>
               <MenuItem
+                key={uuid.v1()}
                 onTouchTap={
                   item.onClick
                     ? item.onClick
@@ -81,6 +82,7 @@ export default class PopoverMenu extends Component {
 
             {extraItems.map(item =>
               <MenuItem
+                key={uuid.v1()}
                 onTouchTap={item.onClick && item.onClick}
                 primaryText={item.label}
               />

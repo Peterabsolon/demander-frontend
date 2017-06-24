@@ -19,10 +19,6 @@ export default class Header extends Component {
     const { auth } = this.props
 
     const isLoggedIn = auth.state.isLoggedIn
-    // const user = get(auth, 'state.user')
-    //
-
-    console.log('isLoggedIn', isLoggedIn)
 
     return (
       <Headroom>
@@ -57,12 +53,6 @@ export default class Header extends Component {
                   { onClick: auth.api.handleLogout, label: 'Odhlásit' }
                 ]}
               />
-
-              {/* <div className={style.socialLinks}>
-                <i className="ico ico--facebook" />
-                <i className="ico ico--twitter" />
-                <i className="ico ico--linkedin" />
-              </div> */}
             </div>
           </div>
         </div>

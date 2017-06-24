@@ -20,7 +20,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 const muiTheme = getMuiTheme({
-  fontFamily: 'Nunito'
+  fontFamily: 'Nunito',
+  userAgent: 'all'
 })
 
 @asyncConnect([
