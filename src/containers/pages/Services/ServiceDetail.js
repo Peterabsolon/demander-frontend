@@ -7,22 +7,31 @@ import {
   ServiceDetailContent
 } from 'components/sections/services'
 
-import { apiServices } from 'decorators/api'
+import { apiServices, apiConversations } from 'decorators/api'
 
 @apiServices({
   detail: true
 })
+@apiConversations()
 export default class ServiceDetail extends Component {
   static propTypes = {
-    services: PropTypes.object.isRequired
-  };
+    services: PropTypes.object.isRequired,
+    conversations: PropTypes.object.isRequired
+  }
 
   render() {
-    const { services } = this.props
+    const { services, conversations } = this.props
+
+    const {
+      handleRequestService,
+      handleRequestServiceSubmit
+    } = conversations.api
 
     return (
       <EntityDetail
         data={services.state.detail}
+        handleRequestService={handleRequestService}
+        handleRequestServiceSubmit={handleRequestServiceSubmit}
         Sidebar={ServiceDetailSidebar}
         Content={ServiceDetailContent}
       />

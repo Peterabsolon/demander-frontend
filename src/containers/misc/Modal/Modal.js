@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import cx from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
@@ -43,6 +44,7 @@ const resetStyles = {
 export default class Modal extends PureComponent {
   static propTypes = {
     contentLabel: React.PropTypes.string,
+    className: React.PropTypes.string,
     modalObj: React.PropTypes.object,
     compact: React.PropTypes.bool,
     enableOverflow: React.PropTypes.bool,
@@ -60,11 +62,11 @@ export default class Modal extends PureComponent {
     intlKeyClose: React.PropTypes.string,
     intlKeyAction: React.PropTypes.string,
     modal: React.PropTypes.func.isRequired
-  };
+  }
 
   static defaultProps = {
     action: '',
-    closeAction: 'Dismiss',
+    closeAction: 'Zrušit',
     compact: false,
     enableOverflow: false,
     wider: false,
@@ -74,7 +76,7 @@ export default class Modal extends PureComponent {
     customActions: false,
     dontCloseAfterSubmit: false,
     contentLabel: ''
-  };
+  }
 
   constructor(props) {
     super(props)
@@ -88,7 +90,8 @@ export default class Modal extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.modalObj.id !== nextProps.modalObj.id && !nextProps.modalObj.id
+      this.props.modalObj.id !== nextProps.modalObj.id &&
+      !nextProps.modalObj.id
     ) {
       this.handleOnRequestClose()
     }
@@ -110,7 +113,7 @@ export default class Modal extends PureComponent {
         this.handleClose()
       }
     )
-  };
+  }
 
   handleClose = () => {
     this.props.modal(null, null)
@@ -118,7 +121,7 @@ export default class Modal extends PureComponent {
     if (this.props.onClose) {
       this.props.onClose()
     }
-  };
+  }
 
   handleAfterOpen = () => {
     this.setState({
@@ -127,7 +130,7 @@ export default class Modal extends PureComponent {
       z: 0,
       shouldClose: false
     })
-  };
+  }
 
   handleAfterSubmit = () => {
     if (this.props.onSubmit) {
@@ -135,10 +138,11 @@ export default class Modal extends PureComponent {
     }
 
     !this.props.dontCloseAfterSubmit && this.props.modal(null, null)
-  };
+  }
 
   render() {
     const {
+      className,
       modalObj,
       id,
       children,
@@ -189,21 +193,23 @@ export default class Modal extends PureComponent {
             z: spring(z)
           }}
         >
-          {interpolatingStyle => (
+          {interpolatingStyle =>
             <div
-              className={
-                `${styles.modalContent} ${compactClass} ${widerClass} ${largeClass} ${overflowClass}`
-              }
+              className={`${styles.modalContent} ${compactClass} ${widerClass} ${largeClass} ${overflowClass}`}
               style={{
                 transform: `translate3d(0, ${interpolatingStyle.y}px, ${interpolatingStyle.z}px)`,
                 opacity: `${interpolatingStyle.opacity}`
               }}
             >
-              <div className={styles.innerContent}>
+              <div className={cx(styles.innerContent, className)}>
                 {content}
                 {!customActions &&
                   <div className={styles.btns}>
-                    <Button secondary onClick={this.handleOnRequestClose}>
+                    <Button
+                      noMargin
+                      terniary
+                      onClick={this.handleOnRequestClose}
+                    >
                       {intlKeyClose
                         ? <FormattedMessage
                           id={intlKeyClose}
@@ -213,6 +219,7 @@ export default class Modal extends PureComponent {
                     </Button>
                     {action &&
                       <Button
+                        noMargin
                         className={styles.btn}
                         onClick={this.handleAfterSubmit}
                         isLoading={isLoading}
@@ -228,8 +235,7 @@ export default class Modal extends PureComponent {
                   </div>}
                 {contentCTA}
               </div>
-            </div>
-          )}
+            </div>}
         </Motion>
       </ReactModal>
     )

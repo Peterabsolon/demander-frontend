@@ -2,18 +2,35 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { ButtonGroup } from 'components/layout'
+import { RequestServiceForm } from 'containers/forms/services'
 import { Title, Paragraph, Button } from 'components/misc'
 
 export default class ServiceDetailContent extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    handleRequestService: PropTypes.func.isRequired,
+    handleRequestServiceSubmit: PropTypes.func.isRequired
   }
 
   render() {
-    const { data } = this.props
+    const {
+      data,
+      handleRequestService,
+      handleRequestServiceSubmit
+    } = this.props
 
     return (
       <div>
+        <ButtonGroup stretch className="base-margin--bottom">
+          <Button
+            onClick={handleRequestService}
+            icon="forum"
+            label="Poptat Službu"
+          />
+
+          <Button terniary to="/sluzby" icon="reply" label="Seznam" />
+        </ButtonGroup>
+
         <Title h2>{data.title}</Title>
 
         <Title smallMargin h4>Popis služby</Title>
@@ -25,10 +42,9 @@ export default class ServiceDetailContent extends Component {
             <Paragraph secondary>{data.location}</Paragraph>
           </div>}
 
-        <ButtonGroup>
-          <Button terniary to="/sluzby" icon="reply" label="Seznam" />
-          <Button icon="forum" label="Poptat Službu" />
-        </ButtonGroup>
+        <RequestServiceForm
+          onSubmit={values => handleRequestServiceSubmit(values, data)}
+        />
       </div>
     )
   }

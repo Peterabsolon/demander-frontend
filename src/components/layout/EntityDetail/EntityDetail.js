@@ -8,11 +8,11 @@ export default class EntityDetail extends Component {
     data: PropTypes.object,
     Sidebar: PropTypes.func,
     Content: PropTypes.func
-  };
+  }
 
   static defaultProps = {
     data: {}
-  };
+  }
 
   render() {
     const { Sidebar, Content, data } = this.props
@@ -21,12 +21,12 @@ export default class EntityDetail extends Component {
       <div className={style.wrapper}>
         {Sidebar &&
           <div className={style.sidebar}>
-            <Sidebar data={data} />
+            <Sidebar data={data} {...this.props} />
           </div>}
 
         {Content &&
           <div className={style.content}>
-            <Content data={data} />
+            <Content data={data} {...this.props} />
           </div>}
       </div>
     )

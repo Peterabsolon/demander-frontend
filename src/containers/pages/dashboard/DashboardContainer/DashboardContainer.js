@@ -6,9 +6,7 @@ import { TabsList, TabsItem } from 'components/misc'
 
 import { apiCompanies } from 'decorators/api'
 
-@apiCompanies({
-  detail: true
-})
+@apiCompanies()
 export default class DashboardContainer extends Component {
   static propTypes = {
     children: PropTypes.any.isRequired,

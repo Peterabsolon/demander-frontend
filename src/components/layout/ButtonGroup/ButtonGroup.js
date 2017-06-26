@@ -6,17 +6,19 @@ import style from './button-group.styl'
 
 export default class ButtonGroup extends Component {
   static propTypes = {
+    className: PropTypes.string,
     children: PropTypes.any,
     stretch: PropTypes.bool
-  };
+  }
 
   render() {
-    const { stretch } = this.props
+    const { className, stretch } = this.props
 
     return (
       <div
         className={cx(style.wrapper, {
-          [style.stretch]: stretch
+          [style.stretch]: stretch,
+          [className]: className
         })}
       >
         {this.props.children}

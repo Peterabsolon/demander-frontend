@@ -6,7 +6,7 @@ import { Title, Paragraph, Button } from 'components/misc'
 
 export default class DemandDetailContent extends Component {
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired
   }
 
   render() {
@@ -14,6 +14,11 @@ export default class DemandDetailContent extends Component {
 
     return (
       <div>
+        <ButtonGroup stretch className="base-margin--bottom">
+          <Button icon="forum" label="Reagovat" />
+          <Button terniary to="/poptavky" icon="reply" label="Seznam" />
+        </ButtonGroup>
+
         <Title h2>{data.title}</Title>
 
         {data.goal &&
@@ -55,11 +60,6 @@ export default class DemandDetailContent extends Component {
             <Title smallMargin h4>Detaily</Title>
             <Paragraph secondary>{data.description}</Paragraph>
           </div>}
-
-        <ButtonGroup>
-          <Button terniary to="/poptavky" icon="reply" label="Seznam" />
-          <Button icon="forum" label="Reagovat" />
-        </ButtonGroup>
       </div>
     )
   }

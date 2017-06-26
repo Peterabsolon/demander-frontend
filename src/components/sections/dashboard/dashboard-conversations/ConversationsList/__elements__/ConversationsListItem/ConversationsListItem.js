@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import cx from 'classnames'
 import { get } from 'lodash'
 import PropTypes from 'prop-types'
@@ -10,51 +11,59 @@ import style from './conversations-list-item.styl'
 
 export default class ConversationsListItem extends Component {
   static propTypes = {
+    isActive: PropTypes.bool.isRequired,
     userCompanyId: PropTypes.number.isRequired,
     item: PropTypes.object.isRequired
   }
 
   render() {
-    const { item, userCompanyId } = this.props
+    const { item, userCompanyId, isActive } = this.props
 
     const isInbound = item.receiver_company_id === userCompanyId
     const target = isInbound ? 'sender' : 'receiver'
+    const route = `/dashboard/konverzace/${get(item, 'id')}`
 
     return (
-      <div className={style.wrapper}>
-        <div className={style.colLeft}>
-          <div className={style.logo}>
-            <img
-              src={get(item, `${target}_company_logo`)}
-              alt={get(item, `${target}_company_name`)}
-            />
-          </div>
-        </div>
-        <div className={style.colMiddle}>
-          <div className={style.name}>
-            <Title noCenter noMargin h5>
-              {get(item, `${target}_company_name`)}
-            </Title>
-          </div>
-          <div className={style.title}>
-            <Title noCenter noMargin h5>
-              {get(item, 'title')}
-            </Title>
-          </div>
-          <div className={cx(style.meta, 'color--gray-alpha')}>
-            <div
-              className={cx(style.role, {
-                [style.roleInbound]: isInbound
-              })}
-            >
-              {isInbound ? 'Zájemce' : 'Poskytovatel'}
-            </div>
-            &middot;
-            <div className={style.modifiedAt}>
-              {formatFromNow(get(item, 'modified_at'))}
+      <div
+        className={cx(style.wrapper, {
+          [style.isActive]: isActive
+        })}
+      >
+        <Link to={route}>
+          <div className={style.colLeft}>
+            <div className={style.logo}>
+              <img
+                src={get(item, `${target}_company_logo`)}
+                alt={get(item, `${target}_company_name`)}
+              />
             </div>
           </div>
-        </div>
+          <div className={style.colMiddle}>
+            <div className={style.name}>
+              <Title noCenter noMargin h5>
+                {get(item, `${target}_company_name`)}
+              </Title>
+            </div>
+            <div className={style.title}>
+              <Title noCenter noMargin h5>
+                {get(item, 'title')}
+              </Title>
+            </div>
+            <div className={cx(style.meta, 'color--gray-alpha')}>
+              <div
+                className={cx(style.role, {
+                  [style.roleInbound]: isInbound
+                })}
+              >
+                {isInbound ? 'Zájemce' : 'Poskytovatel'}
+              </div>
+              &middot;
+              <div className={style.modifiedAt}>
+                {formatFromNow(get(item, 'modified_at'))}
+              </div>
+            </div>
+          </div>
+        </Link>
       </div>
     )
   }

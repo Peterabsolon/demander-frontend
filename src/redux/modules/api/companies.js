@@ -170,10 +170,13 @@ export const getList = (state, { noLoading } = {}) => {
   }
 }
 
-export const getById = id => ({
-  types: [GET_BY_ID, GET_BY_ID_SUCCESS, GET_BY_ID_FAIL],
-  promise: client => client.get(`api/companies/${id}`)
-})
+export const getById = id => {
+  console.log('getting company')
+  return {
+    types: [GET_BY_ID, GET_BY_ID_SUCCESS, GET_BY_ID_FAIL],
+    promise: client => client.get(`api/companies/${id}`)
+  }
+}
 
 export const setFilter = filter => ({
   type: SET_FILTER,

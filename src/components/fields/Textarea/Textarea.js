@@ -13,6 +13,7 @@ export default class Textarea extends Component {
   static propTypes = {
     className: React.PropTypes.string,
     onInputChange: React.PropTypes.func,
+    onKeyPress: React.PropTypes.func,
     normalizeOnBlur: React.PropTypes.func,
     disabled: React.PropTypes.bool,
     disableLineBreaks: React.PropTypes.bool,
@@ -25,6 +26,8 @@ export default class Textarea extends Component {
     loading: React.PropTypes.bool,
     labelless: React.PropTypes.bool,
     required: React.PropTypes.bool,
+    noMargin: React.PropTypes.bool,
+    transparent: React.PropTypes.bool,
     label: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     intlKey: React.PropTypes.string,
@@ -34,7 +37,7 @@ export default class Textarea extends Component {
     min: React.PropTypes.number,
     max: React.PropTypes.number,
     normalize: React.PropTypes.func
-  };
+  }
 
   static defaultProps = {
     loading: false,
@@ -42,9 +45,9 @@ export default class Textarea extends Component {
     disabled: false,
     clearable: false,
     validate: () => {}
-  };
+  }
 
-  state = { isFocused: false };
+  state = { isFocused: false }
 
   handleChange = (e, field) => {
     const { disableLineBreaks } = this.props
@@ -59,13 +62,13 @@ export default class Textarea extends Component {
     }
 
     field.input.onChange(value)
-  };
+  }
 
   handleOnFocus = (e, field) => {
     this.setState({ isFocused: true })
 
     field.input.onFocus(e)
-  };
+  }
 
   handleOnBlur = (e, field) => {
     this.setState({ isFocused: false })
@@ -75,9 +78,9 @@ export default class Textarea extends Component {
     }
 
     field.input.onBlur()
-  };
+  }
 
-  handleClear = field => field.input.onChange(null);
+  handleClear = field => field.input.onChange(null)
 
   renderField = field => {
     const {
@@ -110,9 +113,7 @@ export default class Textarea extends Component {
 
     return (
       <div
-        className={
-          `${styles.controls} ${errorClass} ${disabledClass} ${clearableClass}`
-        }
+        className={`${styles.controls} ${errorClass} ${disabledClass} ${clearableClass}`}
       >
         <div className={styles.inputWrapper}>
           {inline && this.renderLabel()}
@@ -126,6 +127,7 @@ export default class Textarea extends Component {
             onBlur={e => this.handleOnBlur(e, field)}
             onFocus={e => this.handleOnFocus(e, field)}
             disabled={disabled}
+            onKeyPress={this.props.onKeyPress}
             placeholder={placeholder || label}
           />
           {clearable &&
@@ -147,7 +149,7 @@ export default class Textarea extends Component {
         </span>} */}
       </div>
     )
-  };
+  }
 
   renderLabel() {
     const {
@@ -164,6 +166,7 @@ export default class Textarea extends Component {
     const { isFocused } = this.state
 
     return (
+      label &&
       <label
         htmlFor={name}
         className={cx('control-label', styles.label, {
@@ -194,7 +197,9 @@ export default class Textarea extends Component {
       inline,
       loading,
       titleStyle,
-      descriptionStyle
+      descriptionStyle,
+      transparent,
+      noMargin
     } = this.props
 
     return (
@@ -202,7 +207,9 @@ export default class Textarea extends Component {
         className={cx('form-group', styles.wrapper, {
           [className]: className,
           [styles.titleStyle]: titleStyle,
-          [styles.descriptionStyle]: descriptionStyle
+          [styles.descriptionStyle]: descriptionStyle,
+          [styles.transparent]: transparent,
+          [styles.noMargin]: noMargin
         })}
       >
         {!inline && this.renderLabel()}

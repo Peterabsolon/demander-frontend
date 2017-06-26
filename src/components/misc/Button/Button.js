@@ -23,6 +23,7 @@ export default class Button extends Component {
     isLoading: PropTypes.bool,
     label: PropTypes.string,
     noBackground: PropTypes.bool,
+    noMargin: PropTypes.bool,
     offsetLeft: PropTypes.string,
     onClick: PropTypes.func,
     secondary: PropTypes.bool,
@@ -33,11 +34,11 @@ export default class Button extends Component {
     type: PropTypes.string,
     white: PropTypes.bool,
     wide: PropTypes.bool
-  };
+  }
 
   static defaultProps = {
     type: 'button'
-  };
+  }
 
   renderContent = () => {
     const {
@@ -96,13 +97,14 @@ export default class Button extends Component {
 
       </div>
     )
-  };
+  }
 
   render() {
     const {
       block,
       className,
       noBackground,
+      noMargin,
       center,
       secondary,
       terniary,
@@ -122,6 +124,7 @@ export default class Button extends Component {
         [className]: className,
         [style.block]: block,
         [style.noBackground]: noBackground,
+        [style.noMargin]: noMargin,
         [style.wide]: wide,
         [style.secondary]: secondary,
         [style.terniary]: terniary,

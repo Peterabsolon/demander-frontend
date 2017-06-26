@@ -17,13 +17,10 @@ export default class DashboardConversations extends Component {
     children: PropTypes.any
   }
 
-  render() {
-    console.log(this.props)
-    return (
-      <ConversationsContainer>
-        <ConversationsList {...this.props} />
-        {this.props.children}
-      </ConversationsContainer>
-    )
-  }
+  render = () =>
+    <ConversationsContainer>
+      <ConversationsList {...this.props} />
+
+      {this.props.children}
+    </ConversationsContainer>
 }

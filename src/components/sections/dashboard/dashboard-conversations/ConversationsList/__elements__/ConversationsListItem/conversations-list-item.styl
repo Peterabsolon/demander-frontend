@@ -5,9 +5,17 @@ $logo_size = 50px
 .wrapper
   border-bottom 1px solid $color-gray-beta
   position relative
-  display flex
-  align-items center
-  padding 15px 0
+  transition .15s ease background
+  &:hover
+    background $color-gray-gamma
+    cursor pointer
+
+  a
+    width 100%
+    padding 15px 0
+    text-decoration none
+    display flex
+    align-items center
 
 .logo
   box-sizing content-box
@@ -23,9 +31,11 @@ $logo_size = 50px
 .name
   h5
     margin-bottom 5px
+    color #000
 
 .title
   margin-bottom 5px
+  color #000
 
 .colMiddle
   flex 1
@@ -39,3 +49,6 @@ $logo_size = 50px
 
 .modifiedAt
   margin-left 6px
+
+.isActive
+  background $color-gray-gamma

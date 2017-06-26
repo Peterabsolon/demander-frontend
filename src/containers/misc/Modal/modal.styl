@@ -1,3 +1,5 @@
+@import '~assets/css/variables'
+
 :global
   .ReactModal__Overlay--after-open,
   .ReactModal__Overlay--before-close
@@ -17,7 +19,7 @@
 
   .ReactModal__Overlay--after-open
     &:after
-      background rgba(white, .75)
+      background rgba(black, .75)
 
   .ReactModal__Overlay--before-close
     background transparent !important
@@ -36,23 +38,25 @@
   transform-origin 50% 50%
   perspective 500px
   background white
-  border 1px solid #ccc
+  border 1px solid $color-gray-gamma
   width 620px
-  min-height 150px
+  min-height 100px
   margin auto
   max-height 90vh
   overflow-y auto
   z-index 1000
 
 .modal-compact
-  width 400px
+  max-width 550px
 
 .inner-content
-  padding 12px
+  padding $vertical-rhytm-base
 
 .btns
   margin-top 16px
   text-align right
+  display flex
+  justify-content space-between
 
 .overflow
   overflow visible

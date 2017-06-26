@@ -21,10 +21,12 @@ function decorator(config = {}) {
     })
     @connect(
       (state, props) => ({
-        values: state.form[config.form || props.form] &&
-          state.form[config.form || props.form].values,
-        errors: state.form[config.form || props.form] &&
-          state.form[config.form || props.form].syncErrors,
+        values:
+          state.form[config.form || props.form] &&
+            state.form[config.form || props.form].values,
+        errors:
+          state.form[config.form || props.form] &&
+            state.form[config.form || props.form].syncErrors,
         modalObj: state.app.modal
       }),
       { modal, push }
@@ -34,12 +36,12 @@ function decorator(config = {}) {
         pristine: React.PropTypes.bool.isRequired,
         submitSucceeded: React.PropTypes.bool.isRequired,
         modalObj: React.PropTypes.object.isRequired,
-        router: React.PropTypes.object.isRequired,
+        router: React.PropTypes.object,
         route: React.PropTypes.object,
         modal: React.PropTypes.func.isRequired,
         push: React.PropTypes.func.isRequired,
         initialize: React.PropTypes.func.isRequired
-      };
+      }
 
       componentDidMount() {
         !config.disableHook && this.handleLeaveHook()
@@ -83,13 +85,13 @@ function decorator(config = {}) {
           this.props.modal('WizardDialog', nextLoc.pathname)
           return false
         })
-      };
+      }
 
       handleRedirect = () =>
         this.props.push({
           pathname: this.props.modalObj.next,
           state: { shouldRedirect: true }
-        });
+        })
 
       render() {
         return (
