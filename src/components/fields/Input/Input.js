@@ -29,8 +29,8 @@ export default class Input extends Component {
     step: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
-    normalize: PropTypes.func
-  };
+    normalize: PropTypes.func,
+  }
   /* eslint-enable */
 
   static defaultProps = {
@@ -38,10 +38,10 @@ export default class Input extends Component {
     optional: false,
     disabled: false,
     clearable: false,
-    validate: () => {}
-  };
+    validate: () => {},
+  }
 
-  state = { isFocused: false };
+  state = { isFocused: false }
 
   handleChange = (e, field) => {
     if (this.props.onInputChange) {
@@ -49,13 +49,13 @@ export default class Input extends Component {
     }
 
     field.input.onChange(e.target.value)
-  };
+  }
 
   handleOnFocus = (e, field) => {
     this.setState({ isFocused: true })
 
     field.input.onFocus(e)
-  };
+  }
 
   handleOnBlur = (e, field) => {
     this.setState({ isFocused: false })
@@ -65,9 +65,9 @@ export default class Input extends Component {
     }
 
     field.input.onBlur()
-  };
+  }
 
-  handleClear = field => field.input.onChange(null);
+  handleClear = field => field.input.onChange(null)
 
   renderField = field => {
     const {
@@ -80,7 +80,7 @@ export default class Input extends Component {
       label,
       inlineLabelWidth,
       placeholder,
-      inline
+      inline,
     } = this.props
 
     const { meta, input } = field
@@ -94,17 +94,16 @@ export default class Input extends Component {
       numberParams = {
         step,
         min,
-        max
+        max,
       }
     }
 
     return (
       <div
-        className={
-          `${styles.controls} ${errorClass} ${disabledClass} ${clearableClass}`
-        }
+        className={`${styles.controls} ${errorClass} ${disabledClass} ${clearableClass}`}
       >
         <div className={styles.inputWrapper}>
+
           {inline && <FieldLabel {...this.props} />}
 
           <input
@@ -137,20 +136,15 @@ export default class Input extends Component {
         </span>} */}
       </div>
     )
-  };
+  }
 
   render() {
-    const {
-      className,
-      name,
-      loading,
-      inline
-    } = this.props
+    const { className, name, loading, inline } = this.props
 
     return (
       <div
         className={cx('form-group', {
-          [className]: className
+          [className]: className,
         })}
       >
         {!inline && <FieldLabel {...this.props} {...this.state} />}

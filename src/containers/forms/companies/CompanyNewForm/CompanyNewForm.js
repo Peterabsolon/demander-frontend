@@ -58,16 +58,35 @@ export default class CompanyNewForm extends Component {
         gutters
       >
         <FormHeader number={1} label="Profil a identifikace firmy" />
+        <Input
+          label="Název firmy"
+          placeholder="Vyplňte název společnosti či OSVČ"
+          name="company_name"
+        />
+
         <InputGroup>
           <Input
-            label="Název firmy"
-            placeholder="Vyplňte název společnosti či OSVČ"
-            name="company_name"
+            label="Kontaktní osoba"
+            placeholder="Jméno a příjmení kontaktní osoby"
+            name="contact_person"
           />
-          <SelectCategory
-            label="Kategorie"
-            placeholder="Odvětví, ve kterém firma působí"
-            name="category_id"
+          <Input
+            label="Email kontaktní osoby"
+            placeholder="Email kontaktní osoby"
+            name="contact_person_email"
+          />
+        </InputGroup>
+
+        <InputGroup>
+          <Input
+            label="IČO"
+            placeholder="IČO společnosti či OSVČ"
+            name="company_id"
+          />
+          <Input
+            label="DIČ"
+            placeholder="DIČ, pokud jste plátci DPH"
+            name="company_vat_id"
           />
         </InputGroup>
 
@@ -82,7 +101,26 @@ export default class CompanyNewForm extends Component {
           name="company_description"
         />
 
+        <SelectCategory
+          label="Kategorie"
+          placeholder="Odvětví, ve kterém firma působí"
+          name="category_id"
+        />
+
         <FormHeader number={2} label="Kontaktní informace firmy" />
+        <Input
+          label="Sídlo firmy - adresa"
+          name="company_address"
+          placeholder="Adresa sídla firmy"
+        />
+        {/* <Input label="Kontaktní osoba" name="contact_person" /> */}
+
+        <Input
+          label="Zápis v obchodním rejstříku"
+          name="company_registration"
+          placeholder="Zápis v obchodním rejstříku Společnost zapsaná v obchodním rejstříku vedeném u ..."
+        />
+
         <InputGroup>
           <Input
             label="Firemní web"
@@ -94,15 +132,15 @@ export default class CompanyNewForm extends Component {
             placeholder="Např. info@demander.cz"
             name="contact_email"
           />
-        </InputGroup>
-        <InputGroup>
-          <Input label="Adresa" name="company_address" />
-          <Input label="Kontaktní osoba" name="contact_person" />
+
         </InputGroup>
 
         <InputGroup>
-          <Input label="Telefon" name="company_telephone" />
-
+          <Input
+            label="Telefon"
+            name="company_telephone"
+            placeholder="Kontaktní telefon"
+          />
         </InputGroup>
 
         <InputGroup>
@@ -126,15 +164,12 @@ export default class CompanyNewForm extends Component {
         </InputGroup>
 
         <FormHeader number={3} label="Identita firmy" />
-        <InputGroup>
 
-          <Input
-            label="Logo firmy"
-            placeholder="Ve čtvercovém formátu (minimálně 300x300px), logo se zobrazuje na bílém pozadí.
-"
-            name="logo_url"
-          />
-        </InputGroup>
+        <Input
+          label="Logo firmy"
+          placeholder="Vložte URL loga firmy ve čtvercovém formátu (minimálně 300x300px), logo se zobrazuje na bílém pozadí."
+          name="logo_url"
+        />
 
         {submitError &&
           <FieldError toShow={submitError} message={submitError} />}

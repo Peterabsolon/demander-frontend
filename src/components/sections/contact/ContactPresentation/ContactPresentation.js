@@ -20,7 +20,7 @@ export default class ContactPresentation extends Component {
             Kontakt
           </h2>
           <Paragraph primary center noMargin>
-            Společnost Demander s.r.o., IČO 98798776, DIČ CZ98798776 sídlící na Pařížské 89, Praha 1, 100 00.
+            Kontaktujte nás telefonicky, emailem nebo nás navštivte osobne na adrese Pražská&nbsp;5382,&nbsp;430&nbsp;01&nbsp;Chomutov
           </Paragraph>
 
         </Section>
@@ -28,7 +28,7 @@ export default class ContactPresentation extends Component {
         <Section>
           <div className="features-4">
 
-            <div className="row">
+            <div className={cx('row', [style.row2])}>
 
               <div
                 className={cx('col-md-4', 'col-md-offset-2', [style.floatleft])}
@@ -42,12 +42,11 @@ export default class ContactPresentation extends Component {
                     <h4 className={cx('info-title', [style.violet])}>
                       Adresa
                     </h4>
-                    <br /><br />
-                    <h4>Demander s.r.o.</h4>
-                    <h4>IČO 98798776</h4>
-                    <h4>DIČ CZ98798776</h4>
-                    <h4>Pařížská 89</h4>
-                    <h4>100 00, Praha 1</h4>
+                    <p className={style.contactparagraph}>Demander s.r.o.</p>
+                    <p className={style.contactparagraph}>IČO 06160841</p>
+                    <p className={style.contactparagraph}>DIČ CZ06160841</p>
+                    <p className={style.contactparagraph}>Pražská 5382</p>
+                    <p className={style.contactparagraph}>430 01, Chomutov</p>
 
                   </div>
                 </div>
@@ -81,10 +80,15 @@ export default class ContactPresentation extends Component {
                     <h4 className={cx('info-title', [style.violet])}>
                       Kontakty
                     </h4>
-                    <br /><br />
-                    <h4>Tel. č.: 876 876 543</h4>
-                    <h4>Email: demander@demander.cz</h4>
-                    <h4>Fb: fb.com/#demandercz</h4>
+                    <p className={style.contactparagraph}>
+                      Tel. č.: 876 876 543
+                    </p>
+                    <p className={style.contactparagraph}>
+                      Email: demander@demander.cz
+                    </p>
+                    <p className={style.contactparagraph}>
+                      Fb: fb.com/#demandercz
+                    </p>
 
                   </div>
                 </div>
@@ -233,7 +237,7 @@ export default class ContactPresentation extends Component {
 
         <Section gutters className={style.textdividerblue}>
           <Paragraph primary center noMargin>
-            Kontaktujte nás telefonicky, emailem nebo nás navštivte osobne na adrese Horoměřická&nbsp;98,&nbsp;Praha&nbsp;4,&nbsp;148 00.
+            Společnost Demander s.r.o. sídlí na Pražské 5382, 430 01, Chomutov.
           </Paragraph>
 
         </Section>

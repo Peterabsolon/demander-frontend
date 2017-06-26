@@ -59,6 +59,10 @@ h5
   padding-right 10px
   color #68408e
 
+.materialicons
+  color #68408e
+  font-size 50px
+  
 .nobottomborder
   border-bottom none
 
@@ -88,3 +92,115 @@ h5
       position absolute
       max-width 920px
       width auto
+
+
+
+//LINES Component
+.mainwrapper
+    //background-color green
+    width 800px
+    margin 0 auto
+    margin-top 30px
+
+:root
+    --line-color #9E6EA8
+    --line-weight 1px
+    --background-color null
+    --line-wrapper-width null
+    --line-wrapper-height 100px
+    --line-wrapper-hrizontal-padding 200px
+    --step-number-background-color red
+
+.linelefttoptorightbottom
+    //display none
+    width var(--line-wrapper-width)
+    height var(--line-wrapper-height)
+    background-color var(--background-color)
+    padding 0px var(--line-wrapper-hrizontal-padding)
+    clear both
+
+.linerighttoptoleftbottom
+    //display none
+    width var(--line-wrapper-width)
+    height var(--line-wrapper-height)
+    background-color var(--background-color)
+    padding 0px var(--line-wrapper-hrizontal-padding)
+    clear both
+
+.leftbottomcorner
+    width 20%
+    height 50%
+    border-left var(--line-weight) solid var(--line-color)
+    border-bottom var(--line-weight) solid var(--line-color)
+    border-bottom-left-radius 2em
+
+.righttopcorner
+    margin-left 20%
+    margin-top -1px
+    width 80%
+    height 48%
+    border-right var(--line-weight) solid var(--line-color)
+    border-top var(--line-weight) solid var(--line-color)
+    border-top-right-radius 2em
+
+.rightbottomcorner
+    margin-left 80%
+    width 20%
+    height 50%
+    border-right var(--line-weight) solid var(--line-color)
+    border-bottom var(--line-weight) solid var(--line-color)
+    border-bottom-right-radius 2em
+
+.lefttopcorner
+    width 80%
+    height 48%
+    margin-top calc(-1 * var(--line-weight))
+    border-left var(--line-weight) solid var(--line-color)
+    border-top var(--line-weight) solid var(--line-color)
+    border-top-left-radius 2em
+
+.stepcard
+    //background-color #f0f0f5
+    padding 25px
+    max-width 400px
+
+.left
+    float left
+
+.right
+    float right
+
+.clearfix
+    clear both
+
+.stepnumber
+    width 50px
+    height 50px
+    border-radius 50%
+    font-size 40px
+    color #fff
+    line-height 50px
+    text-align center
+    background #9E6EA8
+    margin 40px auto
+
+.steptitle
+    //background-color #d1d1e0
+    text-align center
+
+.stepdescription
+    //background-color #d1d1e0
+    text-align justify
+
+@media (max-width: 767px)
+    .linelefttoptorightbottom
+        display none
+    .linerighttoptoleftbottom
+        display none
+    .right
+        float none
+    .left
+        float none
+    .stepcard
+        margin 0 auto
+        max-width 80%

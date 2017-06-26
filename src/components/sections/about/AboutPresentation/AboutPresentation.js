@@ -136,7 +136,7 @@ export default class HomePresentation extends Component {
 
         </Section>
 
-        <Section gutters maxWidth={1100} contentClassName={style.features}>
+        {/* <Section gutters maxWidth={1100} contentClassName={style.features}>
 
           <FeatureItem
             icon="perm_identity"
@@ -159,6 +159,81 @@ export default class HomePresentation extends Component {
             content="Vyberte si z reakcí dodavatelů tu nejvhodnější a úšetřete tak peníze a čas."
             button={<Button to="/dodavatele" label="Seznam dodavatelů" />}
           />
+        </Section> */}
+
+        <Section>
+          <div className={style.mainwrapper}>
+
+            <div className={cx([style.stepcard], [style.left])}>
+              {/* <div className={cx([style.stepnumber])}><p>1</p></div> */}
+              <div className={cx([style.steptitle])}>
+                <i className={cx('material-icons', [style.materialicons])}>
+                  perm_identity
+                </i>
+                <h3>Vytvořte si uživatelský účet</h3>
+              </div>
+              <div className={cx([style.description])}>
+                <p>
+                  Registrací na Demander.cz získáváte přístup do moderního digitálnícho tržiště firem.
+                  {' '}
+                </p>
+                <Button to="/registrace" label="Vyvořit účet" />
+              </div>
+            </div>
+
+            <div className={cx([style.linelefttoptorightbottom])}>
+              <div className={cx([style.leftbottomcorner], [style.inline])} />
+              <div className={cx([style.righttopcorner], [style.inline])} />
+            </div>
+
+            <div className={cx([style.stepcard], [style.right])}>
+              {/* <div className={cx([style.stepnumber])}><p>1</p></div> */}
+              <div className={cx([style.steptitle])}>
+                <i className={cx('material-icons', [style.materialicons])}>
+                  business
+                </i>
+                <h3>Zaregistrujte svoji firmu</h3>
+              </div>
+              <div className={cx([style.description])}>
+                <p>
+                  Vytvořte profil svojí firmy, služby které nabízíte a poptávejte nové dodavatele.
+                  {' '}
+                </p>
+                <Button to="/dodavatele/vytvorit" label="Registrovat firmu" />
+              </div>
+            </div>
+            {/*
+            <div className="line-right-top-to-left-bottom">
+              <div className="inline right-bottom-corner" />
+              <div className="inline left-top-corner" />
+            </div> */}
+
+            <div className={cx([style.linerighttoptoleftbottom])}>
+              <div className={cx([style.rightbottomcorner], [style.inline])} />
+              <div className={cx([style.lefttopcorner], [style.inline])} />
+            </div>
+
+            <div className={cx([style.stepcard], [style.left])}>
+              {/* <div className={cx([style.stepnumber])}><p>1</p></div> */}
+              <div className={cx([style.steptitle])}>
+                {/* <i className="material-icons">touch_app</i> */}
+                <i className={cx('material-icons', [style.materialicons])}>
+                  touch_app
+                </i>
+
+                <h3>Vyberte dodavatele</h3>
+              </div>
+              <div className={cx([style.description])}>
+                <p>
+                  Vyberte si z reakcí dodavatelů tu nejvhodnější a úšetřete tak peníze a čas.
+                </p>
+                <Button to="/dodavatele" label="Seznam dodavatelů" />
+              </div>
+            </div>
+
+            <div className={cx([style.clearfix])} />
+          </div>
+
         </Section>
 
         <Section gutters className={style.textdividerblue}>
