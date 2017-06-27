@@ -61,7 +61,7 @@ export default class HomePresentation extends Component {
               </Paragraph>
             </div>
             <div className={style.image}>
-              <img src={require('assets/img/presentation-a.jpg')} alt="" />
+              <img src={require('assets/img/macbook_loop2.png')} alt="" />
             </div>
           </div>
         </Section>
@@ -69,7 +69,7 @@ export default class HomePresentation extends Component {
         <Section className={style.sectionBeta}>
           <div className={style.sectionContent}>
             <div className={style.image}>
-              <img src={require('assets/img/presentation-b.png')} alt="" />
+              <img src={require('assets/img/vrstvy-home.png')} alt="" />
             </div>
             <div className={style.text}>
               <Title h2 white className="base-margin--half">
