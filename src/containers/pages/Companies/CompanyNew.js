@@ -7,8 +7,8 @@ import { CompanyNewForm } from 'containers/forms/companies'
 
 export default class CompanyNew extends Component {
   static propTypes = {
-    something: PropTypes.any,
-  }
+    something: PropTypes.any
+  };
 
   render() {
     return (
@@ -22,7 +22,7 @@ export default class CompanyNew extends Component {
             terniary
           />
           <Button
-            to="/poptavky/pridat"
+            to="/poptavky/vytvorit"
             label="Vložit poptávku bez registrace firmy"
             icon="add"
             offsetLeft="20"

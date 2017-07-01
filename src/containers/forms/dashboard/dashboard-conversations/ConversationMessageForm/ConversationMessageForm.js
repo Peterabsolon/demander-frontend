@@ -12,8 +12,9 @@ import style from './converastion-message-form.styl'
 export default class ConversationMessageForm extends Component {
   static propTypes = {
     values: PropTypes.object,
-    onSubmit: PropTypes.func.isRequired
-  }
+    onSubmit: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired
+  };
 
   handleKeyPress = event => {
     if (event.which === 13 && !event.shiftKey) {
@@ -23,9 +24,9 @@ export default class ConversationMessageForm extends Component {
 
       this.props.onSubmit({ message })
 
-      event.target.value = ''
+      this.props.reset()
     }
-  }
+  };
 
   render() {
     return (

@@ -1,18 +1,39 @@
 @import '~assets/css/variables'
 
 .wrapper
-  border 1px solid $color-gray-beta
-  border-radius 4px
-  margin-bottom $vertical-rhytm-half
-  padding $vertical-rhytm-half
-  background $brand-primary
-  color #fff
-  max-width 35%
   margin-left auto
   flex 0
+  max-width 60%
+  margin-bottom $vertical-rhytm-half
+  opacity 0
+  transition .3s ease
+
+.isRevealed
+  opacity 1
 
 .isInbound
-  background #fff
-  color #000
   margin-left 0
   margin-right auto
+
+  .message
+    background $brand-primary
+    color #fff
+
+  .createdAt
+    text-align right
+    padding-right $border-radius
+
+.message
+  border 1px solid #f1f1fb
+  border-radius 6px
+  margin-bottom 5px
+  padding 16px 20px
+  background #f1f1fb
+  color #000
+  font-size 14px
+
+.createdAt
+  color $color-gray-alpha
+  font-size 10px
+  font-weight 600
+  padding-left $border-radius

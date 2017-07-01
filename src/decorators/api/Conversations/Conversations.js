@@ -33,20 +33,14 @@ const decorator = (config = {}) => ComposedComponent => {
       createConversation: PropTypes.func.isRequired,
       getDetail: PropTypes.func.isRequired,
       setListParams: PropTypes.func.isRequired
-    }
+    };
 
     componentWillMount() {
-      const { state, user, params } = this.props
+      const { state, user, params, getList, getDetail } = this.props
       const companyId = get(user, 'company.id')
 
-      config.list &&
-        !state.list.loaded &&
-        companyId &&
-        this.props.getList(state.list, companyId)
-
-      console.log(this.props)
-
-      config.detail && get(params, 'id') && this.props.getDetail(params.id)
+      config.list && !state.list.loaded && getList(state.list, companyId)
+      config.detail && get(params, 'id') && getDetail(params.id)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -71,7 +65,7 @@ const decorator = (config = {}) => ComposedComponent => {
       ) {
         config.list && this.props.getList(nextProps.state.list, companyId)
       }
-    }
+    };
 
     handleFetchMore = () => {
       const { state } = this.props
@@ -80,14 +74,14 @@ const decorator = (config = {}) => ComposedComponent => {
       const hasMore = Math.abs(limit + PAGE_SIZE) <= PAGE_SIZE + count
 
       hasMore && this.props.setListParams({ limit: limit + PAGE_SIZE })
-    }
+    };
 
     handleRefreshList = () => {
       const { state, user } = this.props
       const companyId = get(user, 'company.id')
 
       return this.props.getList(state.list, companyId)
-    }
+    };
 
     handleFetchDetail = nextProps => {
       const currentId = get(this.props, 'params.id')
@@ -96,9 +90,9 @@ const decorator = (config = {}) => ComposedComponent => {
       if (config.detail && nextId && currentId !== nextId) {
         this.props.getDetail(nextId)
       }
-    }
+    };
 
-    handleRequestService = () => this.props.modal(modals.REQUEST_SERVICE)
+    handleRequestService = () => this.props.modal(modals.REQUEST_SERVICE);
 
     handleRequestServiceSubmit = (formValues, service) => {
       const payload = {
@@ -113,7 +107,7 @@ const decorator = (config = {}) => ComposedComponent => {
 
         this.handleRefreshList()
       })
-    }
+    };
 
     handleSubmitMessage = (conversationId, message) => {
       const { user } = this.props
@@ -126,7 +120,7 @@ const decorator = (config = {}) => ComposedComponent => {
       this.props
         .sendMessage(conversationId, payload)
         .then(() => this.props.putMessage({ message, user_id: user.id }))
-    }
+    };
 
     render() {
       const { state } = this.props

@@ -14,14 +14,15 @@ export default class ConversationsListItem extends Component {
     isActive: PropTypes.bool.isRequired,
     userCompanyId: PropTypes.number.isRequired,
     item: PropTypes.object.isRequired
-  }
+  };
 
   render() {
     const { item, userCompanyId, isActive } = this.props
 
-    const isInbound = item.receiver_company_id === userCompanyId
-    const target = isInbound ? 'sender' : 'receiver'
+    const isInbound = item.company_id === userCompanyId
     const route = `/dashboard/konverzace/${get(item, 'id')}`
+    const name = get(item, 'company_name') || get(item, 'creator_name')
+    const logo = get(item, 'company_logo')
 
     return (
       <div
@@ -31,17 +32,20 @@ export default class ConversationsListItem extends Component {
       >
         <Link to={route}>
           <div className={style.colLeft}>
-            <div className={style.logo}>
-              <img
-                src={get(item, `${target}_company_logo`)}
-                alt={get(item, `${target}_company_name`)}
-              />
+            <div
+              className={cx(style.logo, {
+                [style.logoPlaceholder]: !logo
+              })}
+            >
+              {logo
+                ? <img src={logo} alt={name} />
+                : <i className="material-icons">perm_identity</i>}
             </div>
           </div>
           <div className={style.colMiddle}>
             <div className={style.name}>
               <Title noCenter noMargin h5>
-                {get(item, `${target}_company_name`)}
+                {name}
               </Title>
             </div>
             <div className={style.title}>

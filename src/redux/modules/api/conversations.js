@@ -151,12 +151,14 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         list: {
           ...state.list,
-          limit: action.options.limit !== undefined
-            ? action.options.limit
-            : state.limit,
-          offset: action.options.offset !== undefined
-            ? action.options.offset
-            : state.offset
+          limit:
+            action.options.limit !== undefined
+              ? action.options.limit
+              : state.limit,
+          offset:
+            action.options.offset !== undefined
+              ? action.options.offset
+              : state.offset
           // filter: action.options.filter !== undefined
           //   ? action.options.filter
           //   : state.filter,
@@ -226,20 +228,22 @@ export const createConversation = data => ({
   promise: client => client.post('api/conversations', { data })
 })
 
-export const getDetail = id => {
-  console.log('wat')
+export const getDetail = id => ({
+  types: [GET_DETAIL, GET_DETAIL_SUCCESS, GET_DETAIL_FAIL],
+  promise: client => client.get(`api/conversations/${id}`)
+})
+
+export const getList = (state, companyId, { noLoading } = {}) => {
+  const url = companyId
+    ? `api/conversations/company/${companyId}`
+    : 'api/conversations/user/me'
+
   return {
-    types: [GET_DETAIL, GET_DETAIL_SUCCESS, GET_DETAIL_FAIL],
-    promise: client => client.get(`api/conversations/${id}`)
+    types: [GET_LIST, GET_LIST_SUCCESS, GET_LIST_FAIL],
+    promise: client => client.get(`${url}${routeParams(state)}`),
+    noLoading
   }
 }
-
-export const getList = (state, companyId, { noLoading } = {}) => ({
-  types: [GET_LIST, GET_LIST_SUCCESS, GET_LIST_FAIL],
-  promise: client =>
-    client.get(`api/conversations/company/${companyId}${routeParams(state)}`),
-  noLoading
-})
 
 export const sendMessage = (conversationId, data) => ({
   types: [SEND_MESSAGE, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAIL],

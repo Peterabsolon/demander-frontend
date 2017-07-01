@@ -15,12 +15,12 @@ import { apiAuth, apiConversations } from 'decorators/api'
 export default class DashboardConversations extends Component {
   static propTypes = {
     children: PropTypes.any
-  }
+  };
 
   render = () =>
-    <ConversationsContainer>
+    <ConversationsContainer {...this.props}>
       <ConversationsList {...this.props} />
 
       {this.props.children}
-    </ConversationsContainer>
+    </ConversationsContainer>;
 }
