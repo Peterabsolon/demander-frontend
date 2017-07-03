@@ -25,7 +25,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { Form, FormHeader, InputGroup } from 'components/layout'
-import { SelectCategory, Input, Textarea } from 'components/fields'
+import { SelectSegment, Input, Textarea } from 'components/fields'
 import { FieldError } from 'components/fields/__elements__'
 import { Button } from 'components/misc'
 
@@ -101,10 +101,10 @@ export default class CompanyNewForm extends Component {
           name="company_description"
         />
 
-        <SelectCategory
-          label="Kategorie"
+        <SelectSegment
+          label="Segment"
           placeholder="Odvětví, ve kterém firma působí"
-          name="category_id"
+          name="segment_id"
         />
 
         <FormHeader number={2} label="Kontaktní informace firmy" />

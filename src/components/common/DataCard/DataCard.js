@@ -18,7 +18,7 @@ export default class DataCard extends Component {
     company_name: PropTypes.string,
     company_description: PropTypes.string,
     slogan: PropTypes.string,
-    category_title: PropTypes.string,
+    segment_title: PropTypes.string,
     category_icon: PropTypes.string,
     logo_url: PropTypes.string,
     company_logo_url: PropTypes.string,
@@ -29,8 +29,8 @@ export default class DataCard extends Component {
     twitter_url: PropTypes.string,
     linkedin_url: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string,
-  }
+    description: PropTypes.string
+  };
 
   constructor() {
     super()
@@ -39,7 +39,7 @@ export default class DataCard extends Component {
 
     this.state = {
       hasOverflowingText: false,
-      isCollapsed: true,
+      isCollapsed: true
     }
   }
 
@@ -67,17 +67,17 @@ export default class DataCard extends Component {
     if (hasOverflowingText && !this.state.hasOverflowingText) {
       this.setState({ hasOverflowingText: true })
     }
-  }
+  };
 
   handleToggleIsCollapsed = () =>
-    this.setState({ isCollapsed: !this.state.isCollapsed })
+    this.setState({ isCollapsed: !this.state.isCollapsed });
 
   render() {
     const {
       id,
       type,
       company_description,
-      category_title,
+      segment_title,
       category_icon,
       company_name,
       company_logo_url,
@@ -91,7 +91,7 @@ export default class DataCard extends Component {
       // fb_url,
       // twitter_url,
       // linkedin_url,
-      areButtonsHidden,
+      areButtonsHidden
     } = this.props
     const { isCollapsed, hasOverflowingText } = this.state
 
@@ -104,12 +104,11 @@ export default class DataCard extends Component {
     return (
       <div
         className={cx(style.wrapper, {
-          [style.company]: isCompany,
+          [style.company]: isCompany
         })}
       >
         {isCompany &&
           <div className={style.header}>
-
             <Title h4 white noUppercase noMargin>
               {company_name}
             </Title>
@@ -139,9 +138,9 @@ export default class DataCard extends Component {
             <img src={logo_url} alt={company_name} />
           </div>}
 
-        {category_title &&
+        {segment_title &&
           <Title h5 gray className={style.category}>
-            <i className="material-icons">{category_icon}</i> {category_title}
+            <i className="material-icons">{category_icon}</i> {segment_title}
           </Title>}
 
         {title &&
@@ -153,21 +152,23 @@ export default class DataCard extends Component {
           <div
             className={cx(style.descriptionWrapper, {
               [style.hasOverflow]: hasOverflowingText,
-              [style.isOpen]: !isCollapsed,
+              [style.isOpen]: !isCollapsed
             })}
           >
             <div
-              ref={node => this.description = node}
+              ref={node => (this.description = node)}
               className={style.description}
             >
-              <Paragraph>{content}</Paragraph>
+              <Paragraph>
+                {content}
+              </Paragraph>
             </div>
 
             {hasOverflowingText &&
               <a
                 onClick={this.handleToggleIsCollapsed}
                 className={cx(style.btnCollapse, 'link', {
-                  [style.btnIsOpen]: !isCollapsed,
+                  [style.btnIsOpen]: !isCollapsed
                 })}
               >
                 <i className="ico ico--angle-down" />

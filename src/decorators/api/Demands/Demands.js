@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import apiAbstract from 'decorators/api/apiAbstract'
-import { schema } from 'models/demands'
+import { schema } from 'models/demand'
 
 import * as demandsApi from 'redux/modules/api/demands'
 
@@ -57,7 +57,7 @@ const decorator = (config = {}) => ComposedComponent => {
           handleFetchMore: PropTypes.func.isRequired
         })
       }).isRequired
-    }
+    };
 
     render() {
       const filteredProps = omit(this.props, ['payload'])

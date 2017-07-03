@@ -6,12 +6,9 @@ import { Feed, DataCard } from 'components/common'
 import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 
-import { apiDemands, apiCategories } from 'decorators/api'
+import { apiDemands } from 'decorators/api'
 
 @apiDemands({
-  list: true
-})
-@apiCategories({
   list: true
 })
 export default class Demands extends Component {

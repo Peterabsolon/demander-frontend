@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import apiAbstract from 'decorators/api/apiAbstract'
 import { apiAuth } from 'decorators/api'
-import { schema } from 'models/companies'
+import { schema } from 'models/company'
 
 import * as companiesApi from 'redux/modules/api/companies'
 import * as appActions from 'redux/modules/app'
@@ -62,7 +62,7 @@ const decorator = (config = {}) => ComposedComponent => {
           handleFetchMore: PropTypes.func.isRequired
         })
       }).isRequired
-    }
+    };
 
     handleCreateEntity = async model => {
       const { payload: companies, auth } = this.props
@@ -76,7 +76,7 @@ const decorator = (config = {}) => ComposedComponent => {
 
       this.props.notification('Záznam úspešne vytvorený', 'success')
       browserHistory.push(`/dodavatele/${company.body.id}`)
-    }
+    };
 
     render() {
       const filteredProps = omit(this.props, ['payload'])

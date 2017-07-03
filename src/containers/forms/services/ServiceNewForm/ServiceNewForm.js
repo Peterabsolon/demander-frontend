@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 import { Form } from 'components/layout'
 import {
   SelectCompany,
-  SelectCategory,
+  SelectSegment,
   Input,
   Textarea,
 } from 'components/fields'
@@ -58,10 +58,10 @@ export default class ServiceNewForm extends Component {
         <Input label="Název služby" name="title" />
         <Textarea label="Popis služby" name="description" />
         <Input label="Lokalita poskytování služby" name="location" />
-        <SelectCategory
+        <SelectSegment
           label="Kategorizace"
           placeholder="Výběr odvětví kategorie"
-          name="category_id"
+          name="segment_id"
         />
 
         <Button

@@ -5,34 +5,36 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import { sortAlphabetically } from 'utils/misc'
 
-import { apiCategories } from 'decorators/api'
+import { apiSegments } from 'decorators/api'
 import { Section } from 'components/layout'
 
-import style from './category-multi-select.styl'
+import style from './segment-multi-select.styl'
 
-@apiCategories({
+@apiSegments({
   list: true
 })
 export default class CategoryMultiSelect extends Component {
   static propTypes = {
-    categories: PropTypes.object.isRequired,
+    segments: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired
   };
 
-  renderField = (field, category) => {
+  renderField = (field, segment) => {
     return (
       <div
-        onClick={() => field.input.onChange(category.id)}
-        className={cx(style.category, {
-          [style.categoryActive]: category.id === field.input.value
+        onClick={() => field.input.onChange(segment.id)}
+        className={cx(style.segment, {
+          [style.segmentActive]: segment.id === field.input.value
         })}
-        key={category.title}
+        key={segment.title}
       >
         <div className={style.icon}>
-          <i className="material-icons">{category.icon}</i>
+          <i className="material-icons">
+            {segment.icon}
+          </i>
         </div>
         <div className={style.title}>
-          {category.title}
+          {segment.title}
         </div>
       </div>
     )
@@ -40,29 +42,31 @@ export default class CategoryMultiSelect extends Component {
 
   render() {
     const { name } = this.props
-    const categoriesData = this.props.categories.state.list
+    const segmentsData = this.props.segments.state.list
 
-    const categoryAll = categoriesData.length > 0 &&
-      categoriesData.filter(x => x.id === 1)[0]
+    console.log('segmentsData', segmentsData)
 
-    let categories = categoriesData
+    const segmentAll =
+      segmentsData.length > 0 && segmentsData.filter(x => x.id === 1)[0]
+
+    let segments = segmentsData
       .sort(sortAlphabetically('title'))
       .filter(x => x.id !== 1)
 
-    if (categoryAll) {
-      categories = [categoryAll, ...categories]
+    if (segmentAll) {
+      segments = [segmentAll, ...segments]
     }
 
     return (
       <Section guttersHalf maxWidth={800} contentClassName={style.wrapper}>
-        {categories.length > 0 &&
-          categories.map(category => (
+        {segments.length > 0 &&
+          segments.map(segment =>
             <Field
               key={uuid.v1()}
               name={name}
-              component={field => this.renderField(field, category)}
+              component={field => this.renderField(field, segment)}
             />
-          ))}
+          )}
       </Section>
     )
   }

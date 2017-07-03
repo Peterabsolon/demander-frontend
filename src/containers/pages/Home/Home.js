@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { HomePresentation } from 'components/sections/home'
 import { LatestDemands, LatestServices } from 'containers/common'
 
-import { apiCategories } from 'decorators/api'
+import { apiSegments } from 'decorators/api'
 
 // Preload categories
-@apiCategories({
+@apiSegments({
   list: true
 })
 export default class Home extends Component {

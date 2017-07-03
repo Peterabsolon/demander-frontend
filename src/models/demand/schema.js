@@ -2,7 +2,7 @@ export default function(model) {
   const data = {}
 
   data.title = model.title
-  data.category_id = model.category_id.id || model.category_id
+  data.categories = model.categories.map(category => category.id)
   data.goal = model.goal
   data.input = model.input
   data.output = model.output

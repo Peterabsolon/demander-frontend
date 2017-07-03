@@ -1,23 +1,34 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+// import { connect } from 'react-redux'
 
-import { CategoryMultiSelect } from 'components/common'
+import { SelectCategory } from 'components/fields'
 import { filter } from 'decorators'
 
-@connect(() => ({
-  initialValues: {
-    category: 1
-  }
-}))
+import style from './feed-filters-form.styl'
+
+// @connect(() => ({
+//   initialValues: {
+//     category: 1
+//   }
+// }))
 @filter({
   form: 'feedFilters',
   persist: true
 })
 export default class FeedFiltersForm extends Component {
+  static propTypes = {
+    formValues: PropTypes.object.isRequired
+  };
+
   render() {
+    const { formValues } = this.props
+
     return (
-      <div>
-        <CategoryMultiSelect name="category" />
+      <div className={style.wrapper}>
+        {/* <CategoryMultiSelect name="category" /> */}
+
+        <SelectCategory formValues={formValues} />
       </div>
     )
   }

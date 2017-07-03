@@ -18,7 +18,7 @@ import PropTypes from 'prop-types'
 import { Form, FormHeader } from 'components/layout'
 import {
   SelectCompany,
-  SelectCategory,
+  SelectSegment,
   Input,
   Textarea
 } from 'components/fields'
@@ -62,7 +62,7 @@ export default class DemandNewForm extends Component {
         {isAdmin && <SelectCompany label="Dodavatel" name="company_id" />}
         <Input label="Název" name="title" />
         <Textarea label="Cíl" name="goal" />
-        <SelectCategory label="Kategorie" name="category_id" />
+        <SelectSegment label="Segment" name="segment_id" />
 
         <FormHeader number={2} label="Vstup/výstup" />
         <Input label="Vstup" name="input" />

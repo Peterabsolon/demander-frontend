@@ -23,10 +23,10 @@ function decorator(config = {}) {
       (state, props) => ({
         values:
           state.form[config.form || props.form] &&
-            state.form[config.form || props.form].values,
+          state.form[config.form || props.form].values,
         errors:
           state.form[config.form || props.form] &&
-            state.form[config.form || props.form].syncErrors,
+          state.form[config.form || props.form].syncErrors,
         modalObj: state.app.modal
       }),
       { modal, push }
@@ -41,7 +41,7 @@ function decorator(config = {}) {
         modal: React.PropTypes.func.isRequired,
         push: React.PropTypes.func.isRequired,
         initialize: React.PropTypes.func.isRequired
-      }
+      };
 
       componentDidMount() {
         !config.disableHook && this.handleLeaveHook()
@@ -85,15 +85,16 @@ function decorator(config = {}) {
           this.props.modal('WizardDialog', nextLoc.pathname)
           return false
         })
-      }
+      };
 
       handleRedirect = () =>
         this.props.push({
           pathname: this.props.modalObj.next,
           state: { shouldRedirect: true }
-        })
+        });
 
       render() {
+        console.log('wassup', this.props)
         return (
           <div>
             <ComposedComponent {...this.props} />

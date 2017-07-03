@@ -83,6 +83,10 @@
 
       .Select-value,
       .Select-value-label
+        max-width 310px
+        text-overflow ellipsis
+        overflow hidden
+        white-space nowrap
         height 40px
         line-height 40px
         color $brand-primary
@@ -112,7 +116,7 @@
     border 1px solid $color-border
     border-radius $border-radius
     background-color $form-input-background-color
-    height 49px
+    height 51px
     font-size 14px
     transition .15s ease color, .15s ease border-color, .15s ease box-shadow, .15s ease background
 
@@ -144,9 +148,9 @@
     .Select-value-label,
     .Select-input,
     .Select-input > input
-      max-height 47px
-      height 47px
-      line-height 47px
+      max-height 51px
+      height 51px
+      line-height 51px
 
       .small &
         height 30px

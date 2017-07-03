@@ -4,7 +4,7 @@ import { createValidator, required } from 'utils/validation'
 
 const validator = createValidator({
   company_name: [required],
-  category_id: [required],
+  segment_id: [required],
   web_url: [required],
   company_description: [required],
   contact_email: [required],

@@ -21,18 +21,18 @@
  * web_url
  */
 
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import { Form, FormHeader, InputGroup } from 'components/layout'
-import { SelectCategory, Input, Textarea } from 'components/fields'
-import { Button } from 'components/misc'
+import { Form, FormHeader, InputGroup } from "components/layout";
+import { SelectSegment, Input, Textarea } from "components/fields";
+import { Button } from "components/misc";
 
-import { form } from 'decorators'
-import { apiCompanies } from 'decorators/api'
+import { form } from "decorators";
+import { apiCompanies } from "decorators/api";
 
-import validate from './company-detail-form.validation'
+import validate from "./company-detail-form.validation";
 
 @apiCompanies({
   detail: true
@@ -41,7 +41,7 @@ import validate from './company-detail-form.validation'
   initialValues: props.companies.state.detail.company
 }))
 @form({
-  form: 'companies.new',
+  form: "companies.new",
   validate
 })
 export default class CompanyDetailForm extends Component {
@@ -51,7 +51,7 @@ export default class CompanyDetailForm extends Component {
   };
 
   render() {
-    const { handleSubmit, companies } = this.props
+    const { handleSubmit, companies } = this.props;
 
     return (
       <Form
@@ -63,7 +63,7 @@ export default class CompanyDetailForm extends Component {
         <FormHeader number={1} label="Profil společnosti" />
         <InputGroup>
           <Input label="Název" name="company_name" />
-          <SelectCategory label="Kategorie" name="category_id" />
+          <SelectSegment label="Segment" name="segment_id" />
         </InputGroup>
         <InputGroup>
           <Input label="Webstránka" name="web_url" />
@@ -99,6 +99,6 @@ export default class CompanyDetailForm extends Component {
           isLoading={companies.state.submitting}
         />
       </Form>
-    )
+    );
   }
 }

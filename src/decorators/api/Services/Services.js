@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import * as servicesApi from 'redux/modules/api/services'
 
 import apiAbstract from 'decorators/api/apiAbstract'
-import { schema } from 'models/services'
+import { schema } from 'models/service'
 
 // // TODO: Czech
 // const messages = {
@@ -57,7 +57,7 @@ const decorator = (config = {}) => ComposedComponent => {
           handleFetchMore: PropTypes.func.isRequired
         })
       }).isRequired
-    }
+    };
 
     render() {
       const filteredProps = omit(this.props, ['payload'])

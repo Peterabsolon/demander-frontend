@@ -19,7 +19,7 @@ import {
   SelectCompany,
   SelectCategory,
   Input,
-  Textarea,
+  Textarea
 } from 'components/fields'
 import { Button } from 'components/misc'
 
@@ -31,18 +31,19 @@ import validate from './demand-new-form.validation'
 @apiAuth()
 @apiDemands()
 @form({
-  form: 'demands.new',
-  validate,
+  form: 'demandsNew',
+  validate
 })
 export default class DemandNewForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     demands: PropTypes.object,
-    auth: PropTypes.object,
-  }
+    values: PropTypes.object,
+    auth: PropTypes.object
+  };
 
   render() {
-    const { handleSubmit, demands, auth } = this.props
+    const { handleSubmit, demands, auth, values } = this.props
 
     const isAdmin = auth.state.isAdmin
 
@@ -66,8 +67,9 @@ export default class DemandNewForm extends Component {
         />
         <SelectCategory
           label="Kategorizace poptávky"
-          name="category_id"
+          // name="segment_id"
           placeholder="Vyberte odvětví a podkategorie"
+          formValues={values}
         />
 
         <FormHeader number={2} label="Podrobný popis poptávky" />
