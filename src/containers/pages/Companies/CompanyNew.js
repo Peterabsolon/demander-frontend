@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import { Button } from 'components/misc'
 import { PageHeader } from 'components/layout'
 import { CompanyNewForm } from 'containers/forms/companies'
 
 export default class CompanyNew extends Component {
-  static propTypes = {
-    something: PropTypes.any
-  };
-
   render() {
     return (
       <div>
@@ -28,7 +23,7 @@ export default class CompanyNew extends Component {
             offsetLeft="20"
           />
         </PageHeader>
-        <CompanyNewForm />
+        <CompanyNewForm {...this.props} />
       </div>
     )
   }

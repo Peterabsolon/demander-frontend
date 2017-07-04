@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Title } from 'components/misc'
 import { Section } from 'components/layout'
 
+import style from './page-header.styl'
+
 export default class PageHeader extends Component {
   static propTypes = {
     children: PropTypes.any,
@@ -15,10 +17,20 @@ export default class PageHeader extends Component {
     const { title, subtitle } = this.props
 
     return (
-      <Section guttersHalf textCenter>
-        {title && <Title h2>{title}</Title>}
-        {subtitle && <Title h4>{subtitle}</Title>}
-        {this.props.children}
+      <Section guttersHalf textCenter contentClassName={style.wrapper}>
+        <div className={style.content}>
+          {title &&
+            <Title h2 noMargin={!subtitle} smallMargin={subtitle}>
+              {title}
+            </Title>}
+          {subtitle &&
+            <Title h4 noMargin>
+              {subtitle}
+            </Title>}
+        </div>
+        <div className={style.actions}>
+          {this.props.children}
+        </div>
       </Section>
     )
   }

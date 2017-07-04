@@ -1,53 +1,45 @@
-/**
- * Backend model
- *
- * company_about
- * company_address
- * company_description
- * company_gps_location
- * company_id
- * company_name
- * company_nice_name
- * company_opening_hours
- * company_vat_id
- * contact_email
- * contact_person
- * contact_telephone
- * fb_url
- * linkedin_url
- * logo_url
- * slogan
- * twitter_url
- * web_url
- */
-
 import React, { Component } from 'react'
+import { get } from 'lodash'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { Form, FormHeader, InputGroup } from 'components/layout'
-import { SelectSegment, Input, Textarea } from 'components/fields'
+import { SelectCategory, Input, Textarea } from 'components/fields'
 import { FieldError } from 'components/fields/__elements__'
 import { Button } from 'components/misc'
+import {
+  CompanyFormStepBasics,
+  CompanyFormStepSpecs,
+  CompanyFormStepDetails
+} from 'components/sections/companies'
 
 import { form } from 'decorators'
-import { apiCompanies } from 'decorators/api'
+import { apiAuth, apiCompanies } from 'decorators/api'
 
 import validate from './company-new-form.validation'
 // import ReactTooltip from 'react-tooltip'
 
 @apiCompanies()
+@apiAuth()
+@connect((state, { auth }) => ({
+  initialValues: {
+    contact_person: get(auth, 'state.user.name'),
+    contact_person_email: get(auth, 'state.user.email')
+  }
+}))
 @form({
-  form: 'companies.new',
-  validate,
+  form: 'companiesNew',
+  validate
 })
 export default class CompanyNewForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     companies: PropTypes.object,
+    values: PropTypes.object
   }
 
   render() {
-    const { handleSubmit, companies } = this.props
+    const { values, handleSubmit, companies } = this.props
 
     const submitError = companies.state.error
 
@@ -56,6 +48,13 @@ export default class CompanyNewForm extends Component {
         onSubmit={handleSubmit(companies.api.handleCreateEntity)}
         wide
         gutters
+        noGuttersTop
+        steps={[
+          { label: 'Základní informace', component: CompanyFormStepBasics },
+          { label: 'Specifikace', component: CompanyFormStepSpecs },
+          { label: 'Podrobnosti', component: CompanyFormStepDetails }
+        ]}
+        {...this.props}
       >
         <FormHeader number={1} label="Profil a identifikace firmy" />
         <Input
@@ -101,11 +100,7 @@ export default class CompanyNewForm extends Component {
           name="company_description"
         />
 
-        <SelectSegment
-          label="Segment"
-          placeholder="Odvětví, ve kterém firma působí"
-          name="segment_id"
-        />
+        <SelectCategory horizontal formValues={values} />
 
         <FormHeader number={2} label="Kontaktní informace firmy" />
         <Input
@@ -132,7 +127,6 @@ export default class CompanyNewForm extends Component {
             placeholder="Např. info@demander.cz"
             name="contact_email"
           />
-
         </InputGroup>
 
         <InputGroup>

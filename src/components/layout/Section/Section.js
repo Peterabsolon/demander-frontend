@@ -9,18 +9,19 @@ export default class Section extends Component {
     className: PropTypes.string,
     contentClassName: PropTypes.string,
     children: PropTypes.any,
-    maxWidth: PropTypes.number,
+    // maxWidth: PropTypes.number,
     gutters: PropTypes.bool,
+    noGuttersTop: PropTypes.bool,
     loading: PropTypes.bool,
     guttersHalf: PropTypes.bool,
     borderTop: PropTypes.bool,
     textCenter: PropTypes.bool,
     noBorder: PropTypes.bool
-  };
+  }
 
   static defaultProps = {
-    maxWidth: 1000
-  };
+    maxWidth: 1050
+  }
 
   render() {
     const {
@@ -29,10 +30,11 @@ export default class Section extends Component {
       contentClassName,
       noBorder,
       gutters,
+      noGuttersTop,
       loading,
       guttersHalf,
-      borderTop,
-      maxWidth
+      borderTop
+      // maxWidth
     } = this.props
 
     return (
@@ -44,11 +46,12 @@ export default class Section extends Component {
           [style.borderTop]: borderTop,
           [style.textCenter]: textCenter,
           [style.gutters]: gutters,
-          [style.guttersHalf]: guttersHalf
+          [style.guttersHalf]: guttersHalf,
+          [style.noGuttersTop]: noGuttersTop
         })}
       >
         <div
-          style={{ maxWidth: maxWidth ? `${maxWidth}px` : 'none' }}
+          // style={{ maxWidth: maxWidth ? `${maxWidth}px` : 'none' }}
           className={cx(style.content, {
             [contentClassName]: contentClassName
           })}

@@ -22,6 +22,7 @@
 //     max-height calc(100vh - 61px)
 //     overflow auto
 //
+
 .loader
   position absolute
   top 0
@@ -52,13 +53,15 @@
   background hsla(0, 0%, 96%, 1)
 
 .grid
+  padding-left $vertical-rhytm-triple
+  padding-right $vertical-rhytm-triple
   &:after
     content ""
     width 100%
     @media $sm-up
       width 49%
     @media $md-up
-      width 32%
+      width 31.5%
   @media $sm-up
     display flex
     justify-content space-between
@@ -69,7 +72,7 @@
 
   @media $md-up
     > div
-      width 32%
+      width 31.5%
 
 // :global
 //   .appear-enter {

@@ -13,11 +13,9 @@ export default class DemandNew extends Component {
   render() {
     return (
       <div>
-        <PageHeader
-          title="Vytvořit poptávku"
-          // subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        >
+        <PageHeader title="Vytvořit poptávku">
           <Button
+            terniary
             to="/poptavky"
             label="Seznam poptávek"
             icon="keyboard_backspace"

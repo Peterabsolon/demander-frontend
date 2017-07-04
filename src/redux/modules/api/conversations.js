@@ -245,10 +245,9 @@ export const getList = (state, companyId, { noLoading } = {}) => {
   }
 }
 
-export const sendMessage = (conversationId, data) => ({
+export const sendMessage = data => ({
   types: [SEND_MESSAGE, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAIL],
-  promise: client =>
-    client.post(`api/conversations/${conversationId}`, { data })
+  promise: client => client.post('api/conversations/messages', { data })
 })
 
 export const setListParams = options => ({

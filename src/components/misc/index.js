@@ -6,6 +6,7 @@ export Notification from './Notification/Notification'
 export Spinner from './Spinner/Spinner'
 export TextBox from './TextBox/TextBox'
 export PopoverMenu from './PopoverMenu/PopoverMenu'
+export FormStepper from './FormStepper/FormStepper'
 
 export TabsList from './Tabs/TabsList/TabsList'
 export TabsItem from './Tabs/TabsItem/TabsItem'

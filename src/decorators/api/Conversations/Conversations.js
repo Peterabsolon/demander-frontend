@@ -114,11 +114,12 @@ const decorator = (config = {}) => ComposedComponent => {
 
       const payload = {
         message,
+        conversation_id: conversationId,
         anonymous: false
       }
 
       this.props
-        .sendMessage(conversationId, payload)
+        .sendMessage(payload)
         .then(() => this.props.putMessage({ message, user_id: user.id }))
     };
 

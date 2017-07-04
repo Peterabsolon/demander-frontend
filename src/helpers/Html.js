@@ -59,7 +59,7 @@ export default class Html extends Component {
             rel="stylesheet"
           />
           <link rel="stylesheet" type="text/css" href="/dist/iconfont.css" />
-          {Object.keys(assets.styles).map((style, key) => (
+          {Object.keys(assets.styles).map((style, key) =>
             <link
               href={assets.styles[style]}
               key={key}
@@ -68,8 +68,7 @@ export default class Html extends Component {
               type="text/css"
               charSet="UTF-8"
             />
-          ))}
-
+          )}
         </head>
         <body>
           <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
